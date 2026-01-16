@@ -20,4 +20,6 @@ export { default as Contact } from "./sections/Contact";
 export { default as Logo } from "./ui/Logo";
 export { default as Background3D } from "./ui/Background3D";
 export { default as ScrollIndicator } from "./ui/ScrollIndicator";
+export { default as LogoCarousel } from "./ui/LogoCarousel";
+export { default as CustomCursor } from "./ui/CustomCursor";
 

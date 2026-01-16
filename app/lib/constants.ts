@@ -21,7 +21,7 @@ export const COMPANY_LOGOS: CompanyLogo[] = [
 ];
 
 export const HERO_CONTENT = {
-  name: "TSILAVINA",
+  name: "TSILAVINA Hen.",
   title: "SOFTWARE ENGINEER, FRONT END & APP DEVELOPER",
 };
 
