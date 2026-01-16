@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Hero, FeaturedIn, Background3D, ScrollIndicator } from "./components";
+import { Header, Hero, FeaturedIn, Expertise, Work, Experience, Contact, Background3D, ScrollIndicator } from "./components";
 
 /**
  * Home page component
@@ -21,6 +21,18 @@ export default function Home() {
       
       {/* Featured in section with company logos */}
       <FeaturedIn />
+      
+      {/* Expertise section */}
+      <Expertise />
+      
+      {/* Work section */}
+      <Work />
+      
+      {/* Experience section */}
+      <Experience />
+      
+      {/* Contact section */}
+      <Contact />
       
       {/* Scroll indicator */}
       <ScrollIndicator />
