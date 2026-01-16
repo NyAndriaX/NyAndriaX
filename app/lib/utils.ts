@@ -13,6 +13,7 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 
 /**
  * Smooth scroll to a section by ID
+ * Works with CSS scroll-snap for section-by-section scrolling
  * Accounts for fixed header height to prevent content from being hidden
  * Responsive header height calculation based on screen size
  * @param elementId - ID of the element to scroll to
@@ -20,17 +21,10 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 export function scrollToSection(elementId: string): void {
   const element = document.getElementById(elementId);
   if (element) {
-    // Calculate header height based on screen size
-    // Mobile: ~80px, Desktop: ~100px
-    const isMobile = window.innerWidth < 1024; // lg breakpoint
-    const headerHeight = isMobile ? 80 : 100;
-    
-    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - headerHeight;
-
-    window.scrollTo({
-      top: offsetPosition,
+    // Use scrollIntoView for better compatibility with scroll-snap
+    element.scrollIntoView({
       behavior: "smooth",
+      block: "start",
     });
   }
 }

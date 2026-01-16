@@ -4,6 +4,7 @@ import { HERO_CONTENT } from "../../lib/constants";
 import LogoCarousel from "../ui/LogoCarousel";
 import Lottie from "lottie-react";
 import scrollDownAnimation from "../../../public/Scroll down hint.json";
+import { scrollToSection } from "../../lib/utils";
 
 /**
  * Hero section component displaying name and professional title
@@ -15,7 +16,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="flex flex-col items-center justify-between px-4 sm:px-6 md:px-8 relative z-10"
+      className="flex flex-col items-center justify-between px-4 sm:px-6 md:px-8 relative z-10 snap-start"
       style={{ height: "100dvh", minHeight: "100dvh" }}
     >
       {/* Spacer for header */}
@@ -47,11 +48,15 @@ export default function Hero() {
       <div className="flex-shrink-0" style={{ height: "40px" }} />
       
       {/* Scroll down animation - bottom center */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300">
+      <button
+        onClick={() => scrollToSection("expertise")}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer hover:scale-110 transition-transform duration-300"
+        aria-label="Scroll to next section"
+      >
+        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <Lottie animationData={scrollDownAnimation} loop={true} />
         </div>
-      </div>
+      </button>
     </section>
   );
 }
