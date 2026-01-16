@@ -2,6 +2,8 @@
 
 import { HERO_CONTENT } from "../../lib/constants";
 import LogoCarousel from "../ui/LogoCarousel";
+import Lottie from "lottie-react";
+import scrollDownAnimation from "../../../public/Scroll down hint.json";
 
 /**
  * Hero section component displaying name and professional title
@@ -43,6 +45,13 @@ export default function Hero() {
       
       {/* Bottom spacer */}
       <div className="flex-shrink-0" style={{ height: "40px" }} />
+      
+      {/* Scroll down animation - bottom center */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300">
+          <Lottie animationData={scrollDownAnimation} loop={true} />
+        </div>
+      </div>
     </section>
   );
 }
