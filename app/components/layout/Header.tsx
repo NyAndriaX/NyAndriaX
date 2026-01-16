@@ -110,8 +110,9 @@ export default function Header() {
       >
         {/* Background with blur effect */}
         <motion.div
-          className="absolute inset-0 bg-[#0a0f1e]/80 pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
+            backgroundColor: 'rgba(26, 25, 29, 0.85)',
             backdropFilter: blurFilter,
             WebkitBackdropFilter: blurFilter,
             opacity: backgroundOpacity,

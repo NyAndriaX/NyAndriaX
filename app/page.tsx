@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Hero, FeaturedIn, Expertise, Work, Experience, Contact, Background3D, ScrollIndicator, CustomCursor } from "./components";
+import { Header, Hero, FeaturedIn, Expertise, Work, Experience, Contact, ScrollIndicator, CustomCursor } from "./components";
 
 /**
  * Home page component
@@ -12,9 +12,6 @@ export default function Home() {
     <main className="relative min-h-screen">
       {/* Custom cursor */}
       <CustomCursor />
-      
-      {/* Background 3D elements */}
-      <Background3D />
       
       {/* Header with logo and navigation */}
       <Header />

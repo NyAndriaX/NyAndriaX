@@ -5,6 +5,7 @@ import LogoCarousel from "../ui/LogoCarousel";
 import Lottie from "lottie-react";
 import scrollDownAnimation from "../../../public/Scroll down hint.json";
 import { scrollToSection } from "../../lib/utils";
+import Background3D from "../ui/Background3D";
 
 /**
  * Hero section component displaying name and professional title
@@ -19,16 +20,19 @@ export default function Hero() {
       className="flex flex-col items-center justify-between px-4 sm:px-6 md:px-8 relative z-10 snap-start"
       style={{ height: "100dvh", minHeight: "100dvh" }}
     >
-      {/* Spacer for header */}
-      <div className="flex-shrink-0" style={{ height: "80px" }} />
+      {/* Background 3D - only for Hero section */}
+      <Background3D />
       
-      <div className="text-center max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center gap-20">
+      {/* Spacer for header */}
+      <div className="flex-shrink-0 relative z-10" style={{ height: "80px" }} />
+      
+      <div className="text-center max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center gap-20 relative z-10">
         {/* Name and Title */}
         <div className="mb-16 sm:mb-20 md:mb-24 lg:mb-28 xl:mb-32">
           <h1 className="text-4xl lg:text-9xl font-bold text-white uppercase tracking-tight leading-none px-2 !mb-8">
             {HERO_CONTENT.name}
           </h1>
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold uppercase tracking-wider px-4 leading-snug">
+          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white uppercase tracking-wider px-4 leading-snug">
             {HERO_CONTENT.title}
           </h2>
         </div>

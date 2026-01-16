@@ -15,6 +15,7 @@ export default function Contact() {
     <section
       id="contact"
       className="h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 relative z-10 py-12 sm:py-16 md:py-20 snap-start"
+      style={{ backgroundColor: '#1a191d' }}
     >
       <div className="max-w-4xl mx-auto w-full">
         <h2 className="text-center font-mono text-gray-400 text-xs sm:text-sm uppercase tracking-wider mb-8 sm:mb-12 md:mb-16">
