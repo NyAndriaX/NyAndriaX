@@ -16,11 +16,8 @@ export default function Home() {
       {/* Header with logo and navigation */}
       <Header />
       
-      {/* Hero section with name and title */}
+      {/* Hero section with name and title (includes FeaturedIn) */}
       <Hero />
-      
-      {/* Featured in section with company logos */}
-      <FeaturedIn />
       
       {/* Expertise section */}
       <Expertise />

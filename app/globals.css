@@ -25,6 +25,8 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  overflow-y: auto;
 }
 
 body {
@@ -32,6 +34,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-roboto-mono), 'Roboto Mono', monospace;
   overflow-x: hidden;
+  min-height: 100%;
 }
 
 /* Custom animations */
@@ -86,3 +89,36 @@ body {
   margin: 8px !important;
   box-sizing: border-box !important;
 }
+
+/* Navigation bar state indicators */
+header[data-nav-type="primary"][data-nav-active="true"] {
+  /* Primary navigation is active - can add visual indicator if needed */
+}
+
+header[data-nav-type="secondary"][data-nav-active="true"] {
+  /* Secondary navigation is active - can add visual indicator if needed */
+}
+
+/* Debug: Visual indicator for active navigation (can be removed in production) */
+.nav-primary-active::before {
+  content: "PRIMARY";
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: monospace;
+  z-index: 100;
+}
+
+.nav-secondary-active::before {
+  content: "SECONDARY";
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: monospace;
+  z-index: 100;
+}
+
