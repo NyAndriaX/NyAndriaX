@@ -70,22 +70,22 @@ export default function Experience() {
   const items: CollapseProps["items"] = experiences.map((exp) => ({
     key: exp.id,
     label: (
-      <div className="flex items-center justify-between w-full pr-8">
-        <span className="text-white font-semibold text-base sm:text-lg">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-2 sm:gap-4 pr-4 sm:pr-8">
+        <span className="text-white font-semibold text-sm sm:text-base md:text-lg">
           {exp.title}
         </span>
-        <span className="text-white text-sm sm:text-base">{exp.period}</span>
+        <span className="text-white text-xs sm:text-sm md:text-base">{exp.period}</span>
       </div>
     ),
     children: (
       <div className="relative">
         {/* Location and Website */}
         {(exp.location || exp.website) && (
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-4 text-gray-400 text-sm">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 mb-3 sm:mb-4 text-gray-400 text-xs sm:text-sm">
             {exp.location && (
-              <div className="flex items-center gap-2">
-                <HiLocationMarker className="w-4 h-4" />
-                <span>{exp.location}</span>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <HiLocationMarker className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+                <span className="break-words">{exp.location}</span>
               </div>
             )}
             {exp.website && (
@@ -93,9 +93,9 @@ export default function Experience() {
                 href={exp.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors"
+                className="flex items-center gap-1.5 sm:gap-2 hover:text-white transition-colors break-words"
               >
-                <FiExternalLink className="w-4 h-4" />
+                <FiExternalLink className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
                 <span>{exp.website}</span>
               </a>
             )}
@@ -104,18 +104,18 @@ export default function Experience() {
 
         {/* Description */}
         {exp.description && (
-          <p className="text-white text-sm sm:text-base leading-relaxed mb-4">
+          <p className="text-white text-xs sm:text-sm md:text-base leading-relaxed mb-3 sm:mb-4">
             {exp.description}
           </p>
         )}
 
         {/* Skills Tags */}
         {exp.skills && exp.skills.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
             {exp.skills.map((skill) => (
               <Tag
                 key={skill}
-                className="bg-transparent border-none text-white rounded-full px-3 py-1 text-xs sm:text-sm shadow-lg"
+                className="bg-transparent border-none text-white rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-xs sm:text-sm shadow-lg"
                 style={{
                   boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)",
                 }}
@@ -128,11 +128,11 @@ export default function Experience() {
 
         {/* Logo */}
         {exp.logo && (
-          <div className="absolute bottom-0 right-0 text-right">
-            <div className="text-white font-bold text-sm sm:text-base">
+          <div className="absolute bottom-0 right-0 text-right pr-2 sm:pr-4">
+            <div className="text-white font-bold text-xs sm:text-sm md:text-base">
               LIFECOACH
             </div>
-            <div className="text-white font-bold text-sm sm:text-base flex items-center gap-1">
+            <div className="text-white font-bold text-xs sm:text-sm md:text-base flex items-center gap-1">
               ELEVAT
               <span className="text-orange-500">↑</span>
             </div>
@@ -153,9 +153,9 @@ export default function Experience() {
       fullHeight={true}
       className="flex flex-col items-center justify-center"
     >
-      <div className="max-w-4xl !mx-auto w-full flex flex-col items-center">
+      <div className="max-w-4xl !mx-auto w-full flex flex-col items-center px-4 sm:px-6">
         {/* Title */}
-        <h2 className="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white uppercase tracking-tight leading-none !mb-12 !sm:!mb-16 !md:!mb-20">
+        <h2 className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase tracking-tight leading-none !mb-8 sm:!mb-10 md:!mb-12 lg:!mb-16 xl:!mb-20">
           Professional Experience
         </h2>
 
@@ -186,15 +186,39 @@ export default function Experience() {
         .experience-collapse .ant-collapse-item {
           background: #430d78 !important;
           border: none !important;
-          margin-bottom: 12px !important;
+          margin-bottom: 8px !important;
           overflow: hidden;
+        }
+        
+        @media (min-width: 640px) {
+          .experience-collapse .ant-collapse-item {
+            margin-bottom: 10px !important;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .experience-collapse .ant-collapse-item {
+            margin-bottom: 12px !important;
+          }
         }
 
         .experience-collapse .ant-collapse-header {
           background: #430d78 !important;
-          padding: 16px 20px !important;
+          padding: 12px 16px !important;
           border-radius: 8px !important;
           color: white !important;
+        }
+        
+        @media (min-width: 640px) {
+          .experience-collapse .ant-collapse-header {
+            padding: 14px 18px !important;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .experience-collapse .ant-collapse-header {
+            padding: 16px 20px !important;
+          }
         }
 
         .experience-collapse .ant-collapse-header:hover {
@@ -207,21 +231,51 @@ export default function Experience() {
         }
 
         .experience-collapse .ant-collapse-content-box {
-          padding: 20px !important;
+          padding: 12px 16px !important;
           position: relative;
-          min-height: 200px;
+          min-height: 150px;
+        }
+        
+        @media (min-width: 640px) {
+          .experience-collapse .ant-collapse-content-box {
+            padding: 16px 18px !important;
+            min-height: 180px;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .experience-collapse .ant-collapse-content-box {
+            padding: 20px !important;
+            min-height: 200px;
+          }
         }
 
         .experience-collapse .ant-collapse-expand-icon {
           background: rgba(255, 255, 255, 0.1) !important;
           border-radius: 4px !important;
-          padding: 6px !important;
-          width: 32px !important;
-          height: 32px !important;
+          padding: 4px !important;
+          width: 28px !important;
+          height: 28px !important;
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
           margin-right: 0 !important;
+        }
+        
+        @media (min-width: 640px) {
+          .experience-collapse .ant-collapse-expand-icon {
+            padding: 5px !important;
+            width: 30px !important;
+            height: 30px !important;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .experience-collapse .ant-collapse-expand-icon {
+            padding: 6px !important;
+            width: 32px !important;
+            height: 32px !important;
+          }
         }
         
         .experience-collapse .ant-collapse-body {

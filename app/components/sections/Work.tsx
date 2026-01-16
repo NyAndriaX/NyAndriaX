@@ -100,50 +100,50 @@ export default function Work() {
     >
       {/* HTML Code Background Image */}
       <div className="absolute top-0 left-0 opacity-20 pointer-events-none z-0">
-        <div className="relative w-full max-w-md px-4 sm:px-6 md:px-8">
+        <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md px-4 sm:px-6 md:px-8">
           <Image
             src="/hello-world-html-code-768x384.png"
             alt="HTML code background"
             width={300}
             height={150}
-            className="opacity-30"
+            className="opacity-30 w-full h-auto"
             priority={false}
           />
         </div>
       </div>
         {/* Top Section: Title and Description */}
-        <div className="!mb-10 md:!mb-16">
+        <div className="!mb-8 sm:!mb-10 md:!mb-12 lg:!mb-16">
           <div className="flex flex-col justify-center text-center lg:text-left max-w-3xl">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white uppercase tracking-tight leading-none mb-6 sm:mb-8">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase tracking-tight leading-none mb-4 sm:mb-6 md:mb-8">
               My Work
             </h2>
-            <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
+            <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
               Deployed scalable travel, event and telemedicine web and hybrid mobile apps using React SPA and PWA. Collaborated in 140+ projects with 50+ clients all around the world. I am also interested in data analytics and visualization.
             </p>
           </div>
         </div>
 
         {/* Filter Section - Navigation Style Links */}
-        <div className="!mb-8 md:!mb-12">
+        <div className="!mb-6 sm:!mb-8 md:!mb-10 lg:!mb-12">
           <div className="flex flex-wrap items-center justify-center lg:justify-start !gap-0">
-            <span className="text-white/80 text-sm sm:text-base font-medium mr-2">Filter by</span>
+            <span className="text-white/80 text-xs sm:text-sm md:text-base font-medium mr-1 sm:mr-2">Filter by</span>
             {filters.map((filter, index) => (
               <div key={filter.id} className="flex items-center">
                 <button
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`text-sm sm:text-base transition-colors duration-200 !px-4 !py-1 ${
+                  className={`text-xs sm:text-sm md:text-base transition-colors duration-200 !px-2 sm:!px-3 md:!px-4 !py-1 ${
                     activeFilter === filter.id
                       ? "!text-cyan-400 font-semibold"
                       : "!text-gray-400 hover:!text-cyan-400/80"
                   }`}
                 >
                   {filter.label}{" "}
-                  <sup className="!text-xs sm:!text-sm !ml-1">
+                  <sup className="!text-xs sm:!text-sm !ml-0.5 sm:!ml-1">
                     {String(filter.count).padStart(2, "0")}
                   </sup>
                 </button>
                 {index < filters.length - 1 && (
-                  <span className="!mx-2">/</span>
+                  <span className="!mx-1 sm:!mx-2">/</span>
                 )}
               </div>
             ))}
@@ -152,12 +152,12 @@ export default function Work() {
 
         {/* Projects Grid - Ant Design Masonry */}
         <Masonry
-          gutter={[24, 24]}
+          gutter={[16, 16]}
           columns={{
             xs: 1,
-            sm: 2,
+            sm: 1,
             md: 2,
-            lg: 3,
+            lg: 2,
             xl: 3,
             xxl: 3,
           }}
@@ -203,30 +203,30 @@ export default function Work() {
                 </div>
 
                 {/* Portfolio Item Details */}
-                <div className="portfolio-item-details text-left !p-5 sm:!p-7 lg:!p-8 flex-grow">
+                <div className="portfolio-item-details text-left !p-4 sm:!p-5 md:!p-6 lg:!p-7 xl:!p-8 flex-grow">
                   {/* Headline */}
-                  <h3 className="portfolio-item-headline title text-white font-semibold text-xl sm:text-2xl lg:text-2xl mb-3 line-clamp-1">
+                  <h3 className="portfolio-item-headline title text-white font-semibold text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3 line-clamp-1">
                     {project.title}
                   </h3>
                   
                   {/* Category / Show Project Link */}
                   <div className="category-holder">
-                    <span className="category relative inline-block min-h-[20px] whitespace-nowrap">
+                    <span className="category relative inline-block min-h-[18px] sm:min-h-[20px] whitespace-nowrap">
                       <a 
                         href="#" 
                         onClick={(e) => {
                           e.preventDefault();
                           handleViewProject(project.id);
                         }}
-                        className="text-gray-600 text-sm hover:text-cyan-400 transition-all duration-200 inline-flex items-center gap-2 whitespace-nowrap"
+                        className="text-gray-600 text-xs sm:text-sm hover:text-cyan-400 transition-all duration-200 inline-flex items-center gap-1.5 sm:gap-2 whitespace-nowrap"
                       >
                         <span className="inline-block opacity-100 group-hover:opacity-0 group-hover:absolute group-hover:pointer-events-none transition-opacity duration-300 ease-in-out whitespace-nowrap">
                           {project.category}
                         </span>
-                        <span className="inline-flex items-center gap-2 text-cyan-400 font-semibold opacity-0 group-hover:opacity-100 absolute left-0 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 ease-in-out whitespace-nowrap">
+                        <span className="inline-flex items-center gap-1.5 sm:gap-2 text-cyan-400 font-semibold opacity-0 group-hover:opacity-100 absolute left-0 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 ease-in-out whitespace-nowrap">
                           Show project
                           <svg 
-                            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" 
+                            className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" 
                             fill="none" 
                             stroke="currentColor" 
                             viewBox="0 0 24 24"

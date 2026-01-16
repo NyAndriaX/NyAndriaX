@@ -42,7 +42,7 @@ export default function Navigation({ fontSize, numberFontSize, variant = "second
 
   return (
     <nav 
-      className="flex items-center gap-6" 
+      className="flex items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6" 
       data-nav-variant={variant}
       onMouseEnter={() => setIsNavHovered(true)}
       onMouseLeave={() => {
@@ -92,7 +92,7 @@ export default function Navigation({ fontSize, numberFontSize, variant = "second
         );
       })}
       {/* Vertical line separator */}
-      <div className="h-8 w-px bg-gray-400/30" />
+      <div className="h-6 sm:h-7 md:h-8 w-px bg-gray-400/30" />
     </nav>
   );
 }

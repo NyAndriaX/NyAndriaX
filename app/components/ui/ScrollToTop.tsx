@@ -38,10 +38,10 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           onClick={handleScrollToTop}
-          className="fixed bottom-6 right-6 z-50 !p-3 sm:!p-4 bg-[#fff]/80 shadow-lg"
+          className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 z-50 !p-2 sm:!p-3 md:!p-4 bg-[#fff]/80 shadow-lg"
           aria-label="Scroll to top"
         >
-          <FaArrowUp size={20} className="text-[#b7f]" />
+          <FaArrowUp size={16} className="text-[#b7f] sm:w-5 sm:h-5 md:w-5 md:h-5" />
         </motion.button>
       )}
     </AnimatePresence>

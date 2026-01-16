@@ -124,3 +124,16 @@ header[data-nav-type="secondary"][data-nav-active="true"] {
   z-index: 100;
 }
 
+/* Responsive padding for Contact section Cards */
+@media (min-width: 640px) {
+  .contact-card-responsive {
+    padding: 20px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .contact-card-responsive {
+    padding: 24px !important;
+  }
+}
+
