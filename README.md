@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Project
 
-## Getting Started
+A modern portfolio website built with Next.js, Tailwind CSS, and Ant Design.
 
-First, run the development server:
+## 🚀 Tech Stack
 
+- **Framework**: [Next.js 16.1.2](https://nextjs.org/) with App Router
+- **Language**: TypeScript 5
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components**: [Ant Design v6.2.0](https://ant.design/)
+- **Package Manager**: Yarn
+- **React**: 19.2.3
+
+## 📋 Prerequisites
+
+- Node.js >= 20.9.0 (recommended)
+- Yarn package manager
+
+## 🛠️ Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏃 Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Start the development server:
 
-## Learn More
+```bash
+yarn dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The page auto-updates as you edit files in the `app` directory.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Build
 
-## Deploy on Vercel
+Build the application for production:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+yarn build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Start the production server:
+
+```bash
+yarn start
+```
+
+## 🧪 Testing
+
+The project includes a test page that demonstrates:
+- Tailwind CSS functionality (gradients, spacing, typography)
+- Ant Design components (buttons, forms, cards, progress bars, etc.)
+
+## 📁 Project Structure
+
+```
+portfolio/
+├── app/
+│   ├── layout.tsx      # Root layout with fonts and global styles
+│   ├── page.tsx        # Home page with component demonstrations
+│   └── globals.css    # Global CSS with Tailwind imports
+├── public/             # Static assets
+├── .cursorrules        # Cursor IDE rules for code standards
+├── package.json        # Dependencies and scripts
+├── tsconfig.json       # TypeScript configuration
+├── next.config.ts      # Next.js configuration
+└── postcss.config.mjs  # PostCSS configuration for Tailwind
+```
+
+## 🎨 Styling
+
+### Tailwind CSS
+
+Tailwind CSS v4 is configured and ready to use. Import styles are in `app/globals.css`:
+
+```css
+@import "tailwindcss";
+```
+
+### Ant Design
+
+Ant Design components are imported in `app/layout.tsx`:
+
+```typescript
+import "antd/dist/reset.css";
+```
+
+## 📝 Code Standards
+
+This project follows strict coding standards:
+
+- **All code must be in English**: comments, variables, functions, components
+- **User-facing text**: Can be in any language as needed
+- **Documentation**: All JSDoc and documentation strings in English
+- **File names**: In English (except configuration files)
+
+See `.cursorrules` for complete coding standards.
+
+## 🔧 Configuration Files
+
+- `tsconfig.json`: TypeScript compiler options
+- `next.config.ts`: Next.js configuration
+- `postcss.config.mjs`: PostCSS configuration for Tailwind CSS
+- `eslint.config.mjs`: ESLint configuration
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Learn about Tailwind CSS
+- [Ant Design Documentation](https://ant.design/docs/react/introduce) - Learn about Ant Design components
+- [React Documentation](https://react.dev/) - Learn about React
+
+## 🚢 Deployment
+
+The easiest way to deploy this Next.js app is using [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 📄 License
+
+This project is private.
+
+## 👤 Author
+
+Portfolio project - 2026

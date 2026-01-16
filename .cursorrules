@@ -1,0 +1,39 @@
+# Cursor Rules - Portfolio Project
+
+## Language Requirements
+
+**CRITICAL: All code must be written in English**
+
+- All comments must be in English
+- All variable names must be in English
+- All function names must be in English
+- All component names must be in English
+- All file names must be in English (except for configuration files)
+- All string literals displayed to users can be in any language, but code-related strings should be in English
+- All documentation strings (JSDoc, docstrings) must be in English
+
+## Code Style Guidelines
+
+- Use descriptive variable and function names
+- Write clear, concise comments explaining the "why" not the "what"
+- Follow React/Next.js best practices
+- Use TypeScript types for all props and state
+- Prefer functional components with hooks
+- Use meaningful component and file names
+
+## Project-Specific Rules
+
+- This is a Next.js 16 project with App Router
+- Uses Tailwind CSS v4 for styling
+- Uses Ant Design v6.2.0 for UI components
+- Uses TypeScript for type safety
+- Uses Yarn as the package manager
+
+## When Writing Code
+
+1. Always write code in English
+2. Always write comments in English
+3. Always use English for variable/function/component names
+4. User-facing text (UI labels, messages) can be in any language as needed
+5. Error messages and console logs should be in English for debugging purposes
+
