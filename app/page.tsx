@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Hero, FeaturedIn, Expertise, Work, Experience, Contact, ScrollIndicator, CustomCursor } from "./components";
+import { Header, Hero, FeaturedIn, Expertise, Work, Experience, Contact, ScrollIndicator, ScrollToTop, CustomCursor } from "./components";
 
 /**
  * Home page component
@@ -33,6 +33,9 @@ export default function Home() {
       
       {/* Scroll indicator */}
       <ScrollIndicator />
+      
+      {/* Scroll to top button */}
+      <ScrollToTop />
     </main>
   );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import SectionLayout from "../layout/SectionLayout";
+
 /**
  * Contact section component displaying contact information and form
  * Provides ways for visitors to get in touch
@@ -12,10 +14,11 @@ export default function Contact() {
   ];
 
   return (
-    <section
+    <SectionLayout
       id="contact"
-      className="h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 relative z-10 py-12 sm:py-16 md:py-20 snap-start"
-      style={{ backgroundColor: '#1a191d' }}
+      backgroundColor="#1a191d"
+      fullHeight={true}
+      className="flex flex-col items-center justify-center"
     >
       <div className="max-w-4xl mx-auto w-full">
         <h2 className="text-center font-mono text-gray-400 text-xs sm:text-sm uppercase tracking-wider mb-8 sm:mb-12 md:mb-16">
@@ -57,7 +60,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </section>
+    </SectionLayout>
   );
 }
 

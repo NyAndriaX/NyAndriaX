@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { SiReact } from "react-icons/si";
 import { SiFlutter } from "react-icons/si";
+import SectionLayout from "../layout/SectionLayout";
 
 /**
  * Expertise section component displaying skills and technologies
@@ -21,7 +22,7 @@ export default function Expertise() {
       ),
       description: "Experienced in both functional and OOP: Dart, Python, JavaScript, TypeScript.",
       underlineWord: "Software",
-      underlineColor: "red"
+      underlineColor: "#b7f"
     },
     { 
       category: "Frontend Dev React, NextJS", 
@@ -32,7 +33,7 @@ export default function Expertise() {
         </div>
       ),
       description: "Passionate about UI/UX. Over 5 years of development experience in HTML, CSS, JS, React and NextJS frameworks.",
-      underlineWord: "Frontend",
+      underlineWord: "Frontend Dev",
       underlineColor: "blue"
     },
     { 
@@ -44,16 +45,17 @@ export default function Expertise() {
         </div>
       ),
       description: "Skilled in developing hybrid mobile apps and cross-platform solutions using the Flutter framework.",
-      underlineWord: "Flutter",
+      underlineWord: "Flutter Dev",
       underlineColor: "orange"
     },
   ];
 
   return (
-    <section
+    <SectionLayout
       id="expertise"
-      className="h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 relative z-10 py-12 sm:py-16 md:py-20 overflow-hidden snap-start"
-      style={{ backgroundColor: '#1a191d' }}
+      backgroundColor="#1a191d"
+      fullHeight={true}
+      className="flex flex-col items-center justify-center overflow-hidden"
     >
       {/* HTML Code Background Image */}
       <div className="absolute bottom-0 left-0 right-0 opacity-30 pointer-events-none z-0 flex justify-center items-end pb-4 sm:pb-6 md:pb-8">
@@ -94,14 +96,25 @@ export default function Expertise() {
                   <h3 className="text-white text-xl sm:text-2xl md:text-3xl font-bold uppercase tracking-wide">
                     {titleParts[0]}
                     <span 
-                      className={`underline decoration-2 underline-offset-2 ${
-                        item.underlineColor === 'red' ? 'decoration-red-500' :
-                        item.underlineColor === 'blue' ? 'decoration-blue-500' :
-                        item.underlineColor === 'orange' ? 'decoration-orange-500' :
-                        'decoration-pink-500'
-                      }`}
+                      className="relative inline-block"
+                      style={{
+                        lineHeight: '1.2'
+                      }}
                     >
-                      {item.underlineWord}
+                      <span className="relative z-10">{item.underlineWord}</span>
+                      <span
+                        className="absolute left-0 right-0 -z-10"
+                        style={{
+                          bottom: '6px',
+                          height: '8px',
+                          backgroundColor: typeof item.underlineColor === 'string' && item.underlineColor.startsWith('#') 
+                            ? item.underlineColor 
+                            : item.underlineColor === 'red' ? '#ef4444' :
+                              item.underlineColor === 'blue' ? '#3b82f6' :
+                              item.underlineColor === 'orange' ? '#f97316' :
+                              '#ec4899'
+                        }}
+                      />
                     </span>
                     {titleParts[1]}
                   </h3>
@@ -140,7 +153,7 @@ export default function Expertise() {
           })}
         </div>
       </div>
-    </section>
+    </SectionLayout>
   );
 }
 
