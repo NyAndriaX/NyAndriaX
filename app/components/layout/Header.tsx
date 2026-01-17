@@ -63,7 +63,7 @@ export default function Header() {
       <motion.header 
         data-nav-type="primary"
         data-nav-active={activeNavType === "primary" ? "true" : "false"}
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 sm:px-4 md:px-6 ${activeNavType === "primary" ? "nav-primary-active" : ""}`}
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-5 md:px-6 ${activeNavType === "primary" ? "nav-primary-active" : ""}`}
         style={{ 
           paddingTop: isMobile ? 40 : 56, 
           paddingBottom: isMobile ? 40 : 56,
@@ -78,8 +78,8 @@ export default function Header() {
           <MobileMenu />
         </div>
         
-        {/* Logo - always visible on mobile, visible on desktop in primary nav */}
-        <div className="relative z-10 ml-1 sm:ml-2 md:ml-0 lg:absolute lg:left-4 xl:left-6">
+        {/* Logo - hidden on mobile, visible on desktop in primary nav */}
+        <div className="hidden lg:block relative z-10 lg:absolute lg:left-4 xl:left-6">
           <Logo />
         </div>
         
@@ -93,7 +93,7 @@ export default function Header() {
       <motion.header 
         data-nav-type="secondary"
         data-nav-active={activeNavType === "secondary" ? "true" : "false"}
-        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 sm:px-4 md:px-6 ${activeNavType === "secondary" ? "nav-secondary-active" : ""}`}
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-5 md:px-6 ${activeNavType === "secondary" ? "nav-secondary-active" : ""}`}
         style={{ 
           paddingTop: paddingY, 
           paddingBottom: paddingY,

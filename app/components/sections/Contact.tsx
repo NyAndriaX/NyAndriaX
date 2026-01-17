@@ -69,14 +69,14 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="flex flex-col justify-center relative z-10 snap-start"
+      className="flex flex-col justify-center relative z-10 snap-start !py-12 sm:!py-16 md:!py-20 lg:!py-24"
       style={{ backgroundColor: "#000000" }}
     >
-      <div className="max-w-7xl !mx-auto w-full !px-4 sm:!px-6 md:!px-8">
-        <Row gutter={[16, 16]} className="items-start">
+      <div className="max-w-7xl !mx-auto w-full !px-4 sm:!px-5 md:!px-6 lg:!px-8">
+        <Row gutter={[16, 24]} className="items-start">
           {/* Left Column - Contact Information */}
           <Col xs={24} sm={24} md={24} lg={10}>
-            <div className="h-full flex flex-col justify-center !p-4 sm:!p-6 md:!p-8">
+            <div className="h-full flex flex-col justify-center !p-5 sm:!p-6 md:!p-8 !pb-10 sm:!pb-12 md:!pb-16">
               <Title 
                 level={1} 
                 className="!text-white !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl !font-bold !mb-4 sm:!mb-5 md:!mb-6 !leading-tight"
@@ -128,7 +128,7 @@ export default function Contact() {
 
           {/* Right Column - Testimonials */}
           <Col xs={24} sm={24} md={24} lg={14}>
-            <Row gutter={[0, 0]}>
+            <Row gutter={[0, 0]} className="!mb-6 sm:!mb-8 md:!mb-0">
               {/* Left Column - First Testimonial */}
               <Col xs={24} sm={24} md={12} lg={12}>
                 <Card
