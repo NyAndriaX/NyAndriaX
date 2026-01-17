@@ -165,8 +165,8 @@ export default function Header() {
   const blurFilter = useTransform(blurValue, (value) => `blur(${value}px)`);
   const backgroundOpacity = useTransform(scrollProgress, [0, 200], [0, 0.8], { clamp: true });
 
-  // Responsive padding: mobile (40px) to desktop (56px) when not scrolled, (24px) to (32px) when scrolled
-  const paddingYMobile = useTransform(scrollProgress, [0, 50], [40, 24], { clamp: true });
+  // Responsive padding: mobile (20px) to desktop (56px) when not scrolled, (12px) to (32px) when scrolled
+  const paddingYMobile = useTransform(scrollProgress, [0, 50], [20, 12], { clamp: true });
   const paddingYDesktop = useTransform(scrollProgress, [0, 50], [56, 32], { clamp: true });
   const paddingY = isMobile ? paddingYMobile : paddingYDesktop;
 
@@ -182,8 +182,8 @@ export default function Header() {
         data-nav-active={activeNavType === "primary" ? "true" : "false"}
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-5 md:px-6 ${activeNavType === "primary" ? "nav-primary-active" : ""}`}
         style={{ 
-          paddingTop: isMobile ? 40 : 56, 
-          paddingBottom: isMobile ? 40 : 56,
+          paddingTop: isMobile ? 20 : 56, 
+          paddingBottom: isMobile ? 20 : 56,
           opacity: primaryNavOpacity,
           y: primaryNavY,
           pointerEvents: useTransform(primaryNavOpacity, (opacity) => opacity < 0.1 ? "none" : "auto"),
