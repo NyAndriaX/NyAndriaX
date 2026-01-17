@@ -63,7 +63,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="flex flex-col justify-center relative z-10 !py-12 sm:!py-16 md:!py-20 lg:!py-24"
+      className="flex flex-col justify-center relative z-10"
       style={{ backgroundColor: "#000000" }}
     >
       <div ref={ref} className="max-w-7xl !mx-auto w-full !px-4 sm:!px-5 md:!px-6 lg:!px-8">
