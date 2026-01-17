@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { SiReact } from "react-icons/si";
-import { SiFlutter } from "react-icons/si";
 import SectionLayout from "../layout/SectionLayout";
+import { expertiseData } from "../../lib/data";
 
 /**
  * Expertise section component displaying skills and technologies
@@ -11,44 +10,6 @@ import SectionLayout from "../layout/SectionLayout";
  * Includes HTML code background for visual appeal
  */
 export default function Expertise() {
-  const expertiseItems = [
-    { 
-      category: "Software Development", 
-      skills: ["Android", "iOS"],
-      icon: (
-        <svg className="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-      description: "Experienced in both functional and OOP: Dart, Python, JavaScript, TypeScript.",
-      underlineWord: "Software",
-      underlineColor: "#b7f"
-    },
-    { 
-      category: "Frontend Dev React, NextJS", 
-      skills: ["React", "NextJS"],
-      icon: (
-        <div className="text-white flex items-center justify-center">
-          <SiReact size={32} />
-        </div>
-      ),
-      description: "Passionate about UI/UX. Over 5 years of development experience in HTML, CSS, JS, React and NextJS frameworks.",
-      underlineWord: "Frontend Dev",
-      underlineColor: "blue"
-    },
-    { 
-      category: "Flutter Dev Android, iOS", 
-      skills: [],
-      icon: (
-        <div className="text-white flex items-center justify-center">
-          <SiFlutter size={32} />
-        </div>
-      ),
-      description: "Skilled in developing hybrid mobile apps and cross-platform solutions using the Flutter framework.",
-      underlineWord: "Flutter Dev",
-      underlineColor: "orange"
-    },
-  ];
 
   return (
     <SectionLayout
@@ -77,13 +38,13 @@ export default function Expertise() {
           My Expertise
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
-          {expertiseItems.map((item, index) => {
+          {expertiseData.map((item, index) => {
             const titleParts = item.category.split(item.underlineWord);
             return (
               <div
                 key={index}
                 className={`relative text-left !p-6 sm:!p-7 md:!p-8 lg:!p-9 xl:!p-10 border-2 border-white/30 hover:border-white/50 transition-colors duration-200 bg-[#0a0f1e]/20 backdrop-blur-[1px] ${
-                  index === 0 ? 'sm:rounded-l-lg rounded-t-lg sm:rounded-t-none' : index === expertiseItems.length - 1 ? 'sm:rounded-r-lg rounded-b-lg sm:rounded-b-none' : ''
+                  index === 0 ? 'sm:rounded-l-lg rounded-t-lg sm:rounded-t-none' : index === expertiseData.length - 1 ? 'sm:rounded-r-lg rounded-b-lg sm:rounded-b-none' : ''
                 } ${
                   index !== 0 ? 'sm:border-l-0 border-t-0 sm:border-t-2' : ''
                 }`}

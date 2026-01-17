@@ -1,0 +1,73 @@
+/**
+ * Work/Projects data
+ */
+
+import { Project, ProjectFilter } from "../../types";
+
+export const projectFilters: ProjectFilter[] = [
+  { id: "all", label: "All", count: 10 },
+  { id: "data", label: "Data Visualization", count: 1 },
+  { id: "web", label: "Web Development", count: 8 },
+];
+
+export const projectsData: Project[] = [
+  {
+    id: 1,
+    title: "Flight Local (B2B Travel Solution)",
+    category: "Web Development",
+    filter: "web",
+    image: "/tamalsen-home-cover.jpg",
+    description: "B2B travel platform for agencies",
+  },
+  {
+    id: 2,
+    title: "AI Lab Granada",
+    category: "Web Development",
+    filter: "web",
+    image: "/tamalsen-home-cover.jpg",
+    description: "AI research and development platform",
+  },
+  {
+    id: 3,
+    title: "Knora - Urban Thinkers Community",
+    category: "Web Development",
+    filter: "web",
+    image: "/tamalsen-home-cover.jpg",
+    description: "Community platform for urban thinkers",
+  },
+  {
+    id: 4,
+    title: "Tryotel - Cross-Platform Travel App",
+    category: "Web Development",
+    filter: "web",
+    image: "/tamalsen-home-cover.jpg",
+    description: "Cross-platform travel booking application",
+  },
+  {
+    id: 5,
+    title: "Tapy - Download. Connect. Share",
+    category: "Web Development",
+    filter: "web",
+    image: "/tamalsen-home-cover.jpg",
+    description: "Social media platform for content sharing",
+  },
+  {
+    id: 6,
+    title: "Tryotel Web (B2C)",
+    category: "Web Development",
+    filter: "web",
+    image: "/tamalsen-home-cover.jpg",
+    description: "B2C travel booking web application",
+  },
+  {
+    id: 7,
+    title: "Data Analytics Dashboard",
+    category: "Data Visualization",
+    filter: "data",
+    image: "/tamalsen-home-cover.jpg",
+    description: "Interactive data visualization dashboard",
+  },
+];
+
+export const workDescription = "Deployed scalable travel, event and telemedicine web and hybrid mobile apps using React SPA and PWA. Collaborated in 140+ projects with 50+ clients all around the world. I am also interested in data analytics and visualization.";
+

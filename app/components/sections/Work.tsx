@@ -4,76 +4,12 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import { Masonry } from "antd";
 import SectionLayout from "../layout/SectionLayout";
+import { projectsData, projectFilters, workDescription } from "../../lib/data";
 
 /**
  * Work section component displaying portfolio projects
  * Shows the portfolio owner's featured work and projects
  */
-
-const filters = [
-  { id: "all", label: "All", count: 10 },
-  { id: "data", label: "Data Visualization", count: 1 },
-  { id: "web", label: "Web Development", count: 8 },
-];
-
-const projects = [
-    {
-      id: 1,
-      title: "Flight Local (B2B Travel Solution)",
-      category: "Web Development",
-      filter: "web",
-      image: "/tamalsen-home-cover.jpg",
-      description: "B2B travel platform for agencies",
-    },
-    {
-      id: 2,
-      title: "AI Lab Granada",
-      category: "Web Development",
-      filter: "web",
-      image: "/tamalsen-home-cover.jpg",
-      description: "AI research and development platform",
-    },
-    {
-      id: 3,
-      title: "Knora - Urban Thinkers Community",
-      category: "Web Development",
-      filter: "web",
-      image: "/tamalsen-home-cover.jpg",
-      description: "Community platform for urban thinkers",
-    },
-    {
-      id: 4,
-      title: "Tryotel - Cross-Platform Travel App",
-      category: "Web Development",
-      filter: "web",
-      image: "/tamalsen-home-cover.jpg",
-      description: "Cross-platform travel booking application",
-    },
-    {
-      id: 5,
-      title: "Tapy - Download. Connect. Share",
-      category: "Web Development",
-      filter: "web",
-      image: "/tamalsen-home-cover.jpg",
-      description: "Social media platform for content sharing",
-    },
-    {
-      id: 6,
-      title: "Tryotel Web (B2C)",
-      category: "Web Development",
-      filter: "web",
-      image: "/tamalsen-home-cover.jpg",
-      description: "B2C travel booking web application",
-    },
-    {
-      id: 7,
-      title: "Data Analytics Dashboard",
-      category: "Data Visualization",
-      filter: "data",
-      image: "/tamalsen-home-cover.jpg",
-      description: "Interactive data visualization dashboard",
-    },
-];
 
 export default function Work() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -81,9 +17,9 @@ export default function Work() {
   // Filter projects based on active filter
   const filteredProjects = useMemo(() => {
     if (activeFilter === "all") {
-      return projects;
+      return projectsData;
     }
-    return projects.filter((p) => p.filter === activeFilter);
+    return projectsData.filter((p) => p.filter === activeFilter);
   }, [activeFilter]);
 
   const handleViewProject = (projectId: number) => {
@@ -117,7 +53,7 @@ export default function Work() {
               My Work
             </h2>
             <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
-              Deployed scalable travel, event and telemedicine web and hybrid mobile apps using React SPA and PWA. Collaborated in 140+ projects with 50+ clients all around the world. I am also interested in data analytics and visualization.
+              {workDescription}
             </p>
           </div>
         </div>
@@ -126,7 +62,7 @@ export default function Work() {
         <div className="!mb-6 sm:!mb-8 md:!mb-10 lg:!mb-12">
           <div className="flex flex-wrap items-center justify-center lg:justify-start !gap-0">
             <span className="text-white/80 text-xs sm:text-sm md:text-base font-medium mr-1 sm:mr-2">Filter by</span>
-            {filters.map((filter, index) => (
+            {projectFilters.map((filter, index) => (
               <div key={filter.id} className="flex items-center">
                 <button
                   onClick={() => setActiveFilter(filter.id)}
@@ -141,7 +77,7 @@ export default function Work() {
                     {String(filter.count).padStart(2, "0")}
                   </sup>
                 </button>
-                {index < filters.length - 1 && (
+                {index < projectFilters.length - 1 && (
                   <span className="!mx-1 sm:!mx-2">/</span>
                 )}
               </div>

@@ -1,13 +1,14 @@
 "use client";
 
 import { Row, Col, Card, Typography, Avatar } from "antd";
-import { 
-  MessageOutlined, 
-  LinkedinOutlined, 
-  InstagramOutlined, 
-  GithubOutlined 
-} from "@ant-design/icons";
 import Image from "next/image";
+import { 
+  socialLinksData, 
+  testimonialsData, 
+  contactEmail, 
+  contactTitle, 
+  contactDescription 
+} from "../../lib/data";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -16,55 +17,6 @@ const { Title, Text, Paragraph } = Typography;
  * Provides ways for visitors to get in touch and showcases client testimonials
  */
 export default function Contact() {
-  const socialLinks = [
-    { 
-      label: "Messenger", 
-      icon: <MessageOutlined className="text-white text-lg" />,
-      href: "#" 
-    },
-    { 
-      label: "LinkedIn", 
-      icon: <LinkedinOutlined className="text-white text-lg" />,
-      href: "#" 
-    },
-    { 
-      label: "Instagram", 
-      icon: <InstagramOutlined className="text-white text-lg" />,
-      href: "#" 
-    },
-    { 
-      label: "Github", 
-      icon: <GithubOutlined className="text-white text-lg" />,
-      href: "#" 
-    },
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      quote: "Since 2018 Tamal has been responsible for the development of our website which has been instrumental to the growth of our company. Even while working remotely he's been highly responsive, organized and strategic in his thinking. In addition to staying on top of day-to-day site changes and builds, he's provided us with great advice to stay on top of the current changes in web technologies. He's also implemented effective project management and Q&A processes. As a result Tamal has been an highly valued and impactful member of our team.",
-      name: "Mark Greenspan",
-      title: "Founder at influenceTHIS Canada",
-      avatar: "/tamalsen-home-cover.jpg", // Placeholder - replace with actual avatar
-      bgColor: "#bc60fb", // Purple
-    },
-    {
-      id: 2,
-      quote: "Tamal is AMAZING! If you have any doubt about hiring him, ask me - I am really impressed by this guy!",
-      name: "Wilfried Hajek",
-      title: "Agile Coach | Speaker | Trainer",
-      avatar: "/tamalsen-home-cover.jpg", // Placeholder - replace with actual avatar
-      bgColor: "#0067dc", // Blue
-    },
-    {
-      id: 3,
-      quote: "Tamal is one of the best professionals that we have known in web development skills. Between his skills you can find good communication and accuracy with the planning in complex projects.",
-      name: "Jonathan Castro",
-      title: "CEO & Founder at The Cliff",
-      avatar: "/tamalsen-home-cover.jpg", // Placeholder - replace with actual avatar
-      bgColor: "#923fe6", // Purple
-    },
-  ];
 
   return (
     <section
@@ -81,16 +33,16 @@ export default function Contact() {
                 level={1} 
                 className="!text-white !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl !font-bold !mb-4 sm:!mb-5 md:!mb-6 !leading-tight"
               >
-                Available for select freelance opportunities
+                {contactTitle}
               </Title>
               
               <Paragraph className="!text-white !text-sm sm:!text-base md:!text-lg !mb-6 sm:!mb-7 md:!mb-8 !leading-relaxed">
-                Have an exciting project you need help with? Send me an email or contact me via instant message!
+                {contactDescription}
               </Paragraph>
 
               {/* Email */}
               <a 
-                href="mailto:tsilavinaandriamahafaly01@gmail.com"
+                href={`mailto:${contactEmail}`}
                 className="!text-white !text-sm sm:!text-base md:!text-lg lg:!text-xl !mb-6 sm:!mb-7 md:!mb-8 inline-block group break-all"
                 style={{
                   textDecoration: "none",
@@ -98,7 +50,7 @@ export default function Contact() {
               >
                 <span className="relative inline-block" style={{ paddingBottom: "4px" }}>
                   <span className="relative z-10 inline-block font-bold !px-1 sm:!px-2">
-                    tsilavinaandriamahafaly01@gmail.com
+                    {contactEmail}
                   </span>
                   <span 
                     className="absolute left-0 h-1 bg-purple-500 transition-all duration-300 group-hover:h-3 sm:group-hover:h-4 z-0"
@@ -113,7 +65,7 @@ export default function Contact() {
 
               {/* Social Links */}
               <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-                {socialLinks.map((social) => (
+                {socialLinksData.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
@@ -134,7 +86,7 @@ export default function Contact() {
                 <Card
                   className="!border-none !rounded-none contact-card-responsive"
                   style={{
-                    backgroundColor: testimonials[0].bgColor,
+                    backgroundColor: testimonialsData[0].bgColor,
                     height: "100%",
                   }}
                   bodyStyle={{
@@ -158,8 +110,8 @@ export default function Contact() {
                         size={48}
                         src={
                           <Image
-                            src={testimonials[0].avatar}
-                            alt={testimonials[0].name}
+                            src={testimonialsData[0].avatar}
+                            alt={testimonialsData[0].name}
                             width={48}
                             height={48}
                             className="object-cover"
@@ -173,16 +125,16 @@ export default function Contact() {
                   {/* Content */}
                   <div className="px-2 sm:px-4 md:px-6 pb-4 sm:pb-5 md:pb-6">
                     <Paragraph className="!text-white !text-xs sm:!text-sm md:!text-base !leading-relaxed !mb-3 sm:!mb-4">
-                      {testimonials[0].quote}
+                      {testimonialsData[0].quote}
                     </Paragraph>
                     
                     <div className="mt-3 sm:mt-4">
                       <Text className="!text-white !font-bold !text-sm sm:!text-base md:!text-lg">
-                        - {testimonials[0].name}
+                        - {testimonialsData[0].name}
                       </Text>
                       <br />
                       <Text className="!text-white !text-xs sm:!text-sm md:!text-base !opacity-90">
-                        {testimonials[0].title}
+                        {testimonialsData[0].title}
                       </Text>
                     </div>
                   </div>
@@ -192,7 +144,7 @@ export default function Contact() {
               {/* Right Column - Other Two Testimonials */}
               <Col xs={24} sm={24} md={12} lg={12} className="flex flex-col" style={{ height: "100%" }}>
                 <div className="flex flex-col h-full">
-                  {testimonials.slice(1).map((testimonial) => (
+                  {testimonialsData.slice(1).map((testimonial) => (
                     <Card
                       key={testimonial.id}
                       className="!border-none !rounded-none flex-1 contact-card-responsive"
