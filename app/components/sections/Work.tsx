@@ -96,7 +96,6 @@ export default function Work() {
       id="work"
       backgroundColor="#1a191d"
       fullHeight={false}
-      className="overflow-y-auto"
     >
       {/* HTML Code Background Image */}
       <div className="absolute top-0 left-0 opacity-20 pointer-events-none z-0">
