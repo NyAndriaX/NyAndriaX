@@ -13,7 +13,6 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 
 /**
  * Smooth scroll to a section by ID
- * Works with CSS scroll-snap for section-by-section scrolling
  * Accounts for fixed header height to prevent content from being hidden
  * Responsive header height calculation based on screen size
  * @param elementId - ID of the element to scroll to
@@ -21,7 +20,6 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 export function scrollToSection(elementId: string): void {
   const element = document.getElementById(elementId);
   if (element) {
-    // Use scrollIntoView for better compatibility with scroll-snap
     element.scrollIntoView({
       behavior: "smooth",
       block: "start",

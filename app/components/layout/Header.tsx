@@ -62,7 +62,8 @@ export default function Header() {
         homeRect &&
         homeRect.top >= -20 &&
         homeRect.top <= 20 &&
-        activeSection?.id === "home";
+        activeSection !== null &&
+        (activeSection as HTMLElement).id === "home";
 
       if (isAtTopOfPage) {
         // At top of home section - show primary nav
@@ -70,8 +71,8 @@ export default function Header() {
         setActiveNavType("primary");
       } else {
         // Scrolled - show secondary nav
-        const scrollTop = activeSection?.scrollTop || 0;
-        const isHomeSection = activeSection?.id === "home";
+        const scrollTop = (activeSection && (activeSection as HTMLElement).scrollTop) || 0;
+        const isHomeSection = activeSection !== null && (activeSection as HTMLElement).id === "home";
         
         // Calculate progress: use window scroll or internal scroll
         // Always ensure minimum progress of 100 to make secondary nav clearly visible

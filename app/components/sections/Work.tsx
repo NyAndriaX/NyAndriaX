@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { Masonry } from "antd";
 import SectionLayout from "../layout/SectionLayout";
@@ -13,6 +14,8 @@ import { projectsData, projectFilters, workDescription } from "../../lib/data";
 
 export default function Work() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   // Filter projects based on active filter
   const filteredProjects = useMemo(() => {
@@ -27,11 +30,50 @@ export default function Work() {
     console.log("View project:", projectId);
   };
 
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const filterVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const projectVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: index * 0.15,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    }),
+  };
+
   return (
     <SectionLayout
       id="work"
       backgroundColor="#1a191d"
       fullHeight={false}
+      autoHeight={true}
     >
       {/* HTML Code Background Image */}
       <div className="absolute top-0 left-0 opacity-20 pointer-events-none z-0">
@@ -47,19 +89,34 @@ export default function Work() {
         </div>
       </div>
         {/* Top Section: Title and Description */}
-        <div className="!mb-8 sm:!mb-10 md:!mb-12 lg:!mb-16">
+        <div ref={ref} className="!mb-8 sm:!mb-10 md:!mb-12 lg:!mb-16">
           <div className="flex flex-col justify-center text-center lg:text-left max-w-3xl">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase tracking-tight leading-none mb-4 sm:mb-6 md:mb-8">
+            <motion.h2
+              variants={titleVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase tracking-tight leading-none mb-4 sm:mb-6 md:mb-8"
+            >
               My Work
-            </h2>
-            <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+            </motion.h2>
+            <motion.p
+              variants={titleVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="text-white text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed"
+            >
               {workDescription}
-            </p>
+            </motion.p>
           </div>
         </div>
 
         {/* Filter Section - Navigation Style Links */}
-        <div className="!mb-6 sm:!mb-8 md:!mb-10 lg:!mb-12">
+        <motion.div
+          variants={filterVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="!mb-6 sm:!mb-8 md:!mb-10 lg:!mb-12"
+        >
           <div className="flex flex-wrap items-center justify-center lg:justify-start !gap-0">
             <span className="text-white/80 text-xs sm:text-sm md:text-base font-medium mr-1 sm:mr-2">Filter by</span>
             {projectFilters.map((filter, index) => (
@@ -83,7 +140,7 @@ export default function Work() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Projects Grid - Ant Design Masonry */}
         <Masonry
@@ -106,8 +163,15 @@ export default function Work() {
             const aspectRatio = aspectRatios[index % aspectRatios.length];
             
             return (
-              <div className="portfolio-item-wrap group cursor-pointer h-full">
-                <div className="portfolio-item portfolio-item-grid portfolio-grid-type-1 boxed hover-scale-img hover-color-overlay bg-transparent rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl border-0 h-full flex flex-col"
+              <motion.div
+                key={project.id}
+                custom={index}
+                variants={projectVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                className="portfolio-item-wrap group cursor-pointer h-full"
+              >
+                <div className="portfolio-item portfolio-item-grid portfolio-grid-type-1 boxed hover-scale-img hover-color-overlay bg-transparent transition-all duration-300 hover:shadow-xl border-0 h-full flex flex-col"
                 >
                   {/* Portfolio Item Image */}
                   <div 
@@ -140,7 +204,7 @@ export default function Work() {
                 {/* Portfolio Item Details */}
                 <div className="portfolio-item-details text-left !p-4 sm:!p-5 md:!p-6 lg:!p-7 xl:!p-8 flex-grow">
                   {/* Headline */}
-                  <h3 className="portfolio-item-headline title text-white font-semibold text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3 line-clamp-1">
+                  <h3 className="portfolio-item-headline title text-white font-semibold text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">
                     {project.title}
                   </h3>
                   
@@ -179,7 +243,7 @@ export default function Work() {
                   </div>
                 </div>
               </div>
-            </div>
+              </motion.div>
             );
           }}
         />

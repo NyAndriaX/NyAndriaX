@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Row, Col, Card, Typography, Avatar } from "antd";
 import Image from "next/image";
 import { 
@@ -17,31 +19,88 @@ const { Title, Text, Paragraph } = Typography;
  * Provides ways for visitors to get in touch and showcases client testimonials
  */
 export default function Contact() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: index * 0.15 + 0.5,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    }),
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: index * 0.2 + 0.5,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    }),
+  };
 
   return (
     <section
       id="contact"
-      className="flex flex-col justify-center relative z-10 snap-start !py-12 sm:!py-16 md:!py-20 lg:!py-24"
+      className="flex flex-col justify-center relative z-10 !py-12 sm:!py-16 md:!py-20 lg:!py-24"
       style={{ backgroundColor: "#000000" }}
     >
-      <div className="max-w-7xl !mx-auto w-full !px-4 sm:!px-5 md:!px-6 lg:!px-8">
+      <div ref={ref} className="max-w-7xl !mx-auto w-full !px-4 sm:!px-5 md:!px-6 lg:!px-8">
         <Row gutter={[16, 24]} className="items-start">
           {/* Left Column - Contact Information */}
           <Col xs={24} sm={24} md={24} lg={10}>
             <div className="h-full flex flex-col justify-center !p-5 sm:!p-6 md:!p-8 !pb-10 sm:!pb-12 md:!pb-16">
-              <Title 
-                level={1} 
-                className="!text-white !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl !font-bold !mb-4 sm:!mb-5 md:!mb-6 !leading-tight"
+              <motion.div
+                variants={titleVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
               >
-                {contactTitle}
-              </Title>
+                <Title 
+                  level={1} 
+                  className="!text-white !text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl !font-bold !mb-4 sm:!mb-5 md:!mb-6 !leading-tight"
+                >
+                  {contactTitle}
+                </Title>
+              </motion.div>
               
-              <Paragraph className="!text-white !text-sm sm:!text-base md:!text-lg !mb-6 sm:!mb-7 md:!mb-8 !leading-relaxed">
-                {contactDescription}
-              </Paragraph>
+              <motion.div
+                variants={itemVariants}
+                custom={0}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+              >
+                <Paragraph className="!text-white !text-sm sm:!text-base md:!text-lg !mb-6 sm:!mb-7 md:!mb-8 !leading-relaxed">
+                  {contactDescription}
+                </Paragraph>
+              </motion.div>
 
               {/* Email */}
-              <a 
+              <motion.a
+                variants={itemVariants}
+                custom={1}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
                 href={`mailto:${contactEmail}`}
                 className="!text-white !text-sm sm:!text-base md:!text-lg lg:!text-xl !mb-6 sm:!mb-7 md:!mb-8 inline-block group break-all"
                 style={{
@@ -61,20 +120,30 @@ export default function Contact() {
                     }}
                   />
                 </span>
-              </a>
+              </motion.a>
 
               {/* Social Links */}
-              <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-                {socialLinksData.map((social) => (
-                  <a
+              <motion.div
+                variants={itemVariants}
+                custom={2}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6"
+              >
+                {socialLinksData.map((social, index) => (
+                  <motion.a
                     key={social.label}
+                    variants={itemVariants}
+                    custom={index + 3}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
                     href={social.href}
                     className="!text-white hover:!text-purple-400 transition-colors duration-200 flex items-center gap-2"
                   >
                     <span className="!text-white !text-sm sm:!text-base font-bold">{social.label}</span>
-                  </a>
+                  </motion.a>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </Col>
 
@@ -83,7 +152,13 @@ export default function Contact() {
             <Row gutter={[0, 0]} className="!mb-6 sm:!mb-8 md:!mb-0">
               {/* Left Column - First Testimonial */}
               <Col xs={24} sm={24} md={12} lg={12}>
-                <Card
+                <motion.div
+                  variants={cardVariants}
+                  custom={0}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                >
+                  <Card
                   className="!border-none !rounded-none contact-card-responsive"
                   style={{
                     backgroundColor: testimonialsData[0].bgColor,
@@ -139,13 +214,21 @@ export default function Contact() {
                     </div>
                   </div>
                 </Card>
+                </motion.div>
               </Col>
 
               {/* Right Column - Other Two Testimonials */}
               <Col xs={24} sm={24} md={12} lg={12} className="flex flex-col" style={{ height: "100%" }}>
                 <div className="flex flex-col h-full">
-                  {testimonialsData.slice(1).map((testimonial) => (
-                    <Card
+                  {testimonialsData.slice(1).map((testimonial, index) => (
+                    <motion.div
+                      key={testimonial.id}
+                      variants={cardVariants}
+                      custom={index + 1}
+                      initial="hidden"
+                      animate={isInView ? "visible" : "hidden"}
+                    >
+                      <Card
                       key={testimonial.id}
                       className="!border-none !rounded-none flex-1 contact-card-responsive"
                       style={{
@@ -198,6 +281,7 @@ export default function Contact() {
                         </div>
                       </div>
                     </Card>
+                    </motion.div>
                   ))}
                 </div>
               </Col>

@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import SectionLayout from "../layout/SectionLayout";
 import { expertiseData } from "../../lib/data";
@@ -10,12 +12,50 @@ import { expertiseData } from "../../lib/data";
  * Includes HTML code background for visual appeal
  */
 export default function Expertise() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.5,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
 
   return (
     <SectionLayout
       id="expertise"
       backgroundColor="#1a191d"
       fullHeight={true}
+      autoHeight={true}
       className="flex flex-col items-center justify-center overflow-hidden"
     >
       {/* HTML Code Background Image */}
@@ -33,16 +73,27 @@ export default function Expertise() {
       </div>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto w-full relative z-10 px-4 sm:px-6">
-        <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white uppercase tracking-tight leading-none px-2 !mb-8 sm:!mb-12 md:!mb-16">
+      <div ref={ref} className="max-w-6xl mx-auto w-full relative z-10 px-4 sm:px-6">
+        <motion.h2
+          variants={titleVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white uppercase tracking-tight leading-none px-2 !mb-8 sm:!mb-12 md:!mb-16"
+        >
           My Expertise
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
+        </motion.h2>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0"
+        >
           {expertiseData.map((item, index) => {
             const titleParts = item.category.split(item.underlineWord);
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={itemVariants}
                 className={`relative text-left !p-6 sm:!p-7 md:!p-8 lg:!p-9 xl:!p-10 border-2 border-white/30 hover:border-white/50 transition-colors duration-200 bg-[#0a0f1e]/20 backdrop-blur-[1px] ${
                   index === 0 ? 'sm:rounded-l-lg rounded-t-lg sm:rounded-t-none' : index === expertiseData.length - 1 ? 'sm:rounded-r-lg rounded-b-lg sm:rounded-b-none' : ''
                 } ${
@@ -109,10 +160,10 @@ export default function Expertise() {
                     &lt;/h3&gt;
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </SectionLayout>
   );

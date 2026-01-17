@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { HERO_CONTENT } from "../../lib/constants";
 import LogoCarousel from "../ui/LogoCarousel";
 import Lottie from "lottie-react";
@@ -14,10 +15,78 @@ import Background3D from "../ui/Background3D";
  * Includes FeaturedIn section at the bottom
  */
 export default function Hero() {
+  // Split name and title into words
+  const nameWords = HERO_CONTENT.name.split(" ");
+  const titleWords = HERO_CONTENT.title.split(" ");
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: i * 0.15,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    }),
+  };
+
+  const titleWordVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        delay: nameWords.length * 0.15 + 0.5 + i * 0.12,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    }),
+  };
+
+  const featuredVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: nameWords.length * 0.15 + titleWords.length * 0.12 + 0.7,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const logoVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 1.0,
+        delay: nameWords.length * 0.15 + titleWords.length * 0.12 + 1.0,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const scrollButtonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 0.7,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: nameWords.length * 0.15 + titleWords.length * 0.12 + 1.3,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
   return (
     <section
       id="home"
-      className="flex flex-col items-center justify-between px-4 sm:px-5 md:px-6 lg:px-8 relative z-10 snap-start"
+      className="flex flex-col items-center justify-between px-4 sm:px-5 md:px-6 lg:px-8 relative z-10"
       style={{ height: "100dvh", minHeight: "100dvh" }}
     >
       {/* Background 3D - only for Hero section */}
@@ -30,21 +99,57 @@ export default function Hero() {
         {/* Name and Title */}
         <div className="mb-10 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white uppercase tracking-tight leading-none px-2 !mb-5 sm:!mb-6 md:!mb-8">
-            {HERO_CONTENT.name}
+            {nameWords.map((word, index) => (
+              <motion.span
+                key={index}
+                custom={index}
+                variants={wordVariants}
+                initial="hidden"
+                animate="visible"
+                className="inline-block"
+                style={{ marginRight: "0.25em" }}
+              >
+                {word}
+              </motion.span>
+            ))}
           </h1>
           <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white uppercase tracking-wider px-2 sm:px-4 leading-snug">
-            {HERO_CONTENT.title}
+            {titleWords.map((word, index) => (
+              <motion.span
+                key={index}
+                custom={index}
+                variants={titleWordVariants}
+                initial="hidden"
+                animate="visible"
+                className="inline-block"
+              >
+                {word}
+                {index < titleWords.length - 1 && (
+                  <span className="inline-block" style={{ width: "0.3em" }} />
+                )}
+              </motion.span>
+            ))}
           </h2>
         </div>
 
         {/* FeaturedIn section right below the title */}
         <div className="w-full flex-shrink-0 group">
-          <h2 className="text-center font-mono text-gray-400 group-hover:text-white transition-colors duration-300 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl uppercase tracking-wider !mb-6 sm:!mb-8 md:!mb-10 lg:!mb-12">
+          <motion.h2
+            variants={featuredVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-center font-mono text-gray-400 group-hover:text-white transition-colors duration-300 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl uppercase tracking-wider !mb-6 sm:!mb-8 md:!mb-10 lg:!mb-12"
+          >
             AS FEATURED IN
-          </h2>
-          <div className="group-hover:[&_img]:brightness-0 group-hover:[&_img]:invert transition-all duration-300">
+          </motion.h2>
+          <motion.div
+            variants={logoVariants}
+            initial="hidden"
+            animate="visible"
+            className="group-hover:[&_img]:brightness-0 group-hover:[&_img]:invert transition-all duration-300"
+          >
             <LogoCarousel />
-          </div>
+          </motion.div>
         </div>
       </div>
       
@@ -52,15 +157,19 @@ export default function Hero() {
       <div className="flex-shrink-0 h-12 sm:h-16 md:h-20" />
       
       {/* Scroll down animation - bottom center */}
-      <button
+      <motion.button
+        variants={scrollButtonVariants}
+        initial="hidden"
+        animate="visible"
         onClick={() => scrollToSection("expertise")}
         className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer hover:scale-110 transition-transform duration-300"
         aria-label="Scroll to next section"
+        whileHover={{ opacity: 1 }}
       >
         <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <Lottie animationData={scrollDownAnimation} loop={true} />
         </div>
-      </button>
+      </motion.button>
     </section>
   );
 }

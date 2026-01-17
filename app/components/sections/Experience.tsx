@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Collapse, Tag } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { HiLocationMarker } from "react-icons/hi";
@@ -16,6 +17,33 @@ import { experienceData } from "../../lib/data";
 export default function Experience() {
   // First experience expanded by default
   const [activeKeys, setActiveKeys] = useState<string[]>(["1"]);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
+
+  const collapseVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      },
+    },
+  };
 
   const items: CollapseProps["items"] = experienceData.map((exp) => ({
     key: exp.id,
@@ -101,16 +129,27 @@ export default function Experience() {
       id="experience"
       backgroundColor="#1a191d"
       fullHeight={true}
+      autoHeight={true}
       className="flex flex-col items-center justify-center"
     >
-      <div className="max-w-4xl !mx-auto w-full flex flex-col items-center px-4 sm:px-6">
+      <div ref={ref} className="max-w-4xl !mx-auto w-full flex flex-col items-center px-4 sm:px-6">
         {/* Title */}
-        <h2 className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase tracking-tight leading-none !mb-8 sm:!mb-10 md:!mb-12 lg:!mb-16 xl:!mb-20">
+        <motion.h2
+          variants={titleVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase tracking-tight leading-none !mb-8 sm:!mb-10 md:!mb-12 lg:!mb-16 xl:!mb-20"
+        >
           Professional Experience
-        </h2>
+        </motion.h2>
 
         {/* Experience Items - Ant Design Collapse */}
-        <div className="w-full">
+        <motion.div
+          variants={collapseVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="w-full"
+        >
           <Collapse
             items={items}
             activeKey={activeKeys}
@@ -129,7 +168,7 @@ export default function Experience() {
               border: "none",
             }}
           />
-        </div>
+        </motion.div>
       </div>
 
       <style jsx global>{`
