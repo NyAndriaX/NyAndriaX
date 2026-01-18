@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Row, Col, Card, Typography, Avatar } from "antd";
-import Image from "next/image";
+import { UserOutlined } from "@ant-design/icons";
 import { 
   socialLinksData, 
   testimonialsData, 
@@ -183,16 +183,8 @@ export default function Contact() {
                     <div>
                       <Avatar
                         size={48}
-                        src={
-                          <Image
-                            src={testimonialsData[0].avatar}
-                            alt={testimonialsData[0].name}
-                            width={48}
-                            height={48}
-                            className="object-cover"
-                          />
-                        }
-                        className="!border-2 !border-white/30 sm:!w-14 sm:!h-14 md:!w-16 md:!h-16"
+                        icon={<UserOutlined />}
+                        className="!border-2 !border-white/30 sm:!w-14 sm:!h-14 md:!w-16 md:!h-16 !bg-white/20"
                       />
                     </div>
                   </div>
@@ -250,16 +242,8 @@ export default function Contact() {
                         <div>
                           <Avatar
                             size={48}
-                            src={
-                              <Image
-                                src={testimonial.avatar}
-                                alt={testimonial.name}
-                                width={48}
-                                height={48}
-                                className="object-cover"
-                              />
-                            }
-                            className="!border-2 !border-white/30 sm:!w-14 sm:!h-14 md:!w-16 md:!h-16"
+                            icon={<UserOutlined />}
+                            className="!border-2 !border-white/30 sm:!w-14 sm:!h-14 md:!w-16 md:!h-16 !bg-white/20"
                           />
                         </div>
                       </div>

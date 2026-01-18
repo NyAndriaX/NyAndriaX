@@ -104,18 +104,6 @@ export default function Experience() {
           </div>
         )}
 
-        {/* Logo */}
-        {exp.logo && (
-          <div className="absolute bottom-0 right-0 text-right pr-2 sm:pr-4">
-            <div className="text-white font-bold text-xs sm:text-sm md:text-base">
-              LIFECOACH
-            </div>
-            <div className="text-white font-bold text-xs sm:text-sm md:text-base flex items-center gap-1">
-              ELEVAT
-              <span className="text-orange-500">↑</span>
-            </div>
-          </div>
-        )}
       </div>
     ),
   }));

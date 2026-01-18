@@ -10,9 +10,9 @@ export { technologiesData } from "./technologies";
 export { experienceData } from "./experience";
 export { projectsData, projectFilters, workDescription } from "./work";
 export { expertiseData } from "./expertise";
+export { testimonialsData } from "./testimonials";
 export { 
   socialLinksData, 
-  testimonialsData, 
   contactEmail, 
   contactTitle, 
   contactDescription 
