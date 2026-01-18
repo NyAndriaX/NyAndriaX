@@ -1,12 +1,13 @@
 "use client";
 
-import { COMPANY_LOGOS } from "../../lib/constants";
+import { TECH_LOGOS } from "../../lib/constants";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 /**
- * LogoCarousel component displaying company logos in an infinite scrolling carousel
- * Automatically scrolls horizontally with smooth animation
+ * LogoCarousel component displaying technology logos in an infinite scrolling carousel
+ * Automatically scrolls horizontally with smooth infinite animation
  * Uses placeholder images that can be replaced later
  */
 interface LogoCarouselProps {
@@ -15,7 +16,16 @@ interface LogoCarouselProps {
 
 export default function LogoCarousel({ className = "" }: LogoCarouselProps) {
   // Duplicate logos multiple times for seamless infinite scroll
-  const duplicatedLogos = [...COMPANY_LOGOS, ...COMPANY_LOGOS, ...COMPANY_LOGOS];
+  // We need at least 3 copies to ensure all logos are visible
+  // Animation goes from 0% to -33.333% (one third), creating seamless loop
+  // This ensures Docker and all logos are visible before looping
+  const duplicatedLogos = [...TECH_LOGOS, ...TECH_LOGOS, ...TECH_LOGOS];
+
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+
+  const handleImageError = (logoPath: string) => {
+    setFailedImages((prev) => new Set(prev).add(logoPath));
+  };
 
   return (
     <div className={`w-full overflow-hidden relative ${className}`}>
@@ -28,31 +38,40 @@ export default function LogoCarousel({ className = "" }: LogoCarouselProps) {
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 20,
+            duration: 10,
             ease: "linear",
           },
         }}
+        style={{ willChange: "transform" }}
       >
-        {duplicatedLogos.map((company, index) => (
-          <div
-            key={`${company.id}-${index}`}
-            className="flex-shrink-0 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200"
-            style={{ minWidth: "120px", maxWidth: "200px" }}
-          >
-            <Image
-              src={company.logo || `https://via.placeholder.com/200x80/4a5568/ffffff?text=${encodeURIComponent(company.name)}`}
-              alt={company.alt || company.name}
-              width={200}
-              height={80}
-              className="object-contain h-8 xs:h-10 sm:h-12 md:h-16 lg:h-20 w-auto"
-              onError={(e) => {
-                // Fallback to placeholder if image fails to load
-                const target = e.target as HTMLImageElement;
-                target.src = `https://via.placeholder.com/200x80/4a5568/ffffff?text=${encodeURIComponent(company.name)}`;
-              }}
-            />
-          </div>
-        ))}
+        {duplicatedLogos.map((company, index) => {
+          const hasFailed = failedImages.has(company.logo);
+          
+          return (
+            <div
+              key={`${company.id}-${index}`}
+              className="flex-shrink-0 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200"
+              style={{ minWidth: "120px", maxWidth: "200px" }}
+            >
+              {hasFailed ? (
+                <span className="text-gray-400 font-mono text-[10px] xs:text-xs sm:text-sm hover:text-gray-300 transition-colors">
+                  {company.name}
+                </span>
+              ) : (
+                <Image
+                  src={company.logo}
+                  alt={company.alt || company.name}
+                  width={200}
+                  height={80}
+                  className="object-contain h-8 xs:h-10 sm:h-12 md:h-16 lg:h-20 w-auto"
+                  style={{ filter: "none" }}
+                  onError={() => handleImageError(company.logo)}
+                  unoptimized
+                />
+              )}
+            </div>
+          );
+        })}
       </motion.div>
     </div>
   );

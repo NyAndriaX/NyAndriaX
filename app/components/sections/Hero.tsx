@@ -140,13 +140,13 @@ export default function Hero() {
             animate="visible"
             className="text-center font-mono text-gray-400 group-hover:text-white transition-colors duration-300 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl uppercase tracking-wider !mb-6 sm:!mb-8 md:!mb-10 lg:!mb-12"
           >
-            AS FEATURED IN
+            TECHNOLOGIES
           </motion.h2>
           <motion.div
             variants={logoVariants}
             initial="hidden"
             animate="visible"
-            className="group-hover:[&_img]:brightness-0 group-hover:[&_img]:invert transition-all duration-300"
+            className="group-hover:[&_img]:saturate-150 group-hover:[&_img]:brightness-110 transition-all duration-300"
           >
             <LogoCarousel />
           </motion.div>

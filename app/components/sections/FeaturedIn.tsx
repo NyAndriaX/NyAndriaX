@@ -1,10 +1,10 @@
 "use client";
 
-import { COMPANY_LOGOS } from "../../lib/constants";
+import { TECH_LOGOS } from "../../lib/constants";
 
 /**
- * FeaturedIn component displaying company logos
- * Shows where the portfolio owner has been featured
+ * FeaturedIn component displaying technology logos
+ * Shows technologies used in the portfolio
  * Uses text fallback for missing logos
  * Responsive design with adaptive spacing
  */
@@ -16,7 +16,7 @@ export default function FeaturedIn() {
           AS FEATURED IN
         </h2>
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
-          {COMPANY_LOGOS.map((company) => (
+          {TECH_LOGOS.map((company) => (
             <div
               key={company.id}
               className="opacity-70 hover:opacity-100 transition-opacity duration-200"
