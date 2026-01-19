@@ -37,7 +37,7 @@ export const projectsData: Project[] = [
     filter: "web",
     image: "/project-placeholder.svg",
     description: "Application Next.js de gestion de sites web avec dashboard analytique, suivi SEO, analyse de mots-clés et gestion de trafic organique. Plateforme multi-sites avec authentification Keycloak et intégration de métriques de performance.",
-    url: "",
+    url: "https://rocket.woosells.co",
   },
   {
     id: 4,
