@@ -86,16 +86,16 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="flex flex-col items-center justify-between px-4 sm:px-5 md:px-6 lg:px-8 relative z-10"
+      className="flex flex-col items-center justify-between !px-4 sm:!px-6 md:!px-12 lg:!px-16 xl:!px-20 relative z-10"
       style={{ height: "100dvh", minHeight: "100dvh" }}
     >
       {/* Background 3D - only for Hero section */}
       <Background3D />
       
       {/* Spacer for header */}
-      <div className="flex-shrink-0 relative z-10 h-20 sm:h-24 md:h-20" />
+      <div className="shrink-0 relative z-10 h-20 sm:h-24 md:h-20" />
       
-      <div className="text-center max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center gap-12 sm:gap-12 md:gap-16 lg:gap-20 relative z-10 px-2 sm:px-4">
+      <div className="text-center max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center gap-12 sm:gap-12 md:gap-16 lg:gap-20 relative z-10">
         {/* Name and Title */}
         <div className="mb-12 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
           <h1 className="text-6xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white uppercase tracking-tight leading-none px-2 !mb-6 sm:!mb-6 md:!mb-8">
@@ -133,7 +133,7 @@ export default function Hero() {
         </div>
 
         {/* FeaturedIn section right below the title */}
-        <div className="w-full flex-shrink-0 group">
+        <div className="w-full shrink-0 group">
           <motion.h2
             variants={featuredVariants}
             initial="hidden"
@@ -154,7 +154,7 @@ export default function Hero() {
       </div>
       
       {/* Bottom spacer */}
-      <div className="flex-shrink-0 h-12 sm:h-16 md:h-20" />
+      <div className="shrink-0 h-12 sm:h-16 md:h-20" />
       
       {/* Scroll down animation - bottom center */}
       <motion.button

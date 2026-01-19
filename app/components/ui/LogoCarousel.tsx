@@ -50,7 +50,7 @@ export default function LogoCarousel({ className = "" }: LogoCarouselProps) {
           return (
             <div
               key={`${company.id}-${index}`}
-              className="flex-shrink-0 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200"
+              className="shrink-0 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-200"
               style={{ minWidth: "120px", maxWidth: "200px" }}
             >
               {hasFailed ? (
@@ -63,7 +63,7 @@ export default function LogoCarousel({ className = "" }: LogoCarouselProps) {
                   alt={company.alt || company.name}
                   width={200}
                   height={80}
-                  className="object-contain h-8 xs:h-10 sm:h-12 md:h-16 lg:h-20 w-auto"
+                  className="object-contain h-12 xs:h-14 sm:h-12 md:h-16 lg:h-20 w-auto"
                   style={{ filter: "none" }}
                   onError={() => handleImageError(company.logo)}
                   unoptimized
