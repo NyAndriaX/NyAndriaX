@@ -44,7 +44,7 @@ export const projectsData: Project[] = [
     title: "Boisson Distributeur",
     category: "Web Development",
     filter: "web",
-    image: "/project-placeholder.svg",
+    image: "/sites/boisson-distributeur.jpg",
     description: "Application web moderne pour la gestion et distribution de boissons. Interface utilisateur intuitive avec gestion de stocks, commandes et livraisons. Développée avec Next.js et TypeScript.",
     url: "https://boisson-distributeur.onrender.com",
   },
