@@ -25,8 +25,8 @@ export default function Hero() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        delay: i * 0.15,
+        duration: 0.6,
+        delay: i * 0.1,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     }),
@@ -38,8 +38,8 @@ export default function Hero() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.7,
-        delay: nameWords.length * 0.15 + 0.5 + i * 0.12,
+        duration: 0.5,
+        delay: nameWords.length * 0.1 + 0.3 + i * 0.1,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     }),
@@ -51,8 +51,8 @@ export default function Hero() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        delay: nameWords.length * 0.15 + titleWords.length * 0.12 + 0.7,
+        duration: 0.6,
+        delay: nameWords.length * 0.1 + titleWords.length * 0.1 + 0.4,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     },
@@ -63,8 +63,8 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 1.0,
-        delay: nameWords.length * 0.15 + titleWords.length * 0.12 + 1.0,
+        duration: 0.7,
+        delay: nameWords.length * 0.1 + titleWords.length * 0.1 + 0.6,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     },
@@ -76,8 +76,8 @@ export default function Hero() {
       opacity: 0.7,
       y: 0,
       transition: {
-        duration: 0.8,
-        delay: nameWords.length * 0.15 + titleWords.length * 0.12 + 1.3,
+        duration: 0.6,
+        delay: nameWords.length * 0.1 + titleWords.length * 0.1 + 0.8,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     },
@@ -95,10 +95,10 @@ export default function Hero() {
       {/* Spacer for header */}
       <div className="flex-shrink-0 relative z-10 h-20 sm:h-24 md:h-20" />
       
-      <div className="text-center max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center gap-10 sm:gap-12 md:gap-16 lg:gap-20 relative z-10 px-2 sm:px-4">
+      <div className="text-center max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center gap-12 sm:gap-12 md:gap-16 lg:gap-20 relative z-10 px-2 sm:px-4">
         {/* Name and Title */}
-        <div className="mb-10 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white uppercase tracking-tight leading-none px-2 !mb-5 sm:!mb-6 md:!mb-8">
+        <div className="mb-12 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
+          <h1 className="text-6xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white uppercase tracking-tight leading-none px-2 !mb-6 sm:!mb-6 md:!mb-8">
             {nameWords.map((word, index) => (
               <motion.span
                 key={index}
@@ -113,7 +113,7 @@ export default function Hero() {
               </motion.span>
             ))}
           </h1>
-          <h2 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white uppercase tracking-wider px-2 sm:px-4 leading-snug">
+          <h2 className="text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white uppercase tracking-wider px-2 sm:px-4 leading-snug">
             {titleWords.map((word, index) => (
               <motion.span
                 key={index}
@@ -138,7 +138,7 @@ export default function Hero() {
             variants={featuredVariants}
             initial="hidden"
             animate="visible"
-            className="text-center font-mono text-gray-400 group-hover:text-white transition-colors duration-300 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl uppercase tracking-wider !mb-6 sm:!mb-8 md:!mb-10 lg:!mb-12"
+            className="text-center font-mono text-gray-400 group-hover:text-white transition-colors duration-300 text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl uppercase tracking-wider !mb-8 sm:!mb-8 md:!mb-10 lg:!mb-12"
           >
             TECHNOLOGIES
           </motion.h2>
