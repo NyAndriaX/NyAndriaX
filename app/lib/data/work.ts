@@ -5,8 +5,8 @@
 import { Project, ProjectFilter } from "../../types";
 
 export const projectFilters: ProjectFilter[] = [
-  { id: "all", label: "All", count: 12 },
-  { id: "web", label: "Web Development", count: 6 },
+  { id: "all", label: "All", count: 13 },
+  { id: "web", label: "Web Development", count: 7 },
   { id: "api", label: "API & Backend", count: 5 },
   { id: "seo", label: "SEO & Analytics", count: 1 },
 ];
@@ -118,6 +118,15 @@ export const projectsData: Project[] = [
     filter: "api",
     image: "/project-placeholder.svg",
     description: "Application Next.js d'inspection et d'analyse de boutiques en ligne. Outil de diagnostic pour e-commerce avec analyse de performance, SEO et expérience utilisateur.",
+    url: "",
+  },
+  {
+    id: 13,
+    title: "Portfolio Website",
+    category: "Web Development",
+    filter: "web",
+    image: "/sites/portfolio.jpg",
+    description: "Portfolio professionnel moderne développé avec Next.js 16, React 19 et TypeScript. Interface élégante avec animations Framer Motion, design responsive avec Tailwind CSS v4, composants Ant Design, et expérience utilisateur optimisée. Présentation de projets, compétences et expériences professionnelles.",
     url: "",
   },
 ];
