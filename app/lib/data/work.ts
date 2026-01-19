@@ -13,11 +13,11 @@ export const projectFilters: ProjectFilter[] = [
 export const projectsData: Project[] = [
   {
     id: 1,
-    title: "Flight Local (B2B Travel Solution)",
+    title: "AutoDashboard (SaaS)",
     category: "Web Development",
     filter: "web",
-    image: "/tamalsen-home-cover.jpg",
-    description: "B2B travel platform for agencies",
+    image: "/sites/autodashboard.jpg",
+    description: "Full-stack SaaS platform for managing and automating automotive after-sales activities. Designed and implemented features, testing, and continuous platform improvements to streamline operations for automotive service providers.",
   },
   {
     id: 2,
