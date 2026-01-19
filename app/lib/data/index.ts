@@ -5,7 +5,6 @@
 
 export { heroData } from "./hero";
 export { navigationData } from "./navigation";
-export { companiesData } from "./companies";
 export { technologiesData } from "./technologies";
 export { experienceData } from "./experience";
 export { projectsData, projectFilters, workDescription } from "./work";
