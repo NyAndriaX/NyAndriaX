@@ -41,6 +41,7 @@ export interface Project {
   filter: string;
   image: string;
   description: string;
+  url?: string;
 }
 
 export interface ProjectFilter {

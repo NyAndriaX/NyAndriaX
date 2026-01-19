@@ -1,11 +1,90 @@
 "use client";
 
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { Masonry } from "antd";
 import SectionLayout from "../layout/SectionLayout";
 import { projectsData, projectFilters, workDescription } from "../../lib/data";
+
+/**
+ * Get the image source for a project
+ * Priority: project.image (if valid) > project.url (as background) > placeholder
+ */
+const getProjectImageSrc = (project: { image: string; url?: string }): string => {
+  // If image exists and is not placeholder, use it
+  if (project.image && project.image !== "/project-placeholder.svg") {
+    return project.image;
+  }
+  
+  // If no valid image but URL exists, use URL as background image source
+  if (project.url) {
+    return project.url;
+  }
+  
+  // Default to placeholder
+  return "/project-placeholder.svg";
+};
+
+/**
+ * Project Image Component with fallback handling
+ */
+function ProjectImage({ 
+  project
+}: { 
+  project: { id: number; title: string; image: string; url?: string };
+}) {
+  const imageSrc = getProjectImageSrc(project);
+  const isExternalUrl = imageSrc.startsWith('http');
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(isExternalUrl);
+
+  // Preload external images to detect errors
+  useEffect(() => {
+    if (isExternalUrl) {
+      const img = new window.Image();
+      img.onload = () => {
+        setImageLoading(false);
+        setImageError(false);
+      };
+      img.onerror = () => {
+        setImageError(true);
+        setImageLoading(false);
+      };
+      img.src = imageSrc;
+    }
+  }, [imageSrc, isExternalUrl]);
+
+  return (
+    <div className="w-full h-full relative">
+      {isExternalUrl ? (
+        // Use background image for external URLs
+        <div 
+          className="w-full h-full bg-cover bg-center scale-100 group-hover:scale-110 transition-transform duration-500 ease-out"
+          style={{
+            backgroundImage: imageError ? 'url(/project-placeholder.svg)' : `url(${imageSrc})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: imageLoading ? 0 : 1,
+            transition: 'opacity 0.3s ease-in-out',
+          }}
+        />
+      ) : (
+        // Use Next.js Image for local images
+        <Image
+          src={imageError ? "/project-placeholder.svg" : imageSrc}
+          alt={project.title}
+          fill
+          className="object-cover scale-100 group-hover:scale-110 transition-transform duration-500 ease-out"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          onError={() => setImageError(true)}
+        />
+      )}
+      {/* Hover overlay */}
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 z-10" />
+    </div>
+  );
+}
 
 /**
  * Work section component displaying portfolio projects
@@ -25,9 +104,13 @@ export default function Work() {
     return projectsData.filter((p) => p.filter === activeFilter);
   }, [activeFilter]);
 
-  const handleViewProject = (projectId: number) => {
+  const handleViewProject = (projectId: number, url?: string) => {
     // Handle project view action
-    console.log("View project:", projectId);
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } else {
+      console.log("View project:", projectId);
+    }
   };
 
   const titleVariants = {
@@ -179,25 +262,18 @@ export default function Work() {
                     className={`portfolio-item-image relative overflow-hidden ${aspectRatio} flex-shrink-0`}
                   >
                   <a 
-                    href="#" 
+                    href={project.url || "#"} 
                     onClick={(e) => {
-                      e.preventDefault();
-                      handleViewProject(project.id);
+                      if (!project.url) {
+                        e.preventDefault();
+                      }
+                      handleViewProject(project.id, project.url);
                     }}
                     className="block w-full h-full"
+                    target={project.url ? "_blank" : undefined}
+                    rel={project.url ? "noopener noreferrer" : undefined}
                   >
-                    <div className="w-full h-full relative">
-                      {/* Project Image */}
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover scale-100 group-hover:scale-110 transition-transform duration-500 ease-out"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      {/* Hover overlay */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 z-10" />
-                    </div>
+                    <ProjectImage project={project} />
                   </a>
                 </div>
 
@@ -212,12 +288,16 @@ export default function Work() {
                   <div className="category-holder">
                     <span className="category relative inline-block min-h-[18px] sm:min-h-[20px] whitespace-nowrap">
                       <a 
-                        href="#" 
+                        href={project.url || "#"} 
                         onClick={(e) => {
-                          e.preventDefault();
-                          handleViewProject(project.id);
+                          if (!project.url) {
+                            e.preventDefault();
+                          }
+                          handleViewProject(project.id, project.url);
                         }}
                         className="text-gray-600 text-xs sm:text-sm hover:text-cyan-400 transition-all duration-200 inline-flex items-center gap-1.5 sm:gap-2 whitespace-nowrap"
+                        target={project.url ? "_blank" : undefined}
+                        rel={project.url ? "noopener noreferrer" : undefined}
                       >
                         <span className="inline-block opacity-100 group-hover:opacity-0 group-hover:absolute group-hover:pointer-events-none transition-opacity duration-300 ease-in-out whitespace-nowrap">
                           {project.category}
