@@ -149,20 +149,20 @@ export default function Contact() {
 
           {/* Right Column - Testimonials */}
           <Col xs={24} sm={24} md={24} lg={14}>
-            <Row gutter={[0, 0]} className="!mb-6 sm:!mb-8 md:!mb-0">
+            <div className="!mb-6 sm:!mb-8 md:!mb-0 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-0">
               {/* Left Column - First Testimonial */}
-              <Col xs={24} sm={24} md={12} lg={12}>
+              <div className="row-span-2">
                 <motion.div
                   variants={cardVariants}
                   custom={0}
                   initial="hidden"
                   animate={isInView ? "visible" : "hidden"}
+                  className="h-full"
                 >
                   <Card
-                  className="!border-none !rounded-none contact-card-responsive"
+                  className="!border-none !rounded-none contact-card-responsive w-full h-full"
                   style={{
                     backgroundColor: testimonialsData[0].bgColor,
-                    height: "100%",
                   }}
                   bodyStyle={{
                     position: "relative",
@@ -190,7 +190,7 @@ export default function Contact() {
                   </div>
 
                   {/* Content */}
-                  <div className="px-2 sm:px-4 md:px-6 pb-4 sm:pb-5 md:pb-6">
+                  <div className="px-2 sm:px-4 md:px-6 pb-4 sm:pb-5 md:pb-6 flex-1 flex flex-col">
                     <Paragraph className="!text-white !text-xs sm:!text-sm md:!text-base !leading-relaxed !mb-3 sm:!mb-4">
                       {testimonialsData[0].quote}
                     </Paragraph>
@@ -207,69 +207,69 @@ export default function Contact() {
                   </div>
                 </Card>
                 </motion.div>
-              </Col>
+              </div>
 
               {/* Right Column - Other Two Testimonials */}
-              <Col xs={24} sm={24} md={12} lg={12} className="flex flex-col" style={{ height: "100%" }}>
-                <div className="flex flex-col h-full">
-                  {testimonialsData.slice(1).map((testimonial, index) => (
-                    <motion.div
-                      key={testimonial.id}
-                      variants={cardVariants}
-                      custom={index + 1}
-                      initial="hidden"
-                      animate={isInView ? "visible" : "hidden"}
-                    >
-                      <Card
-                      key={testimonial.id}
-                      className="!border-none !rounded-none flex-1 contact-card-responsive"
-                      style={{
-                        backgroundColor: testimonial.bgColor,
-                      }}
-                      bodyStyle={{
-                        position: "relative",
-                        padding: "16px",
-                      }}
-                    >
-                      {/* Header with Quote Icon and Avatar */}
-                      <div className="flex items-start justify-between p-2 sm:p-4 md:p-6 pb-3 sm:pb-4">
-                        {/* Quote Icon */}
-                        <div className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold opacity-30">
-                          &quot;
-                        </div>
-
-                        {/* Avatar */}
-                        <div>
-                          <Avatar
-                            size={48}
-                            icon={<UserOutlined />}
-                            className="!border-2 !border-white/30 sm:!w-14 sm:!h-14 md:!w-16 md:!h-16 !bg-white/20"
-                          />
-                        </div>
+              {testimonialsData.slice(1).map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.id}
+                  variants={cardVariants}
+                  custom={index + 1}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                  className="row-span-1"
+                >
+                  <Card
+                    key={testimonial.id}
+                    className="!border-none !rounded-none contact-card-responsive w-full h-full"
+                    style={{
+                      backgroundColor: testimonial.bgColor,
+                    }}
+                    bodyStyle={{
+                      position: "relative",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      padding: "16px",
+                    }}
+                  >
+                    {/* Header with Quote Icon and Avatar */}
+                    <div className="flex items-start justify-between p-2 sm:p-4 md:p-6 pb-3 sm:pb-4">
+                      {/* Quote Icon */}
+                      <div className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold opacity-30">
+                        &quot;
                       </div>
 
-                      {/* Content */}
-                      <div className="px-2 sm:px-4 md:px-6 pb-4 sm:pb-5 md:pb-6">
-                        <Paragraph className="!text-white !text-xs sm:!text-sm md:!text-base !leading-relaxed !mb-3 sm:!mb-4">
-                          {testimonial.quote}
-                        </Paragraph>
-                        
-                        <div className="mt-3 sm:mt-4">
-                          <Text className="!text-white !font-bold !text-sm sm:!text-base md:!text-lg">
-                            - {testimonial.name}
-                          </Text>
-                          <br />
-                          <Text className="!text-white !text-xs sm:!text-sm md:!text-base !opacity-90">
-                            {testimonial.title}
-                          </Text>
-                        </div>
+                      {/* Avatar */}
+                      <div>
+                        <Avatar
+                          size={48}
+                          icon={<UserOutlined />}
+                          className="!border-2 !border-white/30 sm:!w-14 sm:!h-14 md:!w-16 md:!h-16 !bg-white/20"
+                        />
                       </div>
-                    </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              </Col>
-            </Row>
+                    </div>
+
+                    {/* Content */}
+                    <div className="px-2 sm:px-4 md:px-6 pb-4 sm:pb-5 md:pb-6 flex-1 flex flex-col">
+                      <Paragraph className="!text-white !text-xs sm:!text-sm md:!text-base !leading-relaxed !mb-3 sm:!mb-4">
+                        {testimonial.quote}
+                      </Paragraph>
+                      
+                      <div className="mt-3 sm:mt-4">
+                        <Text className="!text-white !font-bold !text-sm sm:!text-base md:!text-lg">
+                          - {testimonial.name}
+                        </Text>
+                        <br />
+                        <Text className="!text-white !text-xs sm:!text-sm md:!text-base !opacity-90">
+                          {testimonial.title}
+                        </Text>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </Col>
         </Row>
       </div>
