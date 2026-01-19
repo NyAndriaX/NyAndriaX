@@ -7,7 +7,7 @@ import { Experience } from "../../types";
 export const experienceData: Experience[] = [
   {
     id: "1",
-    title: "Senior Software Engineer",
+    title: "Software Engineer",
     period: "2023 – Jan 2025",
     location: "Remote",
     website: "",
