@@ -12,7 +12,7 @@ export default function Background3D() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 home-background">
       {/* Background image */}
       <Image
-        src="/tamalsen-home-cover.jpg"
+        src="/tsilavina-home-cover.jpg"
         alt="Portfolio background"
         fill
         priority

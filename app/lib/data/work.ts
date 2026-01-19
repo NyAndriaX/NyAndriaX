@@ -24,7 +24,7 @@ export const projectsData: Project[] = [
     title: "AI Lab Granada",
     category: "Web Development",
     filter: "web",
-    image: "/tamalsen-home-cover.jpg",
+    image: "/tsilavina-home-cover.jpg",
     description: "AI research and development platform",
   },
   {
@@ -32,7 +32,7 @@ export const projectsData: Project[] = [
     title: "Knora - Urban Thinkers Community",
     category: "Web Development",
     filter: "web",
-    image: "/tamalsen-home-cover.jpg",
+    image: "/tsilavina-home-cover.jpg",
     description: "Community platform for urban thinkers",
   },
   {
@@ -40,7 +40,7 @@ export const projectsData: Project[] = [
     title: "Tryotel - Cross-Platform Travel App",
     category: "Web Development",
     filter: "web",
-    image: "/tamalsen-home-cover.jpg",
+    image: "/tsilavina-home-cover.jpg",
     description: "Cross-platform travel booking application",
   },
   {
@@ -48,7 +48,7 @@ export const projectsData: Project[] = [
     title: "Tapy - Download. Connect. Share",
     category: "Web Development",
     filter: "web",
-    image: "/tamalsen-home-cover.jpg",
+    image: "/tsilavina-home-cover.jpg",
     description: "Social media platform for content sharing",
   },
   {
@@ -56,7 +56,7 @@ export const projectsData: Project[] = [
     title: "Tryotel Web (B2C)",
     category: "Web Development",
     filter: "web",
-    image: "/tamalsen-home-cover.jpg",
+    image: "/tsilavina-home-cover.jpg",
     description: "B2C travel booking web application",
   },
   {
@@ -64,7 +64,7 @@ export const projectsData: Project[] = [
     title: "Data Analytics Dashboard",
     category: "Data Visualization",
     filter: "data",
-    image: "/tamalsen-home-cover.jpg",
+    image: "/tsilavina-home-cover.jpg",
     description: "Interactive data visualization dashboard",
   },
 ];
