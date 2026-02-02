@@ -8,7 +8,7 @@ export const experienceData: Experience[] = [
   {
     id: "1",
     title: "Software Engineer",
-    period: "2023 – Jan 2025",
+    period: "2023 – Jan 2026",
     location: "Remote",
     website: "",
     websiteUrl: "",
