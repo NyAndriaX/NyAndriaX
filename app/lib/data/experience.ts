@@ -7,9 +7,9 @@ import { Experience } from "../../types";
 export const experienceData: Experience[] = [
   {
     id: "1",
-    title: "Software Engineer",
+    title: "Full Stack Python, JS and PHP developer",
     period: "2023 – Jan 2026",
-    location: "Remote",
+    location: "Freelance",
     website: "",
     websiteUrl: "",
     description:
@@ -21,7 +21,7 @@ export const experienceData: Experience[] = [
     id: "2",
     title: "Software Developer – AutoDashboard (SaaS)",
     period: "Aug 2025 – Sep 2025",
-    location: "Remote",
+    location: "Freelance",
     website: "AutoDashboard",
     websiteUrl: "https://auto-dashboard.com/",
     description:
@@ -33,7 +33,7 @@ export const experienceData: Experience[] = [
     id: "3",
     title: "Software Developer",
     period: "2023",
-    location: "Remote",
+    location: "Freelance",
     website: "",
     websiteUrl: "",
     description:
@@ -45,7 +45,7 @@ export const experienceData: Experience[] = [
     id: "4",
     title: "Web Developer",
     period: "2022",
-    location: "Remote",
+    location: "Freelance",
     website: "",
     websiteUrl: "",
     description:

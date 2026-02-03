@@ -42,6 +42,7 @@ export interface Project {
   image: string;
   description: string;
   url?: string;
+  screenshots?: string[];
 }
 
 export interface ProjectFilter {

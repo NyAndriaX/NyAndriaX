@@ -28,7 +28,8 @@ import React from "react";
 import { 
   MessageOutlined, 
   LinkedinOutlined, 
-  GithubOutlined 
+  GithubOutlined,
+  CalendarOutlined
 } from "@ant-design/icons";
 
 // Helper function to create social links with icons
@@ -47,6 +48,11 @@ export const createSocialLinks = (): SocialLink[] => [
     label: "Github", 
     icon: React.createElement(GithubOutlined, { className: "text-white text-lg" }),
     href: "https://github.com/NyAndriaX"
+  },
+  { 
+    label: "Book a Meeting", 
+    icon: React.createElement(CalendarOutlined, { className: "text-white text-lg" }),
+    href: "https://calendly.com/tsilavinaandriamahafaly01/30min"
   },
 ];
 

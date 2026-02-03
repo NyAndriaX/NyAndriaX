@@ -135,3 +135,27 @@ header[data-nav-type="secondary"][data-nav-active="true"] {
   }
 }
 
+/* Screenshot Carousel Styles */
+.screenshot-carousel .ant-carousel-dots {
+  bottom: -40px;
+}
+
+.screenshot-carousel .ant-carousel-dots li button {
+  background: rgba(255, 255, 255, 0.3);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.screenshot-carousel .ant-carousel-dots li.ant-carousel-dot-active button {
+  background: var(--cyan);
+}
+
+.screenshot-carousel .ant-carousel-arrow {
+  color: var(--cyan);
+  font-size: 24px;
+}
+
+.screenshot-carousel .ant-carousel-arrow:hover {
+  color: var(--purple);
+}

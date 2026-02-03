@@ -138,6 +138,8 @@ export default function Contact() {
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="!text-white hover:!text-purple-400 transition-colors duration-200 flex items-center gap-2"
                   >
                     <span className="!text-white !text-sm sm:!text-base font-bold">{social.label}</span>

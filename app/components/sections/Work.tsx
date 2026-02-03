@@ -3,7 +3,8 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
-import { Masonry } from "antd";
+import { Masonry, Modal, Carousel } from "antd";
+import { PictureOutlined } from "@ant-design/icons";
 import SectionLayout from "../layout/SectionLayout";
 import { projectsData, projectFilters, workDescription } from "../../lib/data";
 
@@ -93,6 +94,8 @@ function ProjectImage({
 
 export default function Work() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [screenshotModalVisible, setScreenshotModalVisible] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<{ title: string; screenshots: string[] } | null>(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -110,6 +113,15 @@ export default function Work() {
       window.open(url, '_blank', 'noopener,noreferrer');
     } else {
       console.log("View project:", projectId);
+    }
+  };
+
+  const handleViewScreenshots = (project: { title: string; screenshots?: string[] }, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (project.screenshots && project.screenshots.length > 0) {
+      setSelectedProject({ title: project.title, screenshots: project.screenshots });
+      setScreenshotModalVisible(true);
     }
   };
 
@@ -284,8 +296,8 @@ export default function Work() {
                     {project.title}
                   </h3>
                   
-                  {/* Category / Show Project Link */}
-                  <div className="category-holder">
+                  {/* Category / Show Project Link / View Screenshots */}
+                  <div className="category-holder flex items-center gap-3 sm:gap-4">
                     <span className="category relative inline-block min-h-[18px] sm:min-h-[20px] whitespace-nowrap">
                       <a 
                         href={project.url || "#"} 
@@ -303,7 +315,7 @@ export default function Work() {
                           {project.category}
                         </span>
                         <span className="inline-flex items-center gap-1.5 sm:gap-2 text-cyan-400 font-semibold opacity-0 group-hover:opacity-100 absolute left-0 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-300 ease-in-out whitespace-nowrap">
-                          Show project
+                          {project.url ? "Show project" : "View details"}
                           <svg 
                             className="w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" 
                             fill="none" 
@@ -320,6 +332,17 @@ export default function Work() {
                         </span>
                       </a>
                     </span>
+                    {/* Screenshots Button */}
+                    {project.screenshots && project.screenshots.length > 0 && (
+                      <button
+                        onClick={(e) => handleViewScreenshots(project, e)}
+                        className="text-gray-600 hover:text-cyan-400 transition-all duration-200 inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm"
+                        title="View screenshots"
+                      >
+                        <PictureOutlined className="text-base sm:text-lg" />
+                        <span className="hidden sm:inline">Screenshots</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -327,6 +350,45 @@ export default function Work() {
             );
           }}
         />
+
+        {/* Screenshots Modal */}
+        <Modal
+          title={
+            <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold">
+              {selectedProject?.title}
+            </span>
+          }
+          open={screenshotModalVisible}
+          onCancel={() => setScreenshotModalVisible(false)}
+          footer={null}
+          width="90%"
+          style={{ maxWidth: "1200px" }}
+          styles={{
+            body: { backgroundColor: "#1a191d", padding: "20px" },
+            header: { backgroundColor: "#1a191d", borderBottom: "1px solid #333" },
+          }}
+        >
+          {selectedProject && selectedProject.screenshots.length > 0 && (
+            <Carousel
+              autoplay={false}
+              dots={true}
+              infinite={selectedProject.screenshots.length > 1}
+              className="screenshot-carousel"
+            >
+              {selectedProject.screenshots.map((screenshot, index) => (
+                <div key={index} className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                  <Image
+                    src={screenshot}
+                    alt={`${selectedProject.title} - Screenshot ${index + 1}`}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  />
+                </div>
+              ))}
+            </Carousel>
+          )}
+        </Modal>
     </SectionLayout>
   );
 }
