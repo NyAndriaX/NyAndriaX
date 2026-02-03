@@ -5,9 +5,9 @@
 import { Project, ProjectFilter } from "../../types";
 
 export const projectFilters: ProjectFilter[] = [
-  { id: "all", label: "All", count: 15 },
+  { id: "all", label: "All", count: 16 },
   { id: "web", label: "Web Development", count: 8 },
-  { id: "api", label: "API & Backend", count: 6 },
+  { id: "api", label: "API & Backend", count: 7 },
   { id: "seo", label: "SEO & Analytics", count: 1 },
 ];
 
@@ -20,7 +20,6 @@ export const projectsData: Project[] = [
     image: "/sites/autodashboard.jpg",
     description: "Full-stack SaaS platform for managing and automating automotive after-sales activities. Designed and implemented features, testing, and continuous platform improvements to streamline operations for automotive service providers.",
     url: "https://auto-dashboard.com/",
-    screenshots: ["/sites/autodashboard.jpg"],
   },
   {
     id: 2,
@@ -30,7 +29,6 @@ export const projectsData: Project[] = [
     image: "/sites/platotribune.jpg",
     description: "Complete SaaS platform for WordPress blog management with AI content generation, automatic scheduling, multi-tenant management, Stripe payment integration, and SSO authentication with Keycloak. Technologies: Next.js, TypeScript, Prisma, MongoDB.",
     url: "http://platotribune.com/",
-    screenshots: ["/sites/platotribune.jpg"],
   },
   {
     id: 3,
@@ -49,7 +47,6 @@ export const projectsData: Project[] = [
     image: "/sites/boisson-distributeur.jpg",
     description: "Modern web application for beverage management and distribution. Intuitive user interface with stock management, orders, and deliveries. Developed with Next.js and TypeScript.",
     url: "https://boisson-distributeur.onrender.com",
-    screenshots: ["/sites/boisson-distributeur.jpg"],
   },
   {
     id: 5,
@@ -59,7 +56,6 @@ export const projectsData: Project[] = [
     image: "/sites/tsabo9.jpg",
     description: "Web platform developed with Next.js offering advanced management and organization features. Modern and responsive interface with performance optimizations.",
     url: "https://tsabo9.onrender.com",
-    screenshots: ["/sites/tsabo9.jpg"],
   },
   {
     id: 6,
@@ -138,7 +134,7 @@ export const projectsData: Project[] = [
     title: "Monsieur SMS",
     category: "Web Development",
     filter: "web",
-    image: "/monsieursms.jpg",
+    image: "/sites/monsieursms.jpg",
     description: "Complete web application for bulk SMS marketing. SaaS platform for sending SMS campaigns, contact management, scheduling, delivery tracking, and analytics. Complete administration interface with multi-user management, SMS API integration, credit system, and billing. Technologies: Symfony, PHP, MySQL, JavaScript.",
     url: "https://monsieursms.com/",
   },
@@ -147,9 +143,18 @@ export const projectsData: Project[] = [
     title: "Simulacrium Orchestrator",
     category: "API & Backend",
     filter: "api",
-    image: "/simulacrium.jpg",
+    image: "/sites/simulacrium.jpg",
     description: "Advanced sales simulation platform for testing and orchestrating sales scenarios. Combines browser automation with AI-powered conversation simulation using OpenAI. Full-stack application with Next.js frontend and Python backend for realistic sales interaction simulation, scenario management, and performance analytics. Technologies: Python, Browser Automation, Next.js, OpenAI Chat API.",
     url: "https://simulacrium-orchestrator.woosells.co/",
+  },
+  {
+    id: 16,
+    title: "Agent Swarm",
+    category: "API & Backend",
+    filter: "api",
+    image: "/sites/agent-swarm.jpg",
+    description: "Multi-agent orchestration platform for coordinating and managing swarms of AI agents. Enables parallel task execution, agent communication, and distributed workflow management. Advanced system for complex automation scenarios requiring multiple coordinated agents working together. Technologies: Python, Next.js, AI Agents, Orchestration Framework.",
+    url: "https://agent-swarm.woosells.co",
   },
 ];
 
