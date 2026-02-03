@@ -20,7 +20,6 @@ export const projectsData: Project[] = [
     image: "/sites/autodashboard.jpg",
     description: "Full-stack SaaS platform for managing and automating automotive after-sales activities. Designed and implemented features, testing, and continuous platform improvements to streamline operations for automotive service providers.",
     url: "https://auto-dashboard.com/",
-    screenshots: ["/sites/autodashboard.jpg"],
   },
   {
     id: 2,
