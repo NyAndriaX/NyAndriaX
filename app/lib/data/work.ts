@@ -5,9 +5,9 @@
 import { Project, ProjectFilter } from "../../types";
 
 export const projectFilters: ProjectFilter[] = [
-  { id: "all", label: "All", count: 14 },
+  { id: "all", label: "All", count: 15 },
   { id: "web", label: "Web Development", count: 8 },
-  { id: "api", label: "API & Backend", count: 5 },
+  { id: "api", label: "API & Backend", count: 6 },
   { id: "seo", label: "SEO & Analytics", count: 1 },
 ];
 
@@ -132,7 +132,6 @@ export const projectsData: Project[] = [
     image: "/sites/portfolio.jpg",
     description: "Modern professional portfolio developed with Next.js 16, React 19, and TypeScript. Elegant interface with Framer Motion animations, responsive design with Tailwind CSS v4, Ant Design components, and optimized user experience. Showcase of projects, skills, and professional experiences.",
     url: "",
-    screenshots: ["/sites/portfolio.jpg"],
   },
   {
     id: 14,
@@ -142,6 +141,15 @@ export const projectsData: Project[] = [
     image: "/monsieursms.jpg",
     description: "Complete web application for bulk SMS marketing. SaaS platform for sending SMS campaigns, contact management, scheduling, delivery tracking, and analytics. Complete administration interface with multi-user management, SMS API integration, credit system, and billing. Technologies: Symfony, PHP, MySQL, JavaScript.",
     url: "https://monsieursms.com/",
+  },
+  {
+    id: 15,
+    title: "Simulacrium Orchestrator",
+    category: "API & Backend",
+    filter: "api",
+    image: "/simulacrium.jpg",
+    description: "Advanced sales simulation platform for testing and orchestrating sales scenarios. Combines browser automation with AI-powered conversation simulation using OpenAI. Full-stack application with Next.js frontend and Python backend for realistic sales interaction simulation, scenario management, and performance analytics. Technologies: Python, Browser Automation, Next.js, OpenAI Chat API.",
+    url: "https://simulacrium-orchestrator.woosells.co/",
   },
 ];
 
