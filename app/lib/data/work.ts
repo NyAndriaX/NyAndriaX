@@ -5,8 +5,8 @@
 import { Project, ProjectFilter } from "../../types";
 
 export const projectFilters: ProjectFilter[] = [
-  { id: "all", label: "All", count: 13 },
-  { id: "web", label: "Web Development", count: 7 },
+  { id: "all", label: "All", count: 14 },
+  { id: "web", label: "Web Development", count: 8 },
   { id: "api", label: "API & Backend", count: 5 },
   { id: "seo", label: "SEO & Analytics", count: 1 },
 ];
@@ -20,6 +20,7 @@ export const projectsData: Project[] = [
     image: "/sites/autodashboard.jpg",
     description: "Full-stack SaaS platform for managing and automating automotive after-sales activities. Designed and implemented features, testing, and continuous platform improvements to streamline operations for automotive service providers.",
     url: "https://auto-dashboard.com/",
+    screenshots: ["/sites/autodashboard.jpg"],
   },
   {
     id: 2,
@@ -27,8 +28,9 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "web",
     image: "/sites/platotribune.jpg",
-    description: "Plateforme SaaS complète de gestion de blog WordPress avec génération de contenu IA, planification automatique, gestion multi-tenant, intégration Stripe pour les paiements et authentification SSO avec Keycloak. Technologies: Next.js, TypeScript, Prisma, MongoDB.",
+    description: "Complete SaaS platform for WordPress blog management with AI content generation, automatic scheduling, multi-tenant management, Stripe payment integration, and SSO authentication with Keycloak. Technologies: Next.js, TypeScript, Prisma, MongoDB.",
     url: "http://platotribune.com/",
+    screenshots: ["/sites/platotribune.jpg"],
   },
   {
     id: 3,
@@ -36,7 +38,7 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "web",
     image: "/project-placeholder.svg",
-    description: "Application Next.js de gestion de sites web avec dashboard analytique, suivi SEO, analyse de mots-clés et gestion de trafic organique. Plateforme multi-sites avec authentification Keycloak et intégration de métriques de performance.",
+    description: "Next.js application for website management with analytical dashboard, SEO tracking, keyword analysis, and organic traffic management. Multi-site platform with Keycloak authentication and performance metrics integration.",
     url: "https://rocket.woosells.co",
   },
   {
@@ -45,8 +47,9 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "web",
     image: "/sites/boisson-distributeur.jpg",
-    description: "Application web moderne pour la gestion et distribution de boissons. Interface utilisateur intuitive avec gestion de stocks, commandes et livraisons. Développée avec Next.js et TypeScript.",
+    description: "Modern web application for beverage management and distribution. Intuitive user interface with stock management, orders, and deliveries. Developed with Next.js and TypeScript.",
     url: "https://boisson-distributeur.onrender.com",
+    screenshots: ["/sites/boisson-distributeur.jpg"],
   },
   {
     id: 5,
@@ -54,8 +57,9 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "web",
     image: "/sites/tsabo9.jpg",
-    description: "Plateforme web développée avec Next.js offrant des fonctionnalités avancées de gestion et d'organisation. Interface moderne et réactive avec optimisations de performance.",
+    description: "Web platform developed with Next.js offering advanced management and organization features. Modern and responsive interface with performance optimizations.",
     url: "https://tsabo9.onrender.com",
+    screenshots: ["/sites/tsabo9.jpg"],
   },
   {
     id: 6,
@@ -63,7 +67,7 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "web",
     image: "/project-placeholder.svg",
-    description: "Application SaaS de gestion de paie complète avec authentification sécurisée. Système de gestion des employés, calcul automatique des salaires et génération de bulletins de paie. Interface moderne et intuitive.",
+    description: "Complete SaaS payroll management application with secure authentication. Employee management system, automatic salary calculation, and payslip generation. Modern and intuitive interface.",
     url: "https://payrollpall.onrender.com/login",
   },
   {
@@ -72,7 +76,7 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "api",
     image: "/project-placeholder.svg",
-    description: "Application Next.js moderne pour la gestion de médias avec interface utilisateur réactive. Gestion de fichiers, organisation et intégration avec des systèmes de stockage cloud.",
+    description: "Modern Next.js application for media management with responsive user interface. File management, organization, and integration with cloud storage systems.",
     url: "",
   },
   {
@@ -81,7 +85,7 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "api",
     image: "/project-placeholder.svg",
-    description: "Plateforme Next.js de gestion et organisation de blogs multiples. Interface moderne avec gestion de contenu, planification de publications et analytics intégrés.",
+    description: "Next.js platform for managing and organizing multiple blogs. Modern interface with content management, publication scheduling, and integrated analytics.",
     url: "",
   },
   {
@@ -90,7 +94,7 @@ export const projectsData: Project[] = [
     category: "API & Backend",
     filter: "api",
     image: "/project-placeholder.svg",
-    description: "API Flask robuste pour la création et gestion automatisée de sites WordPress/WooCommerce avec génération de contenu IA. Automatisation complète avec Playwright, gestion DNS, configuration de thèmes et création de contenu. Coverage de tests > 90%.",
+    description: "Robust Flask API for automated WordPress/WooCommerce site creation and management with AI content generation. Complete automation with Playwright, DNS management, theme configuration, and content creation. Test coverage > 90%.",
     url: "",
   },
   {
@@ -99,7 +103,7 @@ export const projectsData: Project[] = [
     category: "API & Backend",
     filter: "api",
     image: "/project-placeholder.svg",
-    description: "Plateforme Python de détection automatique de types de sites web et langues utilisant l'automation de navigateur avec Playwright. Analyse DOM avancée, API REST pour l'intégration et stockage MongoDB.",
+    description: "Python platform for automatic detection of website types and languages using browser automation with Playwright. Advanced DOM analysis, REST API for integration, and MongoDB storage.",
     url: "",
   },
   {
@@ -108,7 +112,7 @@ export const projectsData: Project[] = [
     category: "SEO & Analytics",
     filter: "seo",
     image: "/project-placeholder.svg",
-    description: "Service d'extraction de données SEO depuis l'API SEMRUSH. Analyse de mots-clés, extraction de données structurées au format JSON pour l'intégration dans d'autres systèmes. API Flask avec gestion d'authentification.",
+    description: "SEO data extraction service from the SEMRUSH API. Keyword analysis, structured data extraction in JSON format for integration into other systems. Flask API with authentication management.",
     url: "",
   },
   {
@@ -117,7 +121,7 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "api",
     image: "/project-placeholder.svg",
-    description: "Application Next.js d'inspection et d'analyse de boutiques en ligne. Outil de diagnostic pour e-commerce avec analyse de performance, SEO et expérience utilisateur.",
+    description: "Next.js application for inspecting and analyzing online stores. E-commerce diagnostic tool with performance analysis, SEO, and user experience evaluation.",
     url: "",
   },
   {
@@ -126,10 +130,20 @@ export const projectsData: Project[] = [
     category: "Web Development",
     filter: "web",
     image: "/sites/portfolio.jpg",
-    description: "Portfolio professionnel moderne développé avec Next.js 16, React 19 et TypeScript. Interface élégante avec animations Framer Motion, design responsive avec Tailwind CSS v4, composants Ant Design, et expérience utilisateur optimisée. Présentation de projets, compétences et expériences professionnelles.",
+    description: "Modern professional portfolio developed with Next.js 16, React 19, and TypeScript. Elegant interface with Framer Motion animations, responsive design with Tailwind CSS v4, Ant Design components, and optimized user experience. Showcase of projects, skills, and professional experiences.",
     url: "",
+    screenshots: ["/sites/portfolio.jpg"],
+  },
+  {
+    id: 14,
+    title: "Monsieur SMS",
+    category: "Web Development",
+    filter: "web",
+    image: "/monsieursms.jpg",
+    description: "Complete web application for bulk SMS marketing. SaaS platform for sending SMS campaigns, contact management, scheduling, delivery tracking, and analytics. Complete administration interface with multi-user management, SMS API integration, credit system, and billing. Technologies: Symfony, PHP, MySQL, JavaScript.",
+    url: "https://monsieursms.com/",
   },
 ];
 
-export const workDescription = "Développement de solutions web complètes, APIs backend robustes et outils d'automatisation. Spécialisé en développement full-stack avec Next.js, React, TypeScript, Python et Flask. Création de plateformes SaaS scalables avec intégration de paiements, authentification SSO et génération de contenu IA.";
+export const workDescription = "Development of complete web solutions, robust backend APIs, and automation tools. Specialized in full-stack development with Next.js, React, TypeScript, Python, and Flask. Creation of scalable SaaS platforms with payment integration, SSO authentication, and AI content generation.";
 
