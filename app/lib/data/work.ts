@@ -30,7 +30,6 @@ export const projectsData: Project[] = [
     image: "/sites/platotribune.jpg",
     description: "Plateforme SaaS complète de gestion de blog WordPress avec génération de contenu IA, planification automatique, gestion multi-tenant, intégration Stripe pour les paiements et authentification SSO avec Keycloak. Technologies: Next.js, TypeScript, Prisma, MongoDB.",
     url: "http://platotribune.com/",
-    screenshots: ["/sites/platotribune.jpg"],
   },
   {
     id: 3,
@@ -49,7 +48,6 @@ export const projectsData: Project[] = [
     image: "/sites/boisson-distributeur.jpg",
     description: "Application web moderne pour la gestion et distribution de boissons. Interface utilisateur intuitive avec gestion de stocks, commandes et livraisons. Développée avec Next.js et TypeScript.",
     url: "https://boisson-distributeur.onrender.com",
-    screenshots: ["/sites/boisson-distributeur.jpg"],
   },
   {
     id: 5,
@@ -59,7 +57,6 @@ export const projectsData: Project[] = [
     image: "/sites/tsabo9.jpg",
     description: "Plateforme web développée avec Next.js offrant des fonctionnalités avancées de gestion et d'organisation. Interface moderne et réactive avec optimisations de performance.",
     url: "https://tsabo9.onrender.com",
-    screenshots: ["/sites/tsabo9.jpg"],
   },
   {
     id: 6,
@@ -132,7 +129,6 @@ export const projectsData: Project[] = [
     image: "/sites/portfolio.jpg",
     description: "Portfolio professionnel moderne développé avec Next.js 16, React 19 et TypeScript. Interface élégante avec animations Framer Motion, design responsive avec Tailwind CSS v4, composants Ant Design, et expérience utilisateur optimisée. Présentation de projets, compétences et expériences professionnelles.",
     url: "",
-    screenshots: ["/sites/portfolio.jpg"],
   },
 ];
 
