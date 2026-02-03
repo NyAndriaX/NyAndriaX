@@ -19,7 +19,7 @@ export const experienceData: Experience[] = [
   }, 
   {
     id: "2",
-    title: "Software Developer – AutoDashboard (SaaS)",
+    title: "Full Stack Python and JS developer – AutoDashboard (SaaS)",
     period: "Aug 2025 – Sep 2025",
     location: "Freelance",
     website: "AutoDashboard",
@@ -31,7 +31,7 @@ export const experienceData: Experience[] = [
   },
   {
     id: "3",
-    title: "Software Developer",
+    title: "Full Stack React, Next.js",
     period: "2023",
     location: "Freelance",
     website: "",
