@@ -6,8 +6,8 @@ import { Project, ProjectFilter } from "../../types";
 
 export const projectFilters: ProjectFilter[] = [
   { id: "all", label: "All", count: 16 },
-  { id: "web", label: "Web Development", count: 8 },
-  { id: "api", label: "API & Backend", count: 7 },
+  { id: "web", label: "Web Development", count: 5 },
+  { id: "api", label: "API & Backend", count: 10 },
   { id: "seo", label: "SEO & Analytics", count: 1 },
 ];
 
@@ -69,7 +69,7 @@ export const projectsData: Project[] = [
   {
     id: 7,
     title: "Media Manager",
-    category: "Web Development",
+    category: "API & Backend",
     filter: "api",
     image: "/project-placeholder.svg",
     description: "Modern Next.js application for media management with responsive user interface. File management, organization, and integration with cloud storage systems.",
@@ -78,7 +78,7 @@ export const projectsData: Project[] = [
   {
     id: 8,
     title: "Blog Hub",
-    category: "Web Development",
+    category: "API & Backend",
     filter: "api",
     image: "/project-placeholder.svg",
     description: "Next.js platform for managing and organizing multiple blogs. Modern interface with content management, publication scheduling, and integrated analytics.",
@@ -114,7 +114,7 @@ export const projectsData: Project[] = [
   {
     id: 12,
     title: "Shop Inspector",
-    category: "Web Development",
+    category: "API & Backend",
     filter: "api",
     image: "/project-placeholder.svg",
     description: "Next.js application for inspecting and analyzing online stores. E-commerce diagnostic tool with performance analysis, SEO, and user experience evaluation.",
