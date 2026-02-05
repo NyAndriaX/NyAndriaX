@@ -12,15 +12,15 @@ export const projectFilters: ProjectFilter[] = [
 ];
 
 export const projectsData: Project[] = [
-  {
-    id: 1,
-    title: "AutoDashboard (SaaS)",
-    category: "Web Development",
-    filter: "web",
-    image: "/sites/autodashboard.jpg",
-    description: "Full-stack SaaS platform for managing and automating automotive after-sales activities. Designed and implemented features, testing, and continuous platform improvements to streamline operations for automotive service providers.",
-    url: "https://auto-dashboard.com/",
-  },
+  // {
+  //   id: 1,
+  //   title: "AutoDashboard (SaaS)",
+  //   category: "Web Development",
+  //   filter: "web",
+  //   image: "/sites/autodashboard.jpg",
+  //   description: "Full-stack SaaS platform for managing and automating automotive after-sales activities. Designed and implemented features, testing, and continuous platform improvements to streamline operations for automotive service providers.",
+  //   url: "https://auto-dashboard.com/",
+  // },
   {
     id: 2,
     title: "Plato Tribune",
