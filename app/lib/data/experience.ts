@@ -17,18 +17,18 @@ export const experienceData: Experience[] = [
     skills: ["Software Architecture", "Web Development", "Scalable Systems", "Testing", "Performance Optimization"],
     logo: "",
   }, 
-  {
-    id: "2",
-    title: "Full Stack Python and JS developer – AutoDashboard (SaaS)",
-    period: "Aug 2025 – Sep 2025",
-    location: "Freelance",
-    website: "AutoDashboard",
-    websiteUrl: "https://auto-dashboard.com/",
-    description:
-      "Full-time software development mission for AutoDashboard, a SaaS solution for managing and automating automotive after-sales activities. Responsibilities included designing and implementing features, testing, and continuous platform improvement, according to client requirements.",
-    skills: ["Software Development", "SaaS", "Testing", "Continuous Improvement", "Automation"],
-    logo: "AUTODASHBOARD",
-  },
+  // {
+  //   id: "2",
+  //   title: "Full Stack Python and JS developer – AutoDashboard (SaaS)",
+  //   period: "Aug 2025 – Sep 2025",
+  //   location: "Freelance",
+  //   website: "AutoDashboard",
+  //   websiteUrl: "https://auto-dashboard.com/",
+  //   description:
+  //     "Full-time software development mission for AutoDashboard, a SaaS solution for managing and automating automotive after-sales activities. Responsibilities included designing and implementing features, testing, and continuous platform improvement, according to client requirements.",
+  //   skills: ["Software Development", "SaaS", "Testing", "Continuous Improvement", "Automation"],
+  //   logo: "AUTODASHBOARD",
+  // },
   {
     id: "3",
     title: "Full Stack React, Next.js",
