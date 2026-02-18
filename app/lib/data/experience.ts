@@ -19,15 +19,15 @@ export const experienceData: Experience[] = [
   }, 
   {
     id: "2",
-    title: "Full Stack Software Developer – SaaS Platform",
+    title: "Full Stack Software Developer – AutoDashboard (SaaS)",
     period: "Aug 2025 – Sep 2025",
     location: "Freelance",
-    website: "",
-    websiteUrl: "",
+    website: "AutoDashboard",
+    websiteUrl: "https://auto-dashboard.com/",
     description:
-      "Software development mission for a SaaS solution. Contributed to the design and implementation of software features as part of a contractual engagement. Mission successfully completed within the defined scope and timeline.",
+      "Software development mission for AutoDashboard, a SaaS solution. Contributed to the design and implementation of software features as part of a contractual engagement. Mission successfully completed within the defined scope and timeline.",
     skills: ["Software Development", "SaaS", "Testing", "Continuous Improvement", "Automation"],
-    logo: "",
+    logo: "AUTODASHBOARD",
   },
   {
     id: "3",
