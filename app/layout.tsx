@@ -9,8 +9,8 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tsilavina - Software Engineer, Front End & App Developer",
-  description: "Portfolio of Tsilavina - Software Engineer specializing in Front End and App Development",
+  title: "Tsilavina - Ingénieur Logiciel Full Stack",
+  description: "Portfolio de Tsilavina, ingénieur logiciel spécialisé en développement frontend, backend et applications web.",
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
         className={`${robotoMono.variable} antialiased`}
       >

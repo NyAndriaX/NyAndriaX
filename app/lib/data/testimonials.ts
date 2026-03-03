@@ -7,7 +7,7 @@ import { Testimonial } from "../../types";
 export const testimonialsData: Testimonial[] = [
   {
     id: 1,
-    quote: "Tsilavina was responsible for developing the website for an event our company organized under a very tight deadline. Even while working remotely, he was always very responsive, organized, and strategic in his approach. In addition to managing site modifications and developments, he impressed us with his ability to design a modern and eye-catching website. He also supported us during the website’s launch. Thanks to this, Tsilavina is a developer I recommend to any company needing an IT engineer for their digital transformation, as we appreciate him greatly.",
+    quote: "Tsilavina était en charge du développement du site web pour un événement organisé par notre entreprise avec des délais très serrés. Même à distance, il a toujours été réactif, organisé et stratégique dans son approche. En plus de gérer les évolutions du site, il nous a impressionnés par sa capacité à concevoir une interface moderne et impactante. Il nous a aussi accompagnés pendant la mise en ligne. Je le recommande vivement à toute entreprise ayant besoin d'un ingénieur IT pour sa transformation digitale.",
     name: "Judie",
     title: "WevComFactory",
     avatar: "",
@@ -15,17 +15,17 @@ export const testimonialsData: Testimonial[] = [
   },
   {
     id: 2,
-    quote: "Tsilavina supported me on a project and impressed me with his ability to solve problems and find solutions in record time. Thanks to him, all the projects he assisted me with were completed within the deadlines.",
+    quote: "Tsilavina m'a accompagné sur un projet et m'a impressionnée par sa capacité à résoudre des problèmes et à trouver des solutions en un temps record. Grâce à lui, tous les projets sur lesquels il est intervenu ont été livrés dans les délais.",
     name: "Angelica",
-    title: "Web developer",
+    title: "Développeuse web",
     avatar: "",
     bgColor: "#0067dc",
   },
   {
     id: 3,
-    quote: "Tsilavina is AMAZING! Not only is he a very understanding roommate, but even in his first year, he started taking on complex tasks which he successfully completed.",
+    quote: "Tsilavina est impressionnant. Dès sa première année, il a commencé à prendre en charge des tâches complexes qu'il a menées avec succès.",
     name: "Mahafaly",
-    title: "Systems and Network Administrator Engineer",
+    title: "Ingénieur administrateur systèmes et réseaux",
     avatar: "",
     bgColor: "#923fe6",
   },

@@ -6,95 +6,20 @@
 import { CompanyLogo } from "../../types";
 
 export const technologiesData: CompanyLogo[] = [
-  { 
-    id: "symfony", 
-    name: "Symfony", 
-    logo: "/logos/Symfony2.svg", 
-    alt: "Symfony logo" 
-  },
-  { 
-    id: "react", 
-    name: "React", 
-    logo: "/logos/react-logo.svg", 
-    alt: "React logo" 
-  },
-  { 
-    id: "nextjs", 
-    name: "Next.js", 
-    logo: "/logos/nextjs-logo.svg", 
-    alt: "Next.js logo" 
-  },
-  { 
-    id: "react-native", 
-    name: "React Native", 
-    logo: "/logos/react-native-logo.png", 
-    alt: "React Native logo" 
-  },
-  { 
-    id: "javascript", 
-    name: "JavaScript", 
-    logo: "/logos/javascript-logo.svg", 
-    alt: "JavaScript logo" 
-  },
-  { 
-    id: "typescript", 
-    name: "TypeScript", 
-    logo: "/logos/Typescript-logo.png", 
-    alt: "TypeScript logo" 
-  },
-  { 
-    id: "python", 
-    name: "Python", 
-    logo: "/logos/python-logo.svg", 
-    alt: "Python logo" 
-  },
-  { 
-    id: "playwright", 
-    name: "Playwright", 
-    logo: "/logos/playwright-logo.svg", 
-    alt: "Playwright logo" 
-  },
-  { 
-    id: "flask", 
-    name: "Flask", 
-    logo: "/logos/flask-logo.svg", 
-    alt: "Flask logo" 
-  },
-  { 
-    id: "tailwindcss", 
-    name: "Tailwind CSS", 
-    logo: "/logos/tailwindcss-logo.svg", 
-    alt: "Tailwind CSS logo" 
-  },
-  { 
-    id: "antd", 
-    name: "Ant Design", 
-    logo: "/logos/antd-logo.svg", 
-    alt: "Ant Design logo" 
-  },
-  { 
-    id: "primereact", 
-    name: "Prime React", 
-    logo: "/logos/primereact-logo.svg", 
-    alt: "Prime React logo" 
-  },
-  { 
-    id: "wordpress", 
-    name: "WordPress", 
-    logo: "/logos/wp-logo.svg", 
-    alt: "WordPress logo" 
-  },
-  { 
-    id: "mui", 
-    name: "Material-UI", 
-    logo: "/logos/mui-logo.svg", 
-    alt: "Material-UI logo" 
-  },
-  { 
-    id: "docker", 
-    name: "Docker", 
-    logo: "/logos/docker-logo.svg", 
-    alt: "Docker logo" 
-  },
+  { id: "symfony", name: "Symfony", logo: "", alt: "Symfony" },
+  { id: "react", name: "React", logo: "", alt: "React" },
+  { id: "nextjs", name: "Next.js", logo: "", alt: "Next.js" },
+  { id: "react-native", name: "React Native", logo: "", alt: "React Native" },
+  { id: "javascript", name: "JavaScript", logo: "", alt: "JavaScript" },
+  { id: "typescript", name: "TypeScript", logo: "", alt: "TypeScript" },
+  { id: "python", name: "Python", logo: "", alt: "Python" },
+  { id: "playwright", name: "Playwright", logo: "", alt: "Playwright" },
+  { id: "flask", name: "Flask", logo: "", alt: "Flask" },
+  { id: "tailwindcss", name: "Tailwind CSS", logo: "", alt: "Tailwind CSS" },
+  { id: "antd", name: "Ant Design", logo: "", alt: "Ant Design" },
+  { id: "primereact", name: "Prime React", logo: "", alt: "Prime React" },
+  { id: "wordpress", name: "WordPress", logo: "", alt: "WordPress" },
+  { id: "mui", name: "Material-UI", logo: "", alt: "Material-UI" },
+  { id: "docker", name: "Docker", logo: "", alt: "Docker" },
 ];
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Hero, FeaturedIn, Expertise, Work, Experience, Contact, ScrollIndicator, ScrollToTop, CustomCursor } from "./components";
+import { Header, Hero, Expertise, Work, Experience, Contact } from "./components";
 
 /**
  * Home page component
@@ -10,32 +10,12 @@ import { Header, Hero, FeaturedIn, Expertise, Work, Experience, Contact, ScrollI
 export default function Home() {
   return (
     <main className="relative min-h-screen">
-      {/* Custom cursor */}
-      <CustomCursor />
-      
-      {/* Header with logo and navigation */}
       <Header />
-      
-      {/* Hero section with name and title (includes FeaturedIn) */}
       <Hero />
-      
-      {/* Expertise section */}
       <Expertise />
-      
-      {/* Work section */}
       <Work />
-      
-      {/* Experience section */}
       <Experience />
-      
-      {/* Contact section */}
       <Contact />
-      
-      {/* Scroll indicator */}
-      <ScrollIndicator />
-      
-      {/* Scroll to top button */}
-      <ScrollToTop />
     </main>
   );
 }
