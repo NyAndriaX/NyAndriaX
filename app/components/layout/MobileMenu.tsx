@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Drawer } from "antd";
-import { motion } from "framer-motion";
 import { NAVIGATION_ITEMS } from "../../lib/constants";
 import { scrollToSection } from "../../lib/utils";
 
@@ -27,20 +26,20 @@ export default function MobileMenu() {
         className="lg:hidden z-50 relative flex flex-col justify-center items-center w-8 h-8 gap-1.5"
         aria-label="Ouvrir ou fermer le menu"
       >
-        <motion.span
-          className="w-6 h-0.5 bg-slate-700"
-          animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-          transition={{ duration: 0.3 }}
+        <span
+          className={`h-0.5 w-6 bg-slate-700 transition-all duration-300 ${
+            isOpen ? "translate-y-2 rotate-45" : ""
+          }`}
         />
-        <motion.span
-          className="w-6 h-0.5 bg-slate-700"
-          animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-          transition={{ duration: 0.3 }}
+        <span
+          className={`h-0.5 w-6 bg-slate-700 transition-all duration-300 ${
+            isOpen ? "opacity-0" : "opacity-100"
+          }`}
         />
-        <motion.span
-          className="w-6 h-0.5 bg-slate-700"
-          animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-          transition={{ duration: 0.3 }}
+        <span
+          className={`h-0.5 w-6 bg-slate-700 transition-all duration-300 ${
+            isOpen ? "-translate-y-2 -rotate-45" : ""
+          }`}
         />
       </button>
 

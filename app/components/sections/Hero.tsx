@@ -1,84 +1,187 @@
 "use client";
 
-import { HERO_CONTENT } from "../../lib/constants";
-import { scrollToSection } from "../../lib/utils";
-import { socialLinksData } from "../../lib/data";
+import Image from "next/image";
 
-/**
- * Hero section component with a light banner layout
- * Focuses on personal introduction with action buttons
- */
+const HERO_CONTAINER_STYLE = {
+  minHeight: "100vh",
+  background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  perspective: "1000px",
+} as const;
+
+const PROFILE_CONTAINER_STYLE = {
+  position: "relative",
+  width: 350,
+  height: 500,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+} as const;
+
+const HERO_IMAGE_PROPS = {
+  className: "profile-image",
+  src: "/profil.jpeg",
+  alt: "Profile",
+  fill: true,
+  priority: true,
+  sizes: "350px",
+} as const;
+
+const HERO_ANIMATION_STYLES = `
+  @keyframes morph {
+    0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+    50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+    75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(0px);
+    }
+    50% {
+      transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(-20px);
+    }
+  }
+
+  @keyframes shapeFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-30px) rotate(120deg); }
+    66% { transform: translateY(15px) rotate(240deg); }
+  }
+
+  .profile-image-wrapper {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+    transition: transform 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .profile-image-wrapper:hover {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05);
+  }
+
+  .profile-image-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.4) 0%,
+      rgba(118, 75, 162, 0.4) 50%,
+      rgba(240, 147, 251, 0.4) 100%
+    );
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    filter: blur(25px);
+    z-index: 1;
+    animation: morph 8s ease-in-out infinite;
+    opacity: 0.8;
+  }
+
+  .profile-image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    border-radius: inherit;
+    z-index: 3;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    position: relative;
+    z-index: 2;
+    box-shadow:
+      0 0 0 15px rgba(102, 126, 234, 0.1),
+      0 0 0 30px rgba(118, 75, 162, 0.08),
+      0 0 60px rgba(102, 126, 234, 0.3),
+      0 20px 80px rgba(0, 0, 0, 0.2),
+      inset 0 0 50px rgba(255, 255, 255, 0.1);
+    filter: contrast(1.1) brightness(1.05);
+    animation: morph 8s ease-in-out infinite;
+  }
+
+  .floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    top: 0;
+    left: 0;
+  }
+
+  .shape {
+    position: absolute;
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.15) 0%,
+      rgba(240, 147, 251, 0.15) 100%
+    );
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    filter: blur(20px);
+    animation: shapeFloat 8s ease-in-out infinite;
+  }
+
+  .shape-1 {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s;
+  }
+
+  .shape-2 {
+    width: 150px;
+    height: 150px;
+    bottom: -30px;
+    right: -30px;
+    animation-delay: 2s;
+  }
+
+  .shape-3 {
+    width: 180px;
+    height: 180px;
+    top: 50%;
+    left: -80px;
+    transform: translateY(-50%);
+    animation-delay: 4s;
+  }
+`;
+
 export default function Hero() {
-  const githubLink = socialLinksData.find((link) => link.label.toLowerCase() === "github")?.href ?? "#";
-  const initials = HERO_CONTENT.name
-    .split(" ")
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0]?.toUpperCase())
-    .join("");
+  const { className, src, alt, fill, priority, sizes } = HERO_IMAGE_PROPS;
 
   return (
-    <section id="home" className="min-h-screen bg-[#eef1ff] px-6 pb-14 pt-28 sm:px-10 md:px-16 lg:px-20">
-      <div className="mx-auto grid min-h-[calc(100vh-7rem)] w-full max-w-6xl items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="space-y-6">
-          <p className="text-sm font-medium text-slate-500">Bonjour, je suis</p>
+    <section id="home" style={HERO_CONTAINER_STYLE}>
+      <style>{HERO_ANIMATION_STYLES}</style>
 
-          <h1 className="text-4xl font-extrabold leading-tight text-[#5d64d6] sm:text-5xl lg:text-6xl">
-            {HERO_CONTENT.name}
-          </h1>
-
-          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">
-            Ingénieur Logiciel Full Stack
-          </h2>
-
-          <p className="max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            Ingénieur en génie logiciel passionné par la tech, avec plus de 6 ans
-            d&apos;expérience dans le développement d&apos;applications web performantes
-            et innovantes.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="rounded-full bg-[#5d64d6] px-6 py-3 text-sm font-semibold text-white shadow-md shadow-[#5d64d6]/30 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#5157c2]"
-              aria-label="Aller à la section contact"
-            >
-              Me contacter
-            </button>
-
-            <a
-              href="/cv.pdf"
-              download
-              className="rounded-full border border-[#9ca3ff] bg-white px-6 py-3 text-sm font-semibold text-[#5d64d6] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#5d64d6]"
-            >
-              Télécharger CV
-            </a>
-
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-[#9ca3ff] bg-white px-6 py-3 text-sm font-semibold text-[#5d64d6] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#5d64d6]"
-            >
-              GitHub
-            </a>
-          </div>
+      <div style={PROFILE_CONTAINER_STYLE}>
+        <div className="floating-shapes">
+          <div className="shape shape-1" />
+          <div className="shape shape-2" />
+          <div className="shape shape-3" />
         </div>
 
-        <div className="mx-auto flex w-full max-w-sm items-center justify-center lg:justify-end">
-          <div className="relative flex h-72 w-72 items-center justify-center rounded-full border-8 border-white bg-linear-to-br from-[#e2e7ff] via-[#f4f6ff] to-[#c7ceff] shadow-xl sm:h-80 sm:w-80">
-            <span className="text-6xl font-bold text-[#5d64d6] sm:text-7xl">{initials}</span>
-          </div>
+        <div className="profile-image-wrapper">
+          <Image className={className} src={src} alt={alt} fill={fill} priority={priority} sizes={sizes} />
         </div>
       </div>
-
-      <button
-        onClick={() => scrollToSection("expertise")}
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full border border-[#b3b8ff] bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-[#5d64d6] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
-        aria-label="Aller à la section suivante"
-      >
-        Défiler
-      </button>
     </section>
   );
 }
