@@ -1,5 +1,6 @@
 "use client";
 
+import { Button, Space } from "antd";
 import { NAVIGATION_ITEMS } from "../../lib/constants";
 import { scrollToSection } from "../../lib/utils";
 
@@ -8,31 +9,57 @@ import { scrollToSection } from "../../lib/utils";
  * Contact item uses a highlighted pill style
  */
 export default function Navigation() {
-  const handleNavClick = (href: string) => {
+  const desktopItems = NAVIGATION_ITEMS.filter((item) => item.id !== "contact");
+  const contactItem = NAVIGATION_ITEMS.find((item) => item.id === "contact");
+
+  const handleItemClick = (href: string) => {
     const sectionId = href.replace("#", "");
     scrollToSection(sectionId);
   };
 
-  return (
-    <nav className="flex items-center gap-8">
-      {NAVIGATION_ITEMS.map((item) => {
-        const isContact = item.id === "contact";
+  const handleContactClick = () => {
+    if (!contactItem) return;
+    const sectionId = contactItem.href.replace("#", "");
+    scrollToSection(sectionId);
+  };
 
-        return (
-          <button
-            key={item.id}
-            onClick={() => handleNavClick(item.href)}
-            className={
-              isContact
-                ? "rounded-full bg-[#6b6fe6] px-4 py-1.5 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#5d61d8]"
-                : "text-sm font-medium text-slate-700 transition-colors duration-200 hover:text-[#6b6fe6]"
-            }
-          >
-            {item.label}
-          </button>
-        );
-      })}
-    </nav>
+  return (
+    <Space size={14} align="center">
+      {desktopItems.map((item) => (
+        <Button
+          key={item.id}
+          type="text"
+          size="large"
+          onClick={() => handleItemClick(item.href)}
+          style={{
+            color: "#334155",
+            fontSize: "1.1rem",
+            fontWeight: 600,
+            paddingInline: 14,
+            height: 46,
+          }}
+        >
+          {item.label}
+        </Button>
+      ))}
+
+      <Button
+        type="primary"
+        size="large"
+        onClick={handleContactClick}
+        style={{
+          borderRadius: 999,
+          backgroundColor: "#6b6fe6",
+          borderColor: "#6b6fe6",
+          fontWeight: 600,
+          fontSize: "1.05rem",
+          height: 46,
+          paddingInline: 20,
+        }}
+      >
+        Contact
+      </Button>
+    </Space>
   );
 }
 

@@ -38,7 +38,7 @@ export default function SectionLayout({
       className={`${heightClass} flex flex-col justify-start ${overflowClass} relative z-10 !py-8 sm:!py-12 md:!py-16 lg:!py-20 xl:!py-24 ${className}`}
       style={{ backgroundColor }} // Section background color
     >
-      <div className="max-w-7xl !mx-auto w-full flex-1 relative z-10 !px-4 sm:!px-6 md:!px-12 lg:!px-16 xl:!px-20">
+      <div className="!max-w-7xl !mx-auto !w-full !flex-1 !relative !z-10 !px-4 sm:!px-6 md:!px-12 lg:!px-16 xl:!px-20">
         {children}
       </div>
     </section>

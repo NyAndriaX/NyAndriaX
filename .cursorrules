@@ -37,3 +37,18 @@
 4. User-facing text (UI labels, messages) can be in any language as needed
 5. Error messages and console logs should be in English for debugging purposes
 
+## Tailwind Priority Rules (Critical)
+
+Because this project mixes Tailwind and Ant Design styles, Tailwind utility classes must be written with forced priority when they control layout or visual hierarchy.
+
+- Use important prefix format only: `!class` (example: `!px-6`, `!w-full`, `!text-lg`)
+- Apply this rule by default on:
+  - spacing classes (`p*`, `m*`, `gap*`)
+  - sizing/layout classes (`w*`, `h*`, `max-w*`, `min-h*`, `flex`, `grid`, `justify-*`, `items-*`)
+  - typography classes (`text-*`, `font-*`, `leading-*`, `tracking-*`)
+  - positioning classes (`absolute`, `relative`, `top-*`, `left-*`, etc.)
+- For responsive variants, keep important after breakpoint prefix:
+  - `sm:!px-8 md:!px-12 lg:!px-16`
+- If a Tailwind class is not clearly taking effect, convert it to important form immediately.
+- Prefer Tailwind important utilities over inline `style` overrides when both can solve the same issue.
+

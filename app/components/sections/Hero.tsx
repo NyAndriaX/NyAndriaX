@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { Button, Col, Row, Space, Typography } from "antd";
+import { HERO_CONTENT } from "../../lib/constants";
+import { socialLinksData } from "../../lib/data";
+import { scrollToSection } from "../../lib/utils";
 
 const HERO_CONTAINER_STYLE = {
   minHeight: "100vh",
   background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  perspective: "1000px",
 } as const;
 
 const PROFILE_CONTAINER_STYLE = {
@@ -26,7 +26,7 @@ const HERO_IMAGE_PROPS = {
   alt: "Profile",
   fill: true,
   priority: true,
-  sizes: "350px",
+  sizes: "(max-width: 640px) 280px, 350px",
 } as const;
 
 const HERO_ANIMATION_STYLES = `
@@ -162,25 +162,180 @@ const HERO_ANIMATION_STYLES = `
     transform: translateY(-50%);
     animation-delay: 4s;
   }
+
+  @media (max-width: 991px) {
+    .hero-text-col {
+      text-align: center;
+    }
+
+    .hero-action-group {
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .hero-content-row {
+      column-gap: 72px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .profile-stage {
+      transform: scale(0.86);
+      transform-origin: top center;
+      margin-top: -8px;
+      margin-bottom: -22px;
+    }
+
+    .profile-image-wrapper {
+      width: 280px;
+      height: 280px;
+    }
+
+    .shape-1 {
+      width: 160px;
+      height: 160px;
+      top: -28px;
+      left: -35px;
+    }
+
+    .shape-2 {
+      width: 125px;
+      height: 125px;
+      right: -24px;
+      bottom: -24px;
+    }
+
+    .shape-3 {
+      width: 140px;
+      height: 140px;
+      left: -58px;
+    }
+  }
 `;
 
 export default function Hero() {
   const { className, src, alt, fill, priority, sizes } = HERO_IMAGE_PROPS;
+  const githubLink = socialLinksData.find((link) => link.label.toLowerCase() === "github")?.href ?? "#";
+  const { Title, Paragraph, Text } = Typography;
 
   return (
-    <section id="home" style={HERO_CONTAINER_STYLE}>
+    <section
+      id="home"
+      style={HERO_CONTAINER_STYLE}
+      className="!px-4 !pb-12 !pt-24 sm:!px-6 md:!px-10 lg:!px-12 xl:!px-16"
+    >
       <style>{HERO_ANIMATION_STYLES}</style>
 
-      <div style={PROFILE_CONTAINER_STYLE}>
-        <div className="floating-shapes">
-          <div className="shape shape-1" />
-          <div className="shape shape-2" />
-          <div className="shape shape-3" />
-        </div>
+      <div className="!mx-auto !w-full !max-w-7xl">
+        <Row
+          gutter={[56, 36]}
+          align="middle"
+          justify="space-between"
+          style={{ marginInline: 0 }}
+          className="hero-content-row !min-h-[calc(100vh-7rem)] !w-full"
+        >
+          <Col xs={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }} className="hero-text-col">
+            <Space direction="vertical" size={20} className="!w-full">
+              <Text style={{ color: "#64748b", fontSize: 16, fontWeight: 500 }}>Bonjour, je suis</Text>
+              
 
-        <div className="profile-image-wrapper">
-          <Image className={className} src={src} alt={alt} fill={fill} priority={priority} sizes={sizes} />
-        </div>
+              <Title
+                level={1}
+                style={{
+                  color: "#5d64d6",
+                  margin: 0,
+                  fontSize: "clamp(2.7rem, 5.8vw, 4.5rem)",
+                  lineHeight: 1.1,
+                }}
+              >
+                {HERO_CONTENT.name}
+              </Title>
+
+              <Title level={2} style={{ color: "#0f172a", margin: 0, fontSize: "clamp(1.85rem, 3.6vw, 2.45rem)" }}>
+                Software Engineer Full Stack
+              </Title>
+
+              <Paragraph
+                style={{ maxWidth: 700, color: "#475569", fontSize: 19, lineHeight: 1.8, marginBottom: 0 }}
+              >
+                Ingénieur en génie logiciel passionné par la tech, avec plus de 6 ans d&apos;expérience dans le
+                développement d&apos;applications web performantes et innovantes.
+              </Paragraph>
+
+              <Space wrap size={12} style={{ paddingTop: 8 }} className="hero-action-group">
+                <Button
+                  type="primary"
+                  size="large"
+                  onClick={() => scrollToSection("contact")}
+                  style={{
+                    borderRadius: 999,
+                    backgroundColor: "#5d64d6",
+                    borderColor: "#5d64d6",
+                    fontWeight: 600,
+                    fontSize: 17,
+                    height: 50,
+                    paddingInline: 24,
+                  }}
+                  aria-label="Aller à la section contact"
+                >
+                  Me contacter
+                </Button>
+
+                <a href="/cv.pdf" download>
+                  <Button
+                    size="large"
+                    style={{
+                      borderRadius: 999,
+                      borderColor: "#9ca3ff",
+                      color: "#5d64d6",
+                      fontWeight: 600,
+                      fontSize: 17,
+                      height: 50,
+                      paddingInline: 24,
+                    }}
+                  >
+                    Télécharger CV
+                  </Button>
+                </a>
+
+                <Button
+                  size="large"
+                  href={githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    borderRadius: 999,
+                    borderColor: "#9ca3ff",
+                    color: "#5d64d6",
+                    fontWeight: 600,
+                    fontSize: 17,
+                    height: 50,
+                    paddingInline: 24,
+                  }}
+                >
+                  GitHub
+                </Button>
+            </Space>
+            </Space>
+          </Col>
+
+          <Col xs={{ span: 24, order: 1 }} lg={{ span: 10, order: 2 }}>
+            <div className="!mx-auto !flex !w-full !max-w-sm !items-center !justify-center lg:!justify-end">
+              <div style={PROFILE_CONTAINER_STYLE} className="profile-stage">
+                <div className="floating-shapes">
+                  <div className="shape shape-1" />
+                  <div className="shape shape-2" />
+                  <div className="shape shape-3" />
+                </div>
+
+                <div className="profile-image-wrapper">
+                  <Image className={className} src={src} alt={alt} fill={fill} priority={priority} sizes={sizes} />
+                </div>
+              </div>
+            </div>
+          </Col>
+        </Row>
       </div>
     </section>
   );

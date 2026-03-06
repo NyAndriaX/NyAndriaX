@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
-import "./globals.css";
 import "antd/dist/reset.css";
+import "./globals.css";
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
