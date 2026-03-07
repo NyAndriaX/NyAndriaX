@@ -221,8 +221,8 @@ export default function Hero() {
   const { className, src, alt, fill, priority, sizes } = HERO_IMAGE_PROPS;
   const githubLink = socialLinksData.find((link) => link.label.toLowerCase() === "github")?.href ?? "#";
   const { Title, Paragraph, Text } = Typography;
-  const heroTranslateMultiplier = viewportWidth <= 1024 ? 220 : 400;
-  const heroContentTranslateY = scrollProgress * heroTranslateMultiplier;
+  const isDesktopHeroAnimation = viewportWidth > 1024;
+  const heroContentTranslateY = isDesktopHeroAnimation ? scrollProgress * 400 : 0;
 
   useEffect(() => {
     const updateViewportWidth = () => {
@@ -248,7 +248,9 @@ export default function Hero() {
         document.documentElement.scrollTop ||
         document.body.scrollTop ||
         0;
-      const rawProgress = scrollTop / viewportHeight;
+      // Start compressing only after a small initial scroll, so hero content remains visible on first screen.
+      const activationOffset = viewportHeight * 0.12;
+      const rawProgress = (scrollTop - activationOffset) / (viewportHeight * 0.88);
       const nextProgress = Math.min(Math.max(rawProgress, 0), 1);
       setScrollProgress((currentProgress) =>
         Math.abs(currentProgress - nextProgress) < 0.002 ? currentProgress : nextProgress,
@@ -273,23 +275,23 @@ export default function Hero() {
     <section
       id="home"
       style={HERO_CONTAINER_STYLE}
-      className="!sticky !top-0 !z-0 !px-4 !pb-12 !pt-24 sm:!px-6 md:!px-10 lg:!px-12 xl:!px-16"
+      className="!relative !z-0 !px-4 !pb-8 !pt-20 sm:!px-6 sm:!pb-10 sm:!pt-22 md:!px-10 md:!pb-12 md:!pt-24 lg:!sticky lg:!top-0 lg:!px-12 xl:!px-16"
     >
       <style>{HERO_ANIMATION_STYLES}</style>
 
       <div className="!mx-auto !w-full !max-w-7xl">
         <div
           style={{
-            transform: `translate3d(0, -${heroContentTranslateY}px, 0)`,
-            willChange: "transform",
+            transform: isDesktopHeroAnimation ? `translate3d(0, -${heroContentTranslateY}px, 0)` : "none",
+            willChange: isDesktopHeroAnimation ? "transform" : "auto",
           }}
         >
           <Row
-            gutter={[56, 36]}
+            gutter={[{ xs: 24, sm: 32, md: 40, lg: 56 }, { xs: 14, sm: 20, md: 24, lg: 36 }]}
             align="middle"
             justify="space-between"
             style={{ marginInline: 0 }}
-            className="hero-content-row !min-h-[calc(100vh-7rem)] !w-full"
+            className="hero-content-row !w-full !min-h-0 lg:!min-h-[calc(100vh-7rem)]"
           >
           <Col xs={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }} className="hero-text-col">
             <Space direction="vertical" size={20} className="!w-full">
