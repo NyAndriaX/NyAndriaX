@@ -14,6 +14,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
+      data-animate-section="true"
       style={{ backgroundColor: "#1a202c", borderTop: "1px solid #2d3748" }}
       className="!relative !z-10 !bg-[#1a202c] !py-12 md:!py-14"
     >

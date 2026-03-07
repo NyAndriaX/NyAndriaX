@@ -274,6 +274,7 @@ export default function Hero() {
   return (
     <section
       id="home"
+      data-animate-section="true"
       style={HERO_CONTAINER_STYLE}
       className="!relative !z-0 !px-4 !pb-8 !pt-20 sm:!px-6 sm:!pb-10 sm:!pt-22 md:!px-10 md:!pb-12 md:!pt-24 lg:!sticky lg:!top-0 lg:!px-12 xl:!px-16"
     >
