@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Button, Col, Row, Space, Typography } from "antd";
 import { HERO_CONTENT } from "../../lib/constants";
 import { socialLinksData } from "../../lib/data";
@@ -215,26 +216,66 @@ const HERO_ANIMATION_STYLES = `
 `;
 
 export default function Hero() {
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { className, src, alt, fill, priority, sizes } = HERO_IMAGE_PROPS;
   const githubLink = socialLinksData.find((link) => link.label.toLowerCase() === "github")?.href ?? "#";
   const { Title, Paragraph, Text } = Typography;
+  const heroContentTranslateY = scrollProgress * 260;
+
+  useEffect(() => {
+    let rafId: number | null = null;
+
+    const updateHeroProgress = () => {
+      const viewportHeight = window.innerHeight || 1;
+      const scrollTop =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0;
+      const rawProgress = scrollTop / viewportHeight;
+      const nextProgress = Math.min(Math.max(rawProgress, 0), 1);
+      setScrollProgress((currentProgress) =>
+        Math.abs(currentProgress - nextProgress) < 0.002 ? currentProgress : nextProgress,
+      );
+    };
+
+    const tick = () => {
+      updateHeroProgress();
+      rafId = window.requestAnimationFrame(tick);
+    };
+
+    rafId = window.requestAnimationFrame(tick);
+
+    return () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, []);
 
   return (
     <section
       id="home"
       style={HERO_CONTAINER_STYLE}
-      className="!px-4 !pb-12 !pt-24 sm:!px-6 md:!px-10 lg:!px-12 xl:!px-16"
+      className="!sticky !top-0 !z-0 !px-4 !pb-12 !pt-24 sm:!px-6 md:!px-10 lg:!px-12 xl:!px-16"
     >
       <style>{HERO_ANIMATION_STYLES}</style>
 
       <div className="!mx-auto !w-full !max-w-7xl">
-        <Row
-          gutter={[56, 36]}
-          align="middle"
-          justify="space-between"
-          style={{ marginInline: 0 }}
-          className="hero-content-row !min-h-[calc(100vh-7rem)] !w-full"
+        <div
+          style={{
+            transform: `translate3d(0, -${heroContentTranslateY}px, 0)`,
+            willChange: "transform",
+          }}
         >
+          <Row
+            gutter={[56, 36]}
+            align="middle"
+            justify="space-between"
+            style={{ marginInline: 0 }}
+            className="hero-content-row !min-h-[calc(100vh-7rem)] !w-full"
+          >
           <Col xs={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }} className="hero-text-col">
             <Space direction="vertical" size={20} className="!w-full">
               <Text style={{ color: "#64748b", fontSize: 16, fontWeight: 500 }}>Bonjour, je suis</Text>
@@ -335,7 +376,8 @@ export default function Hero() {
               </div>
             </div>
           </Col>
-        </Row>
+          </Row>
+        </div>
       </div>
     </section>
   );

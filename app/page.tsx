@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Hero, Expertise, Work, Experience, Contact } from "./components";
+import { Header, Hero, About, Expertise, Work, Experience, Contact } from "./components";
 
 /**
  * Home page component
@@ -12,6 +12,7 @@ export default function Home() {
     <main className="relative min-h-screen">
       <Header />
       <Hero />
+      <About />
       <Expertise />
       <Work />
       <Experience />
