@@ -217,10 +217,25 @@ const HERO_ANIMATION_STYLES = `
 
 export default function Hero() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(1280);
   const { className, src, alt, fill, priority, sizes } = HERO_IMAGE_PROPS;
   const githubLink = socialLinksData.find((link) => link.label.toLowerCase() === "github")?.href ?? "#";
   const { Title, Paragraph, Text } = Typography;
-  const heroContentTranslateY = scrollProgress * 260;
+  const heroTranslateMultiplier = viewportWidth <= 1024 ? 220 : 400;
+  const heroContentTranslateY = scrollProgress * heroTranslateMultiplier;
+
+  useEffect(() => {
+    const updateViewportWidth = () => {
+      setViewportWidth(window.innerWidth || 1280);
+    };
+
+    updateViewportWidth();
+    window.addEventListener("resize", updateViewportWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
+  }, []);
 
   useEffect(() => {
     let rafId: number | null = null;

@@ -1,28 +1,100 @@
 "use client";
 
+import { Card, Col, Row, Space, Typography } from "antd";
 import SectionLayout from "../layout/SectionLayout";
 
 /**
  * About section displayed right after hero.
  */
 export default function About() {
+  const { Title, Paragraph, Text } = Typography;
+  const stats = [
+    { value: "6", label: "Années d'expérience" },
+    { value: "10", label: "Technologies maîtrisées" },
+    { value: "50", label: "Projets réalisés" },
+  ];
+  const mapsUrl =
+    "https://www.google.com/maps/search/?api=1&query=Sabotsy+Namehana+RN3+103+Antananarivo+Madagascar";
+  const gmailComposeUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=contact@mahadyriana.com";
+  const whatsappUrl = "https://web.whatsapp.com/send?phone=261340908400&text=Bonjour";
+
   return (
     <SectionLayout
       id="about"
       backgroundColor="#ffffff"
       fullHeight={false}
       autoHeight={false}
-      className="!relative !z-10 !h-auto !min-h-[70vh] !py-16 md:!py-20"
+      className="!relative !z-10 !h-auto !min-h-[72vh] !py-14 md:!py-18 lg:!py-20"
     >
-      <div className="!mx-auto !w-full !max-w-7xl">
-        <h2 className="!mb-5 !text-4xl !font-extrabold !text-[#5d64d6] sm:!text-5xl">
-          À propos
-        </h2>
-        <p className="!max-w-3xl !text-lg !leading-8 !text-slate-700 sm:!text-xl">
-          Je suis ingénieur logiciel full stack, passionné par la création d&apos;expériences web modernes,
-          performantes et maintenables. J&apos;aime transformer des idées en produits concrets avec une attention
-          forte sur la qualité du code, l&apos;ergonomie et l&apos;impact utilisateur.
-        </p>
+      <div className="!mx-auto !w-full !max-w-6xl">
+        <Title level={2} className="!mb-12 !text-center !text-3xl !font-extrabold !text-[#5d64d6] sm:!text-4xl">
+          À propos de moi
+        </Title>
+
+        <Row gutter={[48, 32]} className="lg:!items-start">
+          <Col xs={24} lg={12}>
+            <div className="!max-w-xl">
+              <Paragraph className="!mb-6 !text-[17px] !leading-8 !text-slate-600 md:!text-[18px]">
+                Une personne passionnée par l&apos;informatique, dynamique dans ce domaine, qui n&apos;hésite pas à
+                s&apos;engager car plus on avance ensemble, on gagne ensemble.
+              </Paragraph>
+              <Paragraph className="!mb-10 !text-[17px] !leading-8 !text-slate-600 md:!text-[18px]">
+                Mon parcours témoigne de ma capacité à m&apos;adapter avec agilité à chaque défi, garantissant ainsi des
+                performances remarquables dans le domaine du développement logiciel.
+              </Paragraph>
+
+              <Space direction="vertical" size={28} className="!text-[17px] !text-slate-600 md:!text-[18px]">
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group !block !w-fit !rounded-xl !px-2 !py-2 !italic !text-slate-600 !transition-transform !duration-200 hover:!translate-x-2 hover:!text-[#4d53be]"
+                >
+                  <Text className="!mb-1 !block !font-semibold !italic !text-slate-800">📍 Localisation</Text>
+                  <span className="group-hover:!underline">Sabotsy Namehana, RN3</span>
+                  <br />
+                  <span className="group-hover:!underline">103 Antananarivo, Madagascar</span>
+                </a>
+
+                <a
+                  href={gmailComposeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group !block !w-fit !rounded-xl !px-2 !py-2 !italic !text-slate-600 !transition-transform !duration-200 hover:!translate-x-2 hover:!text-[#4d53be]"
+                >
+                  <Text className="!mb-1 !block !font-semibold !italic !text-slate-800">📧 Email</Text>
+                  <span className="group-hover:!underline">contact@mahadyriana.com</span>
+                </a>
+
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group !block !w-fit !rounded-xl !px-2 !py-2 !italic !text-slate-600 !transition-transform !duration-200 hover:!translate-x-2 hover:!text-[#4d53be]"
+                >
+                  <Text className="!mb-1 !block !font-semibold !italic !text-slate-800">📱 Téléphone</Text>
+                  <span className="group-hover:!underline">+261 34 09 084 00</span>
+                </a>
+              </Space>
+            </div>
+          </Col>
+
+          <Col xs={24} lg={12}>
+            <Space direction="vertical" size={20} className="!flex !w-full lg:!items-end">
+              {stats.map((stat) => (
+                <Card
+                  key={stat.label}
+                  bordered={false}
+                  className="!w-full !max-w-[360px] !rounded-2xl !bg-gradient-to-r !from-[#5f72e7] !to-[#7b4fd9] !text-center !shadow-[0_8px_24px_rgba(93,100,214,0.25)]"
+                  styles={{ body: { padding: "28px 24px" } }}
+                >
+                  <Text className="!mb-1 !block !text-5xl !font-bold !leading-none !text-white">{stat.value}</Text>
+                  <Text className="!text-sm !text-white/90">{stat.label}</Text>
+                </Card>
+              ))}
+            </Space>
+          </Col>
+        </Row>
       </div>
     </SectionLayout>
   );

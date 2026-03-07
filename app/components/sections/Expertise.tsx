@@ -1,42 +1,80 @@
 "use client";
 
+import { Card, Col, Row, Tag, Typography } from "antd";
 import SectionLayout from "../layout/SectionLayout";
 
 /**
- * Clean expertise section for progressive rebuilding
+ * Technical skills section with grouped categories.
  */
 export default function Expertise() {
-  const coreSkills = ["Frontend", "Backend", "API", "Performance", "UI/UX"];
+  const { Title } = Typography;
+  const skillGroups = [
+    {
+      title: "Développement Frontend",
+      skills: ["React", "Angular", "Vue.js", "Next.js", "Remix", "TypeScript", "JavaScript", "HTML/CSS", "Sass", "Redux"],
+    },
+    {
+      title: "Développement Backend",
+      skills: ["Node.js", "NestJS", "Express", "Python", "PHP", "Laravel", "Java", "Spring Boot"],
+    },
+    {
+      title: "Bases de données",
+      skills: ["MongoDB", "PostgreSQL", "MySQL", "Oracle", "TypeORM", "Prisma"],
+    },
+    {
+      title: "DevOps & Cloud",
+      skills: ["Docker", "AWS", "GCP", "Git", "Apache", "Nginx", "Kafka"],
+    },
+    {
+      title: "Tests & Qualité",
+      skills: ["Jest", "Cypress", "Playwright"],
+    },
+    {
+      title: "Technologies Avancées",
+      skills: ["Shopify", "OpenAI", "Microservices", "Agile"],
+    },
+  ];
 
   return (
     <SectionLayout
       id="expertise"
-      backgroundColor="#ffffff"
+      backgroundColor="#f7fafc"
       fullHeight={false}
       autoHeight={false}
-      className="py-20"
+      className="!relative !z-10 !h-auto !min-h-[78vh] !py-16 md:!py-20 lg:!py-24"
     >
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-        <h2 className="mb-4 text-center text-3xl font-bold text-slate-900 sm:text-4xl">
-          Mes compétences
-        </h2>
-        <p className="mx-auto mb-10 max-w-2xl text-center text-slate-600">
-          Base propre de la section compétences. Nous pouvons maintenant ajouter les blocs et animations
-          progressivement.
-        </p>
+      <div className="!mx-auto !w-full !max-w-7xl">
+        <Title level={2} className="!mb-12 !text-center !text-3xl !font-extrabold !text-[#5d64d6] sm:!text-4xl">
+          Compétences techniques
+        </Title>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
-          {coreSkills.map((skill) => (
-            <div
-              key={skill}
-              className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-700"
-            >
-              {skill}
-            </div>
+        <Row gutter={[28, 28]}>
+          {skillGroups.map((group) => (
+            <Col xs={24} md={12} xl={8} key={group.title}>
+              <Card
+                bordered={false}
+                className="!h-full !rounded-2xl !bg-white !shadow-[0_10px_28px_rgba(15,23,42,0.08)]"
+                styles={{ body: { padding: 28, minHeight: 265 } }}
+              >
+                <Title level={3} className="!mb-5 !text-[30px] !font-extrabold !leading-tight !text-slate-800 sm:!text-[32px]">
+                  {group.title}
+                </Title>
+                <div className="!flex !flex-wrap !gap-2.5">
+                  {group.skills.map((skill) => (
+                    <Tag
+                      key={skill}
+                      bordered={false}
+                      className="!m-0 !rounded-full !bg-gradient-to-r !from-[#5f72e7] !to-[#7b4fd9] !px-4 !py-2 !text-[15px] !font-semibold !text-white"
+                    >
+                      {skill}
+                    </Tag>
+                  ))}
+                </div>
+              </Card>
+            </Col>
           ))}
-        </div>
+        </Row>
       </div>
     </SectionLayout>
   );
 }
-

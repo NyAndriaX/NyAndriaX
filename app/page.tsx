@@ -14,8 +14,8 @@ export default function Home() {
       <Hero />
       <About />
       <Expertise />
-      <Work />
       <Experience />
+      <Work />
       <Contact />
     </main>
   );
