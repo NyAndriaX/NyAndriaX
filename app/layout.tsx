@@ -9,7 +9,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tsilavina - Ingénieur Logiciel Full Stack",
+  title: "Tsilavina Henintsoa Andriamahafaly",
   description: "Portfolio de Tsilavina, ingénieur logiciel spécialisé en développement frontend, backend et applications web.",
   icons: {
     icon: "/profil.jpeg",
