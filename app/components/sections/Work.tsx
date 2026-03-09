@@ -1,5 +1,6 @@
 "use client";
 
+import { LinkedinOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Row, Typography } from "antd";
 import SectionLayout from "../layout/SectionLayout";
 
@@ -10,28 +11,27 @@ export default function Work() {
   const { Title, Paragraph, Text, Link } = Typography;
   const projects = [
     {
-      icon: "🚀",
-      title: "MPHP",
+      icon: <LinkedinOutlined className="!text-[#0A66C2]" />,
+      title: "linkedIn-prospect-helpers",
       description:
-        "Framework PHP open source permettant de développer des applications web rapidement. Architecture MVC claire et léger (2,8.4MB).",
-      linkLabel: "Voir sur GitHub",
-      href: "https://github.com/NyAndriaX",
+        "Outil d'aide a la prospection LinkedIn pour organiser les prospects et optimiser le workflow de prospection.",
+      linkLabel: "Voir la démo",
+      href: "https://linked-in-prospects-helper--tsilavinaandria.replit.app/",
     },
     {
-      icon: "⚛️",
-      title: "ReactTS Starter",
+      icon: <img src="/cartes.png" alt="Tsabo9 cards icon" className="!h-12 !w-auto" />,
+      title: "tsabo9",
       description:
-        "Projet React avec TypeScript et SCSS, pré-configuré avec PrimeReact et d'autres librairies UI essentielles.",
-      linkLabel: "Voir sur NPM",
-      href: "https://www.npmjs.com/",
+        "Tsabo9 - Le jeu de cartes ultime en ligne. Deploie ta strategie et mise sur la chance pour affronter des joueurs du monde entier, totaliser tes cartes et decrocher la victoire.",
+      linkLabel: "Voir sur GitHub",
+      href: "https://github.com/NyAndriaX/tsabo9",
     },
     {
-      icon: "🛠️",
-      title: "Devutils",
-      description:
-        "Projet Python pour configurer Apache sur Linux et simplifier la gestion des environnements de développement.",
+      icon: "🥤",
+      title: "Distributeur Virtuel",
+      description: "Application web moderne pour la gestion d'un distributeur de boissons virtuel.",
       linkLabel: "Voir sur GitHub",
-      href: "https://github.com/NyAndriaX",
+      href: "https://github.com/NyAndriaX/boisson-distributeur",
     },
   ];
 
@@ -48,7 +48,7 @@ export default function Work() {
           Projets personnels
         </Title>
 
-        <Row gutter={[24, 24]}>
+        <Row gutter={[24, 24]} justify="center">
           {projects.map((project) => (
             <Col xs={24} md={12} xl={8} key={project.title}>
               <Card
