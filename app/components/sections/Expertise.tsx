@@ -11,11 +11,11 @@ export default function Expertise() {
   const skillGroups = [
     {
       title: "Développement Frontend",
-      skills: ["React", "Angular", "Vue.js", "Next.js", "Remix", "TypeScript", "JavaScript", "HTML/CSS", "Sass", "Redux"],
+      skills: ["React", "Vue.js", "Next.js", "Remix", "TypeScript", "JavaScript", "HTML/CSS", "Sass", "Redux"],
     },
     {
       title: "Développement Backend",
-      skills: ["Node.js", "NestJS", "Express", "Python", "PHP", "Laravel", "Java", "Spring Boot"],
+      skills: ["Node.js", "NestJS", "Express", "Python", "PHP", "Laravel"],
     },
     {
       title: "Bases de données",

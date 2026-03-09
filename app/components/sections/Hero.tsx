@@ -318,7 +318,7 @@ export default function Hero() {
               <Paragraph
                 style={{ maxWidth: 700, color: "#475569", fontSize: 19, lineHeight: 1.8, marginBottom: 0 }}
               >
-                Ingénieur en génie logiciel passionné par la tech, avec plus de 6 ans d&apos;expérience dans le
+                Ingénieur en génie logiciel passionné par la tech, avec plus de 4 ans d&apos;expérience dans le
                 développement d&apos;applications web performantes et innovantes.
               </Paragraph>
 
