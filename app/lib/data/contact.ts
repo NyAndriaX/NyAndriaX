@@ -45,12 +45,12 @@ export const createSocialLinks = (): SocialLink[] => [
     href: "https://www.linkedin.com/in/tsilavina-henintsoa-andriamahafaly-6949a4247/"
   },
   { 
-    label: "Github", 
+    label: "GitHub", 
     icon: React.createElement(GithubOutlined, { className: "text-white text-lg" }),
     href: "https://github.com/NyAndriaX"
   },
   { 
-    label: "Book a Meeting", 
+    label: "Prendre rendez-vous", 
     icon: React.createElement(CalendarOutlined, { className: "text-white text-lg" }),
     href: "https://calendly.com/tsilavinaandriamahafaly01/30min"
   },
@@ -59,6 +59,6 @@ export const createSocialLinks = (): SocialLink[] => [
 export const socialLinksData = createSocialLinks();
 
 export const contactEmail = "tsilavinaandriamahafaly01@gmail.com";
-export const contactTitle = "Available for select freelance opportunities";
-export const contactDescription = "Have an exciting project you need help with? Send me an email or contact me via instant message!";
+export const contactTitle = "Disponible pour des missions freelance ciblées";
+export const contactDescription = "Vous avez un projet ambitieux et besoin d'un accompagnement technique ? Envoyez-moi un email ou contactez-moi en message instantané.";
 

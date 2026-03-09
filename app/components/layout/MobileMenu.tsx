@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Drawer } from "antd";
-import { motion } from "framer-motion";
+import { Button, Drawer, Menu } from "antd";
+import type { MenuProps } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import { NAVIGATION_ITEMS } from "../../lib/constants";
 import { scrollToSection } from "../../lib/utils";
 
@@ -13,96 +14,135 @@ import { scrollToSection } from "../../lib/utils";
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleNavClick = (href: string) => {
-    const sectionId = href.replace("#", "");
+  const menuItems: MenuProps["items"] = NAVIGATION_ITEMS.map((item) => {
+    const isContact = item.id === "contact";
+    return {
+      key: item.id,
+      label: (
+        <span className={isContact ? "mobile-nav-item-contact" : "mobile-nav-item-default"}>
+          {item.label}
+        </span>
+      ),
+    };
+  });
+
+  const handleMenuClick: MenuProps["onClick"] = ({ key }) => {
+    const matchedItem = NAVIGATION_ITEMS.find((item) => item.id === key);
+    if (!matchedItem) return;
+    const sectionId = matchedItem.href.replace("#", "");
     scrollToSection(sectionId);
     setIsOpen(false);
   };
 
   return (
     <>
-      {/* Hamburger button */}
-      <button
+      <Button
+        type="text"
+        icon={<MenuOutlined />}
+        size="large"
         onClick={() => setIsOpen(!isOpen)}
-        className="lg:hidden z-50 relative flex flex-col justify-center items-center w-8 h-8 gap-1.5"
-        aria-label="Toggle menu"
-      >
-        <motion.span
-          className="w-6 h-0.5 bg-white"
-          animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-          transition={{ duration: 0.3 }}
-        />
-        <motion.span
-          className="w-6 h-0.5 bg-white"
-          animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        />
-        <motion.span
-          className="w-6 h-0.5 bg-white"
-          animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-          transition={{ duration: 0.3 }}
-        />
-      </button>
+        className="lg:!hidden mobile-nav-trigger"
+        aria-label="Ouvrir ou fermer le menu"
+      />
 
       {/* Ant Design Drawer */}
       <Drawer
-        title={null}
+        title={<span className="mobile-drawer-title">Navigation</span>}
         placement="left"
         onClose={() => setIsOpen(false)}
         open={isOpen}
-        width={280}
+        width={312}
         closable={true}
-        className="mobile-menu-drawer lg:hidden"
+        className="mobile-menu-drawer lg:!hidden"
         styles={{
           body: {
-            padding: "24px",
-            backgroundColor: "#0a0f1e",
+            padding: "28px",
+            backgroundColor: "#ffffff",
           },
           header: {
-            backgroundColor: "#0a0f1e",
-            borderBottom: "none",
-            padding: "16px 24px",
+            backgroundColor: "#ffffff",
+            borderBottom: "1px solid #e2e8f0",
+            padding: "18px 24px",
           },
         }}
         maskStyle={{
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          backgroundColor: "rgba(15, 23, 42, 0.35)",
           backdropFilter: "blur(4px)",
         }}
       >
-        <nav className="flex flex-col gap-4 sm:gap-6">
-          {NAVIGATION_ITEMS.map((item, index) => {
-            const number = String(index + 1).padStart(2, "0");
-            return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.href)}
-                className="text-left group/item transition-colors duration-200 w-full"
-              >
-                <div className="flex flex-col">
-                  <span className="text-gray-400 text-xs sm:text-sm leading-tight mb-1 transition-colors duration-200">
-                    {number}
-                  </span>
-                  <span className="text-white text-base sm:text-lg leading-tight group-hover/item:text-gray-300 font-semibold transition-colors duration-200">
-                    {"// "}{item.label}
-                  </span>
-                </div>
-              </button>
-            );
-          })}
-        </nav>
+        <Menu mode="inline" selectable={false} items={menuItems} onClick={handleMenuClick} className="mobile-nav-menu" />
       </Drawer>
 
       <style jsx global>{`
+        .mobile-drawer-title {
+          color: #1e293b;
+          font-size: 1.02rem;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+        }
+
+        .mobile-nav-trigger {
+          color: #334155 !important;
+          font-size: 22px !important;
+        }
+
+        .mobile-nav-trigger:hover {
+          color: #5d64d6 !important;
+        }
+
         .mobile-menu-drawer .ant-drawer-content {
-          background-color: #0a0f1e !important;
+          background-color: #ffffff !important;
         }
         
         .mobile-menu-drawer .ant-drawer-body {
-          padding: 24px !important;
+          padding: 28px !important;
+        }
+
+        .mobile-nav-menu {
+          border-inline-end: none !important;
+          background: transparent !important;
+        }
+
+        .mobile-nav-menu .ant-menu-item {
+          margin: 0 0 16px !important;
+          padding-inline: 0 !important;
+          padding-block: 6px !important;
+          height: auto !important;
+          line-height: normal !important;
+        }
+
+        .mobile-nav-menu .ant-menu-item:last-child {
+          margin-bottom: 0 !important;
+        }
+
+        .mobile-nav-menu .ant-menu-item::after {
+          display: none !important;
+        }
+
+        .mobile-nav-item-default {
+          color: #334155;
+          font-size: 1.08rem;
+          font-weight: 600;
+          transition: color 0.2s ease;
+        }
+
+        .mobile-nav-menu .ant-menu-item:hover .mobile-nav-item-default {
+          color: #6b6fe6;
+        }
+
+        .mobile-nav-item-contact {
+          width: 100%;
+          display: inline-block;
+          border-radius: 999px;
+          background-color: #6b6fe6;
+          padding: 11px 16px;
+          color: #ffffff;
+          font-size: 1.08rem;
+          font-weight: 600;
         }
         
         .mobile-menu-drawer .ant-drawer-close {
-          color: white !important;
+          color: #334155 !important;
           font-size: 20px !important;
           width: 32px !important;
           height: 32px !important;
@@ -113,14 +153,14 @@ export default function MobileMenu() {
         }
         
         .mobile-menu-drawer .ant-drawer-close:hover {
-          color: #00d9ff !important;
-          background-color: rgba(255, 255, 255, 0.1) !important;
+          color: #6b6fe6 !important;
+          background-color: rgba(99, 102, 241, 0.1) !important;
           border-radius: 4px !important;
         }
         
         @media (min-width: 640px) {
           .mobile-menu-drawer .ant-drawer-body {
-            padding: 32px !important;
+            padding: 36px !important;
           }
         }
       `}</style>

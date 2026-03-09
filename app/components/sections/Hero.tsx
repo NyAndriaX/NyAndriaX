@@ -1,175 +1,407 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { DownloadOutlined, GithubOutlined, MailOutlined } from "@ant-design/icons";
+import { Button, Col, Row, Space, Typography } from "antd";
 import { HERO_CONTENT } from "../../lib/constants";
-import LogoCarousel from "../ui/LogoCarousel";
-import Lottie from "lottie-react";
-import scrollDownAnimation from "../../../public/Scroll down hint.json";
-import { scrollToSection } from "../../lib/utils";
-import Background3D from "../ui/Background3D";
+import { socialLinksData } from "../../lib/data";
 
-/**
- * Hero section component displaying name and professional title
- * Main focal point of the homepage
- * Responsive design with adaptive text sizes
- * Includes FeaturedIn section at the bottom
- */
+const HERO_CONTAINER_STYLE = {
+  minHeight: "100vh",
+  background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+} as const;
+
+const PROFILE_CONTAINER_STYLE = {
+  position: "relative",
+  width: 350,
+  height: 500,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+} as const;
+
+const HERO_IMAGE_PROPS = {
+  className: "profile-image",
+  src: "/profil.jpeg",
+  alt: "Profile",
+  fill: true,
+  priority: true,
+  sizes: "(max-width: 640px) 280px, 350px",
+} as const;
+
+const HERO_ANIMATION_STYLES = `
+  @keyframes morph {
+    0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+    50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+    75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(0px);
+    }
+    50% {
+      transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(-20px);
+    }
+  }
+
+  @keyframes shapeFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-30px) rotate(120deg); }
+    66% { transform: translateY(15px) rotate(240deg); }
+  }
+
+  .profile-image-wrapper {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+    transition: transform 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .profile-image-wrapper:hover {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05);
+  }
+
+  .profile-image-wrapper::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.4) 0%,
+      rgba(118, 75, 162, 0.4) 50%,
+      rgba(240, 147, 251, 0.4) 100%
+    );
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    filter: blur(25px);
+    z-index: 1;
+    animation: morph 8s ease-in-out infinite;
+    opacity: 0.8;
+  }
+
+  .profile-image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    border-radius: inherit;
+    z-index: 3;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    position: relative;
+    z-index: 2;
+    box-shadow:
+      0 0 0 15px rgba(102, 126, 234, 0.1),
+      0 0 0 30px rgba(118, 75, 162, 0.08),
+      0 0 60px rgba(102, 126, 234, 0.3),
+      0 20px 80px rgba(0, 0, 0, 0.2),
+      inset 0 0 50px rgba(255, 255, 255, 0.1);
+    filter: contrast(1.1) brightness(1.05);
+    animation: morph 8s ease-in-out infinite;
+  }
+
+  .floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    top: 0;
+    left: 0;
+  }
+
+  .shape {
+    position: absolute;
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.15) 0%,
+      rgba(240, 147, 251, 0.15) 100%
+    );
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    filter: blur(20px);
+    animation: shapeFloat 8s ease-in-out infinite;
+  }
+
+  .shape-1 {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s;
+  }
+
+  .shape-2 {
+    width: 150px;
+    height: 150px;
+    bottom: -30px;
+    right: -30px;
+    animation-delay: 2s;
+  }
+
+  .shape-3 {
+    width: 180px;
+    height: 180px;
+    top: 50%;
+    left: -80px;
+    transform: translateY(-50%);
+    animation-delay: 4s;
+  }
+
+  @media (max-width: 991px) {
+    .hero-text-col {
+      text-align: center;
+    }
+
+    .hero-action-group {
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .hero-content-row {
+      column-gap: 72px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .profile-stage {
+      transform: scale(0.86);
+      transform-origin: top center;
+      margin-top: -8px;
+      margin-bottom: -22px;
+    }
+
+    .profile-image-wrapper {
+      width: 280px;
+      height: 280px;
+    }
+
+    .shape-1 {
+      width: 160px;
+      height: 160px;
+      top: -28px;
+      left: -35px;
+    }
+
+    .shape-2 {
+      width: 125px;
+      height: 125px;
+      right: -24px;
+      bottom: -24px;
+    }
+
+    .shape-3 {
+      width: 140px;
+      height: 140px;
+      left: -58px;
+    }
+  }
+`;
+
 export default function Hero() {
-  // Split name and title into words
-  const nameWords = HERO_CONTENT.name.split(" ");
-  const titleWords = HERO_CONTENT.title.split(" ");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(1280);
+  const { className, src, alt, fill, priority, sizes } = HERO_IMAGE_PROPS;
+  const githubLink = socialLinksData.find((link) => link.label.toLowerCase() === "github")?.href ?? "#";
+  const { Title, Paragraph, Text } = Typography;
+  const isDesktopHeroAnimation = viewportWidth > 1024;
+  const heroContentTranslateY = isDesktopHeroAnimation ? scrollProgress * 400 : 0;
 
-  const wordVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: i * 0.1,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      },
-    }),
-  };
+  useEffect(() => {
+    const updateViewportWidth = () => {
+      setViewportWidth(window.innerWidth || 1280);
+    };
 
-  const titleWordVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: nameWords.length * 0.1 + 0.3 + i * 0.1,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      },
-    }),
-  };
+    updateViewportWidth();
+    window.addEventListener("resize", updateViewportWidth);
 
-  const featuredVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: nameWords.length * 0.1 + titleWords.length * 0.1 + 0.4,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      },
-    },
-  };
+    return () => {
+      window.removeEventListener("resize", updateViewportWidth);
+    };
+  }, []);
 
-  const logoVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.7,
-        delay: nameWords.length * 0.1 + titleWords.length * 0.1 + 0.6,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      },
-    },
-  };
+  useEffect(() => {
+    let rafId: number | null = null;
 
-  const scrollButtonVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 0.7,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        delay: nameWords.length * 0.1 + titleWords.length * 0.1 + 0.8,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      },
-    },
-  };
+    const updateHeroProgress = () => {
+      const viewportHeight = window.innerHeight || 1;
+      const scrollTop =
+        window.scrollY ||
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0;
+      // Start compressing only after a small initial scroll, so hero content remains visible on first screen.
+      const activationOffset = viewportHeight * 0.12;
+      const rawProgress = (scrollTop - activationOffset) / (viewportHeight * 0.88);
+      const nextProgress = Math.min(Math.max(rawProgress, 0), 1);
+      setScrollProgress((currentProgress) =>
+        Math.abs(currentProgress - nextProgress) < 0.002 ? currentProgress : nextProgress,
+      );
+    };
+
+    const tick = () => {
+      updateHeroProgress();
+      rafId = window.requestAnimationFrame(tick);
+    };
+
+    rafId = window.requestAnimationFrame(tick);
+
+    return () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, []);
 
   return (
     <section
       id="home"
-      className="flex flex-col items-center justify-between !px-4 sm:!px-6 md:!px-12 lg:!px-16 xl:!px-20 relative z-10"
-      style={{ height: "100dvh", minHeight: "100dvh" }}
+      data-animate-section="true"
+      style={HERO_CONTAINER_STYLE}
+      className="!relative !z-0 !px-4 !pb-8 !pt-20 sm:!px-6 sm:!pb-10 sm:!pt-22 md:!px-10 md:!pb-12 md:!pt-24 lg:!sticky lg:!top-0 lg:!px-12 xl:!px-16"
     >
-      {/* Background 3D - only for Hero section */}
-      <Background3D />
-      
-      {/* Spacer for header */}
-      <div className="shrink-0 relative z-10 h-20 sm:h-24 md:h-20" />
-      
-      <div className="text-center max-w-6xl mx-auto w-full flex-1 flex flex-col justify-center gap-12 sm:gap-12 md:gap-16 lg:gap-20 relative z-10">
-        {/* Name and Title */}
-        <div className="mb-12 sm:mb-12 md:mb-16 lg:mb-20 xl:mb-24">
-          <h1 className="text-6xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold text-white uppercase tracking-tight leading-none px-2 !mb-6 sm:!mb-6 md:!mb-8">
-            {nameWords.map((word, index) => (
-              <motion.span
-                key={index}
-                custom={index}
-                variants={wordVariants}
-                initial="hidden"
-                animate="visible"
-                className="inline-block"
-                style={{ marginRight: "0.25em" }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h1>
-          <h2 className="text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold text-white uppercase tracking-wider px-2 sm:px-4 leading-snug">
-            {titleWords.map((word, index) => (
-              <motion.span
-                key={index}
-                custom={index}
-                variants={titleWordVariants}
-                initial="hidden"
-                animate="visible"
-                className="inline-block"
-              >
-                {word}
-                {index < titleWords.length - 1 && (
-                  <span className="inline-block" style={{ width: "0.3em" }} />
-                )}
-              </motion.span>
-            ))}
-          </h2>
-        </div>
+      <style>{HERO_ANIMATION_STYLES}</style>
 
-        {/* FeaturedIn section right below the title */}
-        <div className="w-full shrink-0 group">
-          <motion.h2
-            variants={featuredVariants}
-            initial="hidden"
-            animate="visible"
-            className="text-center font-mono text-gray-400 group-hover:text-white transition-colors duration-300 text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl uppercase tracking-wider !mb-8 sm:!mb-8 md:!mb-10 lg:!mb-12"
+      <div className="!mx-auto !w-full !max-w-7xl">
+        <div
+          style={{
+            transform: isDesktopHeroAnimation ? `translate3d(0, -${heroContentTranslateY}px, 0)` : "none",
+            willChange: isDesktopHeroAnimation ? "transform" : "auto",
+          }}
+        >
+          <Row
+            gutter={[{ xs: 24, sm: 32, md: 40, lg: 56 }, { xs: 14, sm: 20, md: 24, lg: 36 }]}
+            align="middle"
+            justify="space-between"
+            style={{ marginInline: 0 }}
+            className="hero-content-row !w-full !min-h-0 lg:!min-h-[calc(100vh-7rem)]"
           >
-            TECHNOLOGIES
-          </motion.h2>
-          <motion.div
-            variants={logoVariants}
-            initial="hidden"
-            animate="visible"
-            className="group-hover:[&_img]:saturate-150 group-hover:[&_img]:brightness-110 transition-all duration-300"
-          >
-            <LogoCarousel />
-          </motion.div>
+          <Col xs={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }} className="hero-text-col">
+            <Space direction="vertical" size={20} className="!w-full">
+              <Text style={{ color: "#64748b", fontSize: 16, fontWeight: 500 }}>Bonjour, je suis</Text>
+              
+
+              <Title
+                level={1}
+                style={{
+                  color: "#5d64d6",
+                  margin: 0,
+                  fontSize: "clamp(2.7rem, 5.8vw, 4.5rem)",
+                  lineHeight: 1.1,
+                }}
+              >
+                {HERO_CONTENT.name}
+              </Title>
+
+              <Title level={2} style={{ color: "#0f172a", margin: 0, fontSize: "clamp(1.85rem, 3.6vw, 2.45rem)" }}>
+                Software Engineer Full Stack
+              </Title>
+
+              <Paragraph
+                style={{ maxWidth: 700, color: "#475569", fontSize: 19, lineHeight: 1.8, marginBottom: 0 }}
+              >
+                Ingénieur en génie logiciel passionné par la tech, avec plus de 4 ans d&apos;expérience dans le
+                développement d&apos;applications web performantes et innovantes.
+              </Paragraph>
+
+              <Space wrap size={12} style={{ paddingTop: 8 }} className="hero-action-group">
+                <Button
+                  type="primary"
+                  size="large"
+                  icon={<MailOutlined />}
+                  href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=tsilavinaandriamahafaly01@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    borderRadius: 999,
+                    backgroundColor: "#5d64d6",
+                    borderColor: "#5d64d6",
+                    fontWeight: 600,
+                    fontSize: 17,
+                    height: 50,
+                    paddingInline: 24,
+                  }}
+                  aria-label="Aller à la section contact"
+                >
+                  Me contacter
+                </Button>
+
+                <a href="https://cvdesignr.com/p/637efe0b7a551" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    size="large"
+                    icon={<DownloadOutlined />}
+                    style={{
+                      borderRadius: 999,
+                      borderColor: "#9ca3ff",
+                      color: "#5d64d6",
+                      fontWeight: 600,
+                      fontSize: 17,
+                      height: 50,
+                      paddingInline: 24,
+                    }}
+                  >
+                    Télécharger CV
+                  </Button>
+                </a>
+
+                <Button
+                  size="large"
+                  icon={<GithubOutlined />}
+                  href={githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    borderRadius: 999,
+                    borderColor: "#9ca3ff",
+                    color: "#5d64d6",
+                    fontWeight: 600,
+                    fontSize: 17,
+                    height: 50,
+                    paddingInline: 24,
+                  }}
+                >
+                  GitHub
+                </Button>
+            </Space>
+            </Space>
+          </Col>
+
+          <Col xs={{ span: 24, order: 1 }} lg={{ span: 10, order: 2 }}>
+            <div className="!mx-auto !flex !w-full !max-w-sm !items-center !justify-center lg:!justify-end">
+              <div style={PROFILE_CONTAINER_STYLE} className="profile-stage">
+                <div className="floating-shapes">
+                  <div className="shape shape-1" />
+                  <div className="shape shape-2" />
+                  <div className="shape shape-3" />
+                </div>
+
+                <div className="profile-image-wrapper">
+                  <Image className={className} src={src} alt={alt} fill={fill} priority={priority} sizes={sizes} />
+                </div>
+              </div>
+            </div>
+          </Col>
+          </Row>
         </div>
       </div>
-      
-      {/* Bottom spacer */}
-      <div className="shrink-0 h-12 sm:h-16 md:h-20" />
-      
-      {/* Scroll down animation - bottom center */}
-      <motion.button
-        variants={scrollButtonVariants}
-        initial="hidden"
-        animate="visible"
-        onClick={() => scrollToSection("expertise")}
-        className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2 z-20 cursor-pointer hover:scale-110 transition-transform duration-300"
-        aria-label="Scroll to next section"
-        whileHover={{ opacity: 1 }}
-      >
-        <div className="w-12 h-12 xs:w-14 xs:h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 opacity-70 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-          <Lottie animationData={scrollDownAnimation} loop={true} />
-        </div>
-      </motion.button>
     </section>
   );
 }

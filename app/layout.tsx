@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
-import "./globals.css";
 import "antd/dist/reset.css";
+import "./globals.css";
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
@@ -9,8 +9,13 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tsilavina - Software Engineer, Front End & App Developer",
-  description: "Portfolio of Tsilavina - Software Engineer specializing in Front End and App Development",
+  title: "Tsilavina Henintsoa Andriamahafaly",
+  description: "Portfolio de Tsilavina, ingénieur logiciel spécialisé en développement frontend, backend et applications web.",
+  icons: {
+    icon: "/profil.jpeg",
+    shortcut: "/profil.jpeg",
+    apple: "/profil.jpeg",
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <body
         className={`${robotoMono.variable} antialiased`}
       >
