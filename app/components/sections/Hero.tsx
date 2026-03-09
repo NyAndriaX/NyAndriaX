@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { DownloadOutlined, GithubOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Col, Row, Space, Typography } from "antd";
 import { HERO_CONTENT } from "../../lib/constants";
 import { socialLinksData } from "../../lib/data";
-import { scrollToSection } from "../../lib/utils";
 
 const HERO_CONTAINER_STYLE = {
   minHeight: "100vh",
@@ -326,7 +326,10 @@ export default function Hero() {
                 <Button
                   type="primary"
                   size="large"
-                  onClick={() => scrollToSection("contact")}
+                  icon={<MailOutlined />}
+                  href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=tsilavinaandriamahafaly01@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     borderRadius: 999,
                     backgroundColor: "#5d64d6",
@@ -341,9 +344,10 @@ export default function Hero() {
                   Me contacter
                 </Button>
 
-                <a href="/cv.pdf" download>
+                <a href="https://cvdesignr.com/p/637efe0b7a551" target="_blank" rel="noopener noreferrer">
                   <Button
                     size="large"
+                    icon={<DownloadOutlined />}
                     style={{
                       borderRadius: 999,
                       borderColor: "#9ca3ff",
@@ -360,6 +364,7 @@ export default function Hero() {
 
                 <Button
                   size="large"
+                  icon={<GithubOutlined />}
                   href={githubLink}
                   target="_blank"
                   rel="noopener noreferrer"

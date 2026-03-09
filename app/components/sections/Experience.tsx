@@ -10,26 +10,60 @@ export default function Experience() {
   const { Title, Paragraph, Text } = Typography;
   const experiences = [
     {
-      period: "Depuis Octobre 2023",
-      role: "Lead Développeur",
-      company: "Giraffe Studio - Full Remote",
+      period: "Depuis octobre 2023",
+      role: "Software Developer",
+      company: "Giraffes studio - Full remote",
       highlights: [
-        "Développement d'une application marketplace pour Shopify",
-        "Automatisation de la gestion des boutiques Shopify",
-        "Création et optimisation de modèles d'IA",
+        "Recherche, conception et gestion de programmes logiciels.",
+        "Test et évaluation de nouveaux programmes.",
+        "Modification de logiciels pour corriger les erreurs et améliorer les performances.",
+        "Déploiement d'outils logiciels, de processus et de métriques.",
+        "Direction de la programmation logicielle et du développement de la documentation.",
+        "Rédaction et implémentation de code.",
+        "Préparation de rapports sur les spécifications de projets de programmation, les activités ou le statut.",
+        "Consultation avec le personnel d'ingénierie pour évaluer les interfaces logiciel-matériel et développer des spécifications et exigences de performance.",
       ],
-      skills: ["React", "Remix", "Vue.js", "Shopify", "OpenAI", "Python", "GCP", "Kafka"],
+      skills: ["ReactJS", "NextJs", "Python", "Shopify", "OpenAI", "NodeJs", "Javascript", "Typescript", "MongoDB", "Bubble.io", "webflow", "zapier"],
     },
     {
-      period: "Depuis Septembre 2023",
-      role: "Développeur Java",
-      company: "Egokia - Full Remote",
+      period: "D'août 2025 à septembre 2025",
+      role: "Développeur logiciel",
+      company: "AutoDashboard - Full remote",
       highlights: [
-        "Maintenance proactive pour une performance optimale",
-        "Tests automatisés pour une qualité constante",
-        "Collaboration UX/UI et gestion agile de projet",
+        "Développement logiciel pour la solution SaaS AutoDashboard, spécialisée dans la simplification de la gestion après-vente automobile.",
+        "Conception et implémentation de fonctionnalités pour optimiser les processus des concessions automobiles, en remplaçant les tableurs Excel par une plateforme tout-en-un.",
+        "Gestion de programmes logiciels adaptés à la gestion des stocks, des réparations et du service client dans le secteur automobile.",
+        "Test et évaluation des fonctionnalités pour assurer une performance optimale et une intégration fluide.",
+        "Modification et optimisation du code pour corriger les erreurs et améliorer l'efficacité du logiciel.",
+        "Collaboration à la rédaction de documentation technique et à la définition des spécifications du projet.",
       ],
-      skills: ["Java", "Spring Boot", "Microservices", "Kafka", "Angular", "VueJS"],
+      skills: ["ReactJs", "Django", "Figma"],
+    },
+    {
+      period: "De juin 2023 à novembre 2023",
+      role: "Développeur logiciel",
+      company: "Club de ceos - Full remote",
+      highlights: [
+        "Conception et développement d'un site web responsive pour un club de leadership, créant une plateforme engageante dédiée aux membres pour favoriser les interactions, le networking et le développement personnel.",
+        "Leadership d'une équipe de développeurs pour la réalisation du projet, assurant une coordination efficace et une livraison dans les délais.",
+        "Développement full stack avec React et Next.js pour une interface utilisateur dynamique, rapide et SEO-friendly, intégré à une base de données MySQL pour une gestion sécurisée et efficace des profils membres, événements, ressources et contenus.",
+        "Optimisation pour la responsivité sur tous les appareils (mobile, tablette, desktop), améliorant l'accessibilité et l'expérience utilisateur globale.",
+        "Mise en place de fonctionnalités interactives telles que forums, calendriers d'événements et outils de collaboration pour renforcer l'engagement communautaire.",
+      ],
+      skills: ["ReactJs", "NextJS", "GCP", "Mysql"],
+    },
+    {
+      period: "De mars 2022 à février 2023",
+      role: "Développeur web",
+      company: "WevComFactory - Full remote",
+      highlights: [
+        "Conception et développement d'une landing page responsive pour un événement technologique au sein d'un projet SaaS, visant à promouvoir l'événement de manière impactante et à attirer un public ciblé.",
+        "Collaboration étroite avec l'équipe sur l'UI/UX pour concevoir un design attrayant, moderne et fonctionnel avec React et Material UI, intégrant des éléments visuels engageants et une structure intuitive.",
+        "Mise en œuvre de fonctionnalités interactives pour une expérience utilisateur fluide, incluant des sections dédiées aux inscriptions, à l'agenda, aux speakers et aux partenaires, avec une présentation claire et persuasive des contenus.",
+        "Optimisation pour la responsivité sur tous les appareils (mobile, tablette, desktop), garantissant une accessibilité optimale, une charge rapide et une compatibilité cross-browser.",
+        "Tests rigoureux et itérations basées sur des retours pour améliorer l'engagement utilisateur et maximiser les conversions liées à l'événement.",
+      ],
+      skills: ["React", "Material UI"],
     },
   ];
 
@@ -43,7 +77,7 @@ export default function Experience() {
     >
       <div className="!mx-auto !w-full !max-w-7xl">
         <Title level={2} className="!mb-14 !text-center !text-3xl !font-extrabold !text-[#5d64d6] sm:!text-4xl">
-          Expérience professionnelle
+          Expériences professionnelles
         </Title>
 
         <div className="!mx-auto !max-w-5xl">
@@ -80,9 +114,13 @@ export default function Experience() {
 
                   <Space size={[8, 8]} wrap>
                     {experience.skills.map((skill) => (
-                      <Text key={`${index}-${skill}`} className="!text-[13px] !font-semibold !text-[#6f7be6]">
+                      <Tag
+                        key={`${index}-${skill}`}
+                        bordered={false}
+                        className="!rounded-full !bg-[#edf1ff] !px-3 !py-1 !text-[12px] !font-semibold !text-[#5a64d1]"
+                      >
                         {skill}
-                      </Text>
+                      </Tag>
                     ))}
                   </Space>
                 </Card>

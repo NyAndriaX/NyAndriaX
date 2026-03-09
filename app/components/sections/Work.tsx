@@ -15,7 +15,7 @@ export default function Work() {
       description:
         "Framework PHP open source permettant de développer des applications web rapidement. Architecture MVC claire et léger (2,8.4MB).",
       linkLabel: "Voir sur GitHub",
-      href: "https://github.com/",
+      href: "https://github.com/NyAndriaX",
     },
     {
       icon: "⚛️",
@@ -31,7 +31,7 @@ export default function Work() {
       description:
         "Projet Python pour configurer Apache sur Linux et simplifier la gestion des environnements de développement.",
       linkLabel: "Voir sur GitHub",
-      href: "https://github.com/",
+      href: "https://github.com/NyAndriaX",
     },
   ];
 
@@ -79,7 +79,7 @@ export default function Work() {
 
         <div className="!mt-10 !text-center">
           <Button
-            href="https://github.com/"
+            href="https://github.com/NyAndriaX"
             target="_blank"
             rel="noopener noreferrer"
             size="large"

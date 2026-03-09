@@ -10,6 +10,10 @@ export default function Contact() {
   const { Title, Text, Link } = Typography;
   const githubLink = socialLinksData.find((link) => link.label.toLowerCase() === "github")?.href ?? "#";
   const linkedinLink = socialLinksData.find((link) => link.label.toLowerCase() === "linkedin")?.href ?? "#";
+  const mapsUrl = "https://maps.app.goo.gl/qgNts2Te3m7s53oY6";
+  const gmailComposeUrl =
+    "https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=tsilavinaandriamahafaly01@gmail.com";
+  const whatsappUrl = "https://web.whatsapp.com/send?phone=261341009650&text=Bonjour";
 
   return (
     <section
@@ -23,12 +27,12 @@ export default function Contact() {
           <Col xs={24} md={8}>
             <Space direction="vertical" size={8}>
               <Title level={5} className="!mb-0 !text-white">
-                Manda Ny Aina ANDRIANAIVO
+                Tsilavina Henintsoa ANDRIAMAHAFALY
               </Title>
               <Text className="!text-slate-300">Software Engineer | Full Stack Developer</Text>
-              <Text className="!max-w-xs !text-slate-400">
-                Sabotsy Namehana, RN3, 103 Antananarivo, Madagascar
-              </Text>
+              <Link href={mapsUrl} target="_blank" rel="noopener noreferrer" className="!max-w-xs !text-slate-400 hover:!text-white">
+                Bemasoandro Itaosy, 102 Antananarivo, Madagascar
+              </Link>
             </Space>
           </Col>
 
@@ -43,10 +47,15 @@ export default function Contact() {
               <Link href={linkedinLink} target="_blank" rel="noopener noreferrer" className="!text-slate-300 hover:!text-white">
                 LinkedIn
               </Link>
-              <Link href="/cv.pdf" download className="!text-slate-300 hover:!text-white">
+              <Link
+                href="https://cvdesignr.com/p/637efe0b7a551"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="!text-slate-300 hover:!text-white"
+              >
                 Télécharger CV
               </Link>
-              <Link href={`mailto:${contactEmail}`} className="!text-slate-300 hover:!text-white">
+              <Link href={gmailComposeUrl} target="_blank" rel="noopener noreferrer" className="!text-slate-300 hover:!text-white">
                 Email
               </Link>
             </Space>
@@ -57,16 +66,16 @@ export default function Contact() {
               <Title level={5} className="!mb-1 !text-white">
                 Contact
               </Title>
-              <Link href={`mailto:${contactEmail}`} className="!text-slate-300 hover:!text-white">
+              <Link href={gmailComposeUrl} target="_blank" rel="noopener noreferrer" className="!text-slate-300 hover:!text-white">
                 {contactEmail}
               </Link>
               <Link
-                href="https://web.whatsapp.com/send?phone=261340908400&text=Bonjour"
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="!text-slate-300 hover:!text-white"
               >
-                +261 34 09 084 00
+                +261 34 10 09 650
               </Link>
             </Space>
           </Col>
@@ -75,7 +84,7 @@ export default function Contact() {
         <Divider className="!my-7 !border-slate-700" />
 
         <Text className="!block !text-center !text-slate-400">
-          © 2026 Manda Ny Aina ANDRIANAIVO. Tous droits réservés.
+          © 2026 Tsilavina Henintsoa ANDRIAMAHAFALY. Tous droits réservés.
         </Text>
       </div>
     </section>

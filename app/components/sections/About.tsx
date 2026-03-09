@@ -9,14 +9,15 @@ import SectionLayout from "../layout/SectionLayout";
 export default function About() {
   const { Title, Paragraph, Text } = Typography;
   const stats = [
-    { value: "6", label: "Années d'expérience" },
+    { value: "4+", label: "Années d'expérience" },
     { value: "10", label: "Technologies maîtrisées" },
-    { value: "50", label: "Projets réalisés" },
+    { value: "20+", label: "Projets réalisés" },
   ];
   const mapsUrl =
-    "https://www.google.com/maps/search/?api=1&query=Sabotsy+Namehana+RN3+103+Antananarivo+Madagascar";
-  const gmailComposeUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=contact@mahadyriana.com";
-  const whatsappUrl = "https://web.whatsapp.com/send?phone=261340908400&text=Bonjour";
+    "https://maps.app.goo.gl/qgNts2Te3m7s53oY6";
+  const gmailComposeUrl =
+    "https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=tsilavinaandriamahafaly01@gmail.com";
+  const whatsappUrl = "https://web.whatsapp.com/send?phone=261341009650&text=Bonjour";
 
   return (
     <SectionLayout
@@ -51,9 +52,9 @@ export default function About() {
                   className="group !block !w-fit !rounded-xl !px-2 !py-2 !italic !text-slate-600 !transition-transform !duration-200 hover:!translate-x-2 hover:!text-[#4d53be]"
                 >
                   <Text className="!mb-1 !block !font-semibold !italic !text-slate-800">📍 Localisation</Text>
-                  <span className="group-hover:!underline">Sabotsy Namehana, RN3</span>
+                  <span className="group-hover:!underline">Bemasoandro Itaosy</span>
                   <br />
-                  <span className="group-hover:!underline">103 Antananarivo, Madagascar</span>
+                  <span className="group-hover:!underline">102 Antananarivo, Madagascar</span>
                 </a>
 
                 <a
@@ -63,7 +64,7 @@ export default function About() {
                   className="group !block !w-fit !rounded-xl !px-2 !py-2 !italic !text-slate-600 !transition-transform !duration-200 hover:!translate-x-2 hover:!text-[#4d53be]"
                 >
                   <Text className="!mb-1 !block !font-semibold !italic !text-slate-800">📧 Email</Text>
-                  <span className="group-hover:!underline">contact@mahadyriana.com</span>
+                  <span className="group-hover:!underline">tsilavinaandriamahafaly01@gmail.com</span>
                 </a>
 
                 <a
@@ -73,7 +74,7 @@ export default function About() {
                   className="group !block !w-fit !rounded-xl !px-2 !py-2 !italic !text-slate-600 !transition-transform !duration-200 hover:!translate-x-2 hover:!text-[#4d53be]"
                 >
                   <Text className="!mb-1 !block !font-semibold !italic !text-slate-800">📱 Téléphone</Text>
-                  <span className="group-hover:!underline">+261 34 09 084 00</span>
+                  <span className="group-hover:!underline">+261 34 10 09 650</span>
                 </a>
               </Space>
             </div>
