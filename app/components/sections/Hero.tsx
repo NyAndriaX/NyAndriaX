@@ -12,15 +12,6 @@ const HERO_CONTAINER_STYLE = {
   background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
 } as const;
 
-const PROFILE_CONTAINER_STYLE = {
-  position: "relative",
-  width: 350,
-  height: 500,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-} as const;
-
 const HERO_IMAGE_PROPS = {
   className: "profile-image",
   src: "/profil.jpeg",
@@ -189,10 +180,10 @@ const HERO_ANIMATION_STYLES = `
 
   @media (max-width: 640px) {
     .profile-stage {
-      transform: scale(0.86);
+      transform: scale(0.88);
       transform-origin: top center;
-      margin-top: -8px;
-      margin-bottom: -22px;
+      margin-top: 8px;
+      margin-bottom: -2px;
     }
 
     .profile-image-wrapper {
@@ -231,6 +222,15 @@ export default function Hero() {
   const { Title, Paragraph, Text } = Typography;
   const isDesktopHeroAnimation = viewportWidth > 1024;
   const isCompactDesktopHero = viewportWidth >= 992 && (viewportWidth <= 1366 || viewportHeight <= 860);
+  const isMobileViewport = viewportWidth < 640;
+  const profileContainerStyle = {
+    position: "relative",
+    width: isMobileViewport ? 280 : isCompactDesktopHero ? 300 : 350,
+    height: isMobileViewport ? 320 : isCompactDesktopHero ? 380 : 460,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  } as const;
   const heroContentTranslateY = isDesktopHeroAnimation ? scrollProgress * 400 : 0;
 
   useEffect(() => {
@@ -286,7 +286,7 @@ export default function Hero() {
       id="home"
       data-animate-section="true"
       style={HERO_CONTAINER_STYLE}
-      className="!relative !z-0 !px-4 !pb-8 !pt-20 sm:!px-6 sm:!pb-10 sm:!pt-22 md:!px-10 md:!pb-12 md:!pt-24 lg:!sticky lg:!top-0 lg:!px-12 xl:!px-16"
+      className="!relative !z-0 !px-4 !pb-8 !pt-24 sm:!px-6 sm:!pb-10 sm:!pt-24 md:!px-10 md:!pb-12 md:!pt-24 lg:!sticky lg:!top-0 lg:!px-12 xl:!px-16"
     >
       <style>{HERO_ANIMATION_STYLES}</style>
 
@@ -298,7 +298,7 @@ export default function Hero() {
           }}
         >
           <Row
-            gutter={[{ xs: 24, sm: 32, md: 40, lg: 56 }, { xs: 14, sm: 20, md: 24, lg: 36 }]}
+            gutter={[{ xs: 24, sm: 32, md: 40, lg: 56 }, { xs: 12, sm: 16, md: 24, lg: 36 }]}
             align="middle"
             justify="space-between"
             style={{ marginInline: 0 }}
@@ -413,7 +413,7 @@ export default function Hero() {
 
           <Col xs={{ span: 24, order: 1 }} lg={{ span: 10, order: 2 }}>
             <div className="!mx-auto !flex !w-full !max-w-sm !items-center !justify-center lg:!justify-end">
-              <div style={PROFILE_CONTAINER_STYLE} className="profile-stage">
+              <div style={profileContainerStyle} className="profile-stage">
                 <div className="floating-shapes">
                   <div className="shape shape-1" />
                   <div className="shape shape-2" />
