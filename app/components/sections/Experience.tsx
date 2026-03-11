@@ -11,8 +11,8 @@ export default function Experience() {
   const experiences = [
     {
       period: "Depuis octobre 2023",
-      role: "Software Developer",
-      company: "Giraffes studio - Full remote",
+      role: "Software Engineer",
+      company: "Giraffes Studio - Full remote",
       highlights: [
         "Recherche, conception et gestion de programmes logiciels.",
         "Test et évaluation de nouveaux programmes.",
@@ -27,7 +27,7 @@ export default function Experience() {
     },
     {
       period: "D'août 2025 à septembre 2025",
-      role: "Développeur logiciel",
+      role: "Software Developer",
       company: "AutoDashboard - Full remote",
       highlights: [
         "Développement logiciel pour la solution SaaS AutoDashboard, spécialisée dans la simplification de la gestion après-vente automobile.",
@@ -41,7 +41,7 @@ export default function Experience() {
     },
     {
       period: "De juin 2023 à novembre 2023",
-      role: "Développeur logiciel",
+      role: "Software Developer",
       company: "Club de ceos - Full remote",
       highlights: [
         "Conception et développement d'un site web responsive pour un club de leadership, créant une plateforme engageante dédiée aux membres pour favoriser les interactions, le networking et le développement personnel.",
@@ -54,7 +54,7 @@ export default function Experience() {
     },
     {
       period: "De mars 2022 à février 2023",
-      role: "Développeur web",
+      role: "Web Developer",
       company: "WevComFactory - Full remote",
       highlights: [
         "Conception et développement d'une landing page responsive pour un événement technologique au sein d'un projet SaaS, visant à promouvoir l'événement de manière impactante et à attirer un public ciblé.",

@@ -7,7 +7,7 @@ import { Experience } from "../../types";
 export const experienceData: Experience[] = [
   {
     id: "1",
-    title: "Développeur Full Stack Python, JS et PHP",
+    title: "Full Stack Developer (Python, JS, and PHP)",
     period: "2023 – Jan 2026",
     location: "Freelance",
     website: "",
@@ -19,7 +19,7 @@ export const experienceData: Experience[] = [
   }, 
   {
     id: "2",
-    title: "Développeur logiciel Full Stack – AutoDashboard (SaaS)",
+    title: "Full Stack Software Developer - AutoDashboard (SaaS)",
     period: "Aug 2025 – Sep 2025",
     location: "Freelance",
     website: "AutoDashboard",
@@ -31,7 +31,7 @@ export const experienceData: Experience[] = [
   },
   {
     id: "3",
-    title: "Développeur Full Stack React, Next.js",
+    title: "Full Stack Developer (React, Next.js)",
     period: "2023",
     location: "Freelance",
     website: "",
@@ -43,7 +43,7 @@ export const experienceData: Experience[] = [
   },  
   {
     id: "4",
-    title: "Développeur Web",
+    title: "Web Developer",
     period: "2022",
     location: "Freelance",
     website: "",
