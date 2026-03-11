@@ -180,6 +180,13 @@ const HERO_ANIMATION_STYLES = `
     }
   }
 
+  @media (min-width: 992px) and (max-width: 1366px), (min-width: 992px) and (max-height: 860px) {
+    .profile-stage {
+      transform: scale(0.86);
+      transform-origin: center;
+    }
+  }
+
   @media (max-width: 640px) {
     .profile-stage {
       transform: scale(0.86);
@@ -218,22 +225,25 @@ const HERO_ANIMATION_STYLES = `
 export default function Hero() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(1280);
+  const [viewportHeight, setViewportHeight] = useState(900);
   const { className, src, alt, fill, priority, sizes } = HERO_IMAGE_PROPS;
   const githubLink = socialLinksData.find((link) => link.label.toLowerCase() === "github")?.href ?? "#";
   const { Title, Paragraph, Text } = Typography;
   const isDesktopHeroAnimation = viewportWidth > 1024;
+  const isCompactDesktopHero = viewportWidth >= 992 && (viewportWidth <= 1366 || viewportHeight <= 860);
   const heroContentTranslateY = isDesktopHeroAnimation ? scrollProgress * 400 : 0;
 
   useEffect(() => {
-    const updateViewportWidth = () => {
+    const updateViewportSize = () => {
       setViewportWidth(window.innerWidth || 1280);
+      setViewportHeight(window.innerHeight || 900);
     };
 
-    updateViewportWidth();
-    window.addEventListener("resize", updateViewportWidth);
+    updateViewportSize();
+    window.addEventListener("resize", updateViewportSize);
 
     return () => {
-      window.removeEventListener("resize", updateViewportWidth);
+      window.removeEventListener("resize", updateViewportSize);
     };
   }, []);
 
@@ -292,7 +302,7 @@ export default function Hero() {
             align="middle"
             justify="space-between"
             style={{ marginInline: 0 }}
-            className="hero-content-row !w-full !min-h-0 lg:!min-h-[calc(100vh-7rem)]"
+            className="hero-content-row !w-full !min-h-0 lg:!min-h-[calc(100vh-9rem)]"
           >
           <Col xs={{ span: 24, order: 2 }} lg={{ span: 12, order: 1 }} className="hero-text-col">
             <Space direction="vertical" size={20} className="!w-full">
@@ -304,19 +314,36 @@ export default function Hero() {
                 style={{
                   color: "#5d64d6",
                   margin: 0,
-                  fontSize: "clamp(2.7rem, 5.8vw, 4.5rem)",
+                  fontSize: isCompactDesktopHero
+                    ? "clamp(2.2rem, 4.2vw, 3.5rem)"
+                    : "clamp(2.7rem, 5.8vw, 4.5rem)",
                   lineHeight: 1.1,
                 }}
               >
                 {HERO_CONTENT.name}
               </Title>
 
-              <Title level={2} style={{ color: "#0f172a", margin: 0, fontSize: "clamp(1.85rem, 3.6vw, 2.45rem)" }}>
+              <Title
+                level={2}
+                style={{
+                  color: "#0f172a",
+                  margin: 0,
+                  fontSize: isCompactDesktopHero
+                    ? "clamp(1.45rem, 2.6vw, 2rem)"
+                    : "clamp(1.85rem, 3.6vw, 2.45rem)",
+                }}
+              >
                 Software Engineer Full Stack
               </Title>
 
               <Paragraph
-                style={{ maxWidth: 700, color: "#475569", fontSize: 19, lineHeight: 1.8, marginBottom: 0 }}
+                style={{
+                  maxWidth: 700,
+                  color: "#475569",
+                  fontSize: isCompactDesktopHero ? 17 : 19,
+                  lineHeight: isCompactDesktopHero ? 1.65 : 1.8,
+                  marginBottom: 0,
+                }}
               >
                 Ingénieur en génie logiciel passionné par la tech, avec plus de 4 ans d&apos;expérience dans le
                 développement d&apos;applications web performantes et innovantes.
@@ -335,9 +362,9 @@ export default function Hero() {
                     backgroundColor: "#5d64d6",
                     borderColor: "#5d64d6",
                     fontWeight: 600,
-                    fontSize: 17,
-                    height: 50,
-                    paddingInline: 24,
+                    fontSize: isCompactDesktopHero ? 15 : 17,
+                    height: isCompactDesktopHero ? 44 : 50,
+                    paddingInline: isCompactDesktopHero ? 18 : 24,
                   }}
                   aria-label="Aller à la section contact"
                 >
@@ -353,9 +380,9 @@ export default function Hero() {
                       borderColor: "#9ca3ff",
                       color: "#5d64d6",
                       fontWeight: 600,
-                      fontSize: 17,
-                      height: 50,
-                      paddingInline: 24,
+                      fontSize: isCompactDesktopHero ? 15 : 17,
+                      height: isCompactDesktopHero ? 44 : 50,
+                      paddingInline: isCompactDesktopHero ? 18 : 24,
                     }}
                   >
                     Télécharger CV
@@ -373,9 +400,9 @@ export default function Hero() {
                     borderColor: "#9ca3ff",
                     color: "#5d64d6",
                     fontWeight: 600,
-                    fontSize: 17,
-                    height: 50,
-                    paddingInline: 24,
+                    fontSize: isCompactDesktopHero ? 15 : 17,
+                    height: isCompactDesktopHero ? 44 : 50,
+                    paddingInline: isCompactDesktopHero ? 18 : 24,
                   }}
                 >
                   GitHub
