@@ -39,7 +39,7 @@ export const createExpertiseData = (): ExpertiseItem[] => [
   },
   {
     category: "Développement React Native Android, iOS",
-    skills: ["Android", "iOS"],
+    skills: ["React Native", "Flutter", "Android", "iOS"],
     icon: React.createElement(
       "svg",
       { 
@@ -52,7 +52,7 @@ export const createExpertiseData = (): ExpertiseItem[] => [
         d: "M13.5 0L21 3.5v17L13.5 24l-7.5-3.5v-17L13.5 0zm0 2.5L6.5 5v14l7 3.5 7-3.5V5l-7-2.5zM8 7.5l4 1.5v9l-4-1.5v-9zm8 0v9l-4 1.5V9l4-1.5z"
       })
     ),
-    description: "Compétent dans le développement d'applications mobiles hybrides et de solutions cross-platform avec React Native.",
+    description: "Compétent dans le développement d'applications mobiles hybrides et cross-platform avec React Native et Flutter.",
     underlineWord: "React Native",
     underlineColor: "orange",
   },

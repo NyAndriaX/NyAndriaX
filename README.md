@@ -4,7 +4,7 @@
   <h1>ANDRIAMAHAFALY Tsilavina Henintsoa</h1>
   
   <p>
-    <strong>Software Engineer | Web Developer | 24 years old | +3 years of experience</strong>
+    <strong>Software Engineer | Full Stack & Mobile Developer | 24 years old | +3 years of experience</strong>
   </p>
   
   <p>
@@ -24,7 +24,7 @@
 
 ## 📋 About Me
 
-Hello! I'm a passionate web developer with solid experience in front-end and back-end development. I love creating modern, performant, and well-designed applications using technologies adapted to project needs.
+Hello! I'm a passionate software engineer with solid experience in front-end, back-end, and mobile development. I love creating modern, performant, and well-designed web and cross-platform applications using technologies adapted to project needs, including **React Native** and **Flutter**.
 
 This portfolio was developed with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS v4** to showcase my skills, projects, and professional experiences.
 
@@ -40,7 +40,6 @@ This portfolio was developed with **Next.js 16**, **React 19**, **TypeScript**, 
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Ant Design](https://img.shields.io/badge/Ant_Design-0170FE?style=for-the-badge&logo=ant-design&logoColor=white)
@@ -55,13 +54,23 @@ This portfolio was developed with **Next.js 16**, **React 19**, **TypeScript**, 
 - **TypeScript** : Adding static typing for more robust projects
 - **React** : Developing reactive user interfaces
 - **Next.js** : React framework for performant web applications
-- **React Native** : Cross-platform mobile application development
 - **Redux** : State management for complex applications
 - **Tailwind CSS** : Utility-first CSS framework for rapid development
 - **Ant Design** : Professional React component library
 - **Material-UI** : React components based on Material Design
 - **Prime React** : Complete UI component suite for React
 - **jQuery** : Simplifying DOM manipulations
+
+### Mobile
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white)
+
+- **React Native** : Cross-platform mobile apps for Android and iOS with React
+- **Flutter** : Cross-platform mobile and UI development with Dart
+- **Android** : Building and deploying native Android experiences
+- **iOS** : Building and deploying native iOS experiences
 
 ### Back-end
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)

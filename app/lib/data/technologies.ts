@@ -10,6 +10,7 @@ export const technologiesData: CompanyLogo[] = [
   { id: "react", name: "React", logo: "", alt: "React" },
   { id: "nextjs", name: "Next.js", logo: "", alt: "Next.js" },
   { id: "react-native", name: "React Native", logo: "", alt: "React Native" },
+  { id: "flutter", name: "Flutter", logo: "", alt: "Flutter" },
   { id: "javascript", name: "JavaScript", logo: "", alt: "JavaScript" },
   { id: "typescript", name: "TypeScript", logo: "", alt: "TypeScript" },
   { id: "python", name: "Python", logo: "", alt: "Python" },

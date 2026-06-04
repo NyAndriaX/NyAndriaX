@@ -23,7 +23,7 @@ export default function Experience() {
         "Préparation de rapports sur les spécifications de projets de programmation, les activités ou le statut.",
         "Consultation avec le personnel d'ingénierie pour évaluer les interfaces logiciel-matériel et développer des spécifications et exigences de performance.",
       ],
-      skills: ["ReactJS", "NextJs", "Python", "Shopify", "OpenAI", "NodeJs", "Javascript", "Typescript", "MongoDB", "Bubble.io", "webflow", "zapier"],
+      skills: ["ReactJS", "NextJs", "React Native", "Flutter", "Python", "Shopify", "OpenAI", "NodeJs", "Javascript", "Typescript", "MongoDB", "Bubble.io", "webflow", "zapier"],
     },
     {
       period: "D'août 2025 à septembre 2025",
@@ -37,7 +37,7 @@ export default function Experience() {
         "Modification et optimisation du code pour corriger les erreurs et améliorer l'efficacité du logiciel.",
         "Collaboration à la rédaction de documentation technique et à la définition des spécifications du projet.",
       ],
-      skills: ["ReactJs", "Django", "Figma"],
+      skills: ["ReactJs", "React Native", "Flutter", "Django", "Figma"],
     },
     {
       period: "De juin 2023 à novembre 2023",

@@ -14,7 +14,7 @@ export const experienceData: Experience[] = [
     websiteUrl: "",
     description:
       "Contribution à des initiatives de développement logiciel cadrées contractuellement, avec un focus sur la conception, le développement et l'optimisation d'applications web scalables. Travail sur l'architecture système, l'implémentation de fonctionnalités critiques, les phases de test et l'amélioration continue des performances tout en respectant les exigences fonctionnelles et les standards qualité.",
-    skills: ["Architecture logicielle", "Développement web", "Systèmes scalables", "Tests", "Optimisation des performances"],
+    skills: ["Architecture logicielle", "Développement web", "React Native", "Flutter", "Systèmes scalables", "Tests", "Optimisation des performances"],
     logo: "",
   }, 
   {

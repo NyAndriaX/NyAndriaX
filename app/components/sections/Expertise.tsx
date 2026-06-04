@@ -30,6 +30,10 @@ export default function Expertise() {
       skills: ["Jest", "Cypress", "Playwright"],
     },
     {
+      title: "Développement Mobile",
+      skills: ["React Native", "Flutter", "Android", "iOS"],
+    },
+    {
       title: "Technologies Avancées",
       skills: ["Shopify", "OpenAI", "Microservices", "Agile"],
     },
